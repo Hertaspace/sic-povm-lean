@@ -1,0 +1,23 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "SICLean.Solution",
+  "theorem_names": [
+    "OpenQuantumProblem23.sicPOVMs",
+    "OpenQuantumProblem23.hasSICPOVM_56",
+    "OpenQuantumProblem23.hasSICPOVM_58",
+    "OpenQuantumProblem23.hasSICPOVM_59",
+    "OpenQuantumProblem23.hasSICPOVM_60",
+    "OpenQuantumProblem23.hasSICPOVM_64",
+    "OpenQuantumProblem23.hasSICPOVM_68",
+    "OpenQuantumProblem23.hasSICPOVM_69",
+    "OpenQuantumProblem23.hasSICPOVM_70",
+    "OpenQuantumProblem23.hasSICPOVM_71",
+    "OpenQuantumProblem23.hasSICPOVM_72",
+    "OpenQuantumProblem23.hasSICPOVM_75"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
