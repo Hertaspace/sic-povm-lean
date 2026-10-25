@@ -5,8 +5,9 @@ import SICLean.Defs
 
 The reduction in `SICLean.Main` takes the two hypotheses below. They are stated as ordinary
 propositions, not as Lean `axiom`s, so every use of them is visible in the theorem statements.
-Both are proved later in this repository, and the final theorems
-`SICLean.FinalAssembly.zaunerExistence` and `SICLean.FinalAssembly.hasRSIC` have no hypotheses.
+Both are proved later in this repository. The final theorem
+`SICLean.FinalAssembly.zaunerExistence` therefore has no hypotheses, and
+`SICLean.FinalAssembly.hasRSIC` has only its conditions on d and r.
 
 * `IsGhost d r G` is the twisted convolution identity. For `r = 1` it comes from
   [RW26, Thm. 7] with [AFK25, Def. 1.43] and [AFK25, Thm. 1.45]. For `r > 1` it comes from

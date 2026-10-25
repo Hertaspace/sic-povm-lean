@@ -8,8 +8,8 @@ set_option autoImplicit false
 
 `G1RealConclusion` discharges the analytic hypothesis of the final assembly.
 The remaining hypothesis is [RW-rec, Prop. 7] for the actual values, in the form
-`Prop7Actual`. It is proved in `SICLean.L5.ActualProp7`, which gives the final theorems
-without hypotheses.
+`Prop7Actual`. It is proved in `SICLean.L5.ActualProp7`, which removes this hypothesis from the
+final theorems.
 
 [RW26, Thm. 2], with footnote 2, and [RW26, Prop. 8], for the actual values of
 the original chain, and the algebraicity of every actual special value, hold

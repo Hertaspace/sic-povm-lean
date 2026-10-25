@@ -237,12 +237,14 @@ import SICLean.Solution
 This is the root module of the formalization. The final theorems are
 `SICLean.FinalAssembly.zaunerExistence`, which is the statement `OpenQuantumProblem23.sicPOVMs`
 of formal-conjectures, and `SICLean.FinalAssembly.hasRSIC` for rank-r SICs. Both are in
-`SICLean.L5.ActualProp7`. They have no hypotheses and use only Lean's standard axioms.
+`SICLean.L5.ActualProp7`. `zaunerExistence` has no hypotheses, `hasRSIC` has only its conditions
+on d and r, and both use only Lean's standard axioms.
 `SICLean.Solution` restates the open statements of formal-conjectures and proves them.
 
 The development is layered. The reduction in `SICLean.Main` assumes the two inputs of
 `SICLean.Inputs`. The layers `L2a` to `L2rc` reduce these inputs to the finite identities of
 [RW26], `L3` proves algebraicity of the special values, `L4` proves the analytic properties of
 the modular quantum dilogarithm, and `L5` proves [RW-rec, Prop. 7]. Theorems in intermediate
-files may carry explicit hypotheses. The final assembly discharges all of them.
+files may carry explicit hypotheses, for example these inputs. The final assembly proves all of
+these inputs.
 -/
