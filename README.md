@@ -7,6 +7,7 @@ This repository contains a complete, machine-checked proof in Lean 4 that **symm
 - **Mathematics:** the recent proof of Radchenko and Wheeler [RW26, RW-rec], together with a theorem of Appleby, Flammia and Kopp [AFK25].
 - **Axioms:** only `propext`, `Classical.choice` and `Quot.sound`.
 - **Checks:** six kernels accept the proof (see [Verification](#verification)).
+- **Related work:** an earlier, independent Lean 4 formalization by Māris Ozols, [marozols/SIC-existence](https://github.com/marozols/SIC-existence) (public since 9 October 2026), proves the same existence results with its own statements.
 
 ## Main theorem
 
@@ -251,8 +252,6 @@ Apache License 2.0 (see `LICENSE`). Third-party material keeps its own notices:
 - the material from google-deepmind/formal-conjectures (Apache-2.0) in `vendor/formal-conjectures-OQP23.lean`, `SICLean/Statement.lean`, `Challenge.lean` and `SICLean/LowDim.lean`.
 
 ## Citation
-
-A short note describing this formalization is in preparation.
 
 ```bibtex
 @misc{yang2026sicpovmlean,
