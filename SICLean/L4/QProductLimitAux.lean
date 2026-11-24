@@ -1,10 +1,14 @@
-import Mathlib
+module
+
+public import Mathlib
 
 /-!
 Finite bilateral sums with Gaussian-binomial coefficients converge by Tannery's
 theorem. The argument is independent of the q-product definitions: convergence
 of `d` to a nonzero limit bounds both `d n` and its total inverse uniformly.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

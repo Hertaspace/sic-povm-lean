@@ -1,6 +1,10 @@
-import SICLean.L5.LocalLemmaOne
-import SICLean.L5.FiniteAlgebraicTransport
-import SICLean.L5.LocalActualFourierAux
+module
+
+public import SICLean.L5.LocalLemmaOne
+public import SICLean.L5.FiniteAlgebraicTransport
+public import SICLean.L5.LocalActualFourierAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

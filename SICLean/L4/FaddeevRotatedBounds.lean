@@ -1,5 +1,9 @@
-import SICLean.L4.FaddeevRotatedKernel
-import SICLean.L4.FaddeevRotatedBoundsAux
+module
+
+public import SICLean.L4.FaddeevRotatedKernel
+public import SICLean.L4.FaddeevRotatedBoundsAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

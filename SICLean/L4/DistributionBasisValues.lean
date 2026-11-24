@@ -1,4 +1,8 @@
-import SICLean.L4.DistributionBasisValuesAux
+module
+
+public import SICLean.L4.DistributionBasisValuesAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

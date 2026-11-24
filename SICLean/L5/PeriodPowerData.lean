@@ -1,6 +1,10 @@
-import SICLean.L4.PseudolatticeMatrixValues
-import SICLean.L4.SpecialValueUnitAction
-import SICLean.L5.PeriodPowerDataAux
+module
+
+public import SICLean.L4.PseudolatticeMatrixValues
+public import SICLean.L4.SpecialValueUnitAction
+public import SICLean.L5.PeriodPowerDataAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

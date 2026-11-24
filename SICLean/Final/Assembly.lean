@@ -1,8 +1,12 @@
-import SICLean.L4.G2AnalyticInputs
-import SICLean.L4.M78Specializations
-import SICLean.L3.PeriodDataExistence
-import SICLean.Galois.L2Inputs
-import SICLean.Statement
+module
+
+public import SICLean.L4.G2AnalyticInputs
+public import SICLean.L4.M78Specializations
+public import SICLean.L3.PeriodDataExistence
+public import SICLean.Galois.L2Inputs
+public import SICLean.Statement
+
+@[expose] public section
 
 set_option autoImplicit false
 

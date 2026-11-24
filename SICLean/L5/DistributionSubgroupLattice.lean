@@ -1,5 +1,9 @@
-import SICLean.L5.DistributionOrbitGeometry
-import SICLean.L5.DistributionSubgroupLatticeAux
+module
+
+public import SICLean.L5.DistributionOrbitGeometry
+public import SICLean.L5.DistributionSubgroupLatticeAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -70,7 +74,7 @@ theorem overlattice_le_periodPoints (P : PeriodData K) (I : StablePseudolattice 
 /-- [RW-rec, Prop. 3(ii), p. 4]. No freeness premise on `J` is assumed. -/
 theorem overlattice_isLattice (P : PeriodData K) (I : StablePseudolattice P)
     (H : AddSubgroup (PseudolatticeGroup P I)) :
-    Submodule.IsLattice ℚ (overlattice P I H) := by
+    Submodule.IsFullLattice ℚ (overlattice P I H) := by
   let S : Set K := Set.range (fun a : H => pseudolatticeRepresentative P I a.val)
   have hrep (a : H) : pseudolatticeRepresentative P I a.val ∈ overlattice P I H := by
     refine ⟨(Quotient.out a.val).property, ?_⟩
@@ -93,7 +97,7 @@ theorem overlattice_isLattice (P : PeriodData K) (I : StablePseudolattice P)
       rintro z ⟨a, rfl⟩
       exact hrep a
   let := I.property.1
-  apply Submodule.IsLattice.of_le_of_isLattice_of_fg ℚ (le_overlattice P I H)
+  apply Submodule.IsFullLattice.of_le_of_fg ℚ (le_overlattice P I H)
   rw [heq]
   exact I.property.1.fg.sup (Submodule.fg_span (Set.finite_range _))
 

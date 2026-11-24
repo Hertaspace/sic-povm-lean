@@ -1,5 +1,9 @@
-import SICLean.L4.G1PinchGeometry
-import SICLean.L4.G1FixedSeparationAux
+module
+
+public import SICLean.L4.G1PinchGeometry
+public import SICLean.L4.G1FixedSeparationAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

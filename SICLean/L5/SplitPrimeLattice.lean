@@ -1,8 +1,12 @@
-import SICLean.L3.PseudolatticeIdeal
-import SICLean.L5.DistributionNormalized
-import SICLean.L5.PrimeSpecialization
-import SICLean.L5.LocalFourierSetup
-import SICLean.L5.SplitPrimeLatticeAux
+module
+
+public import SICLean.L3.PseudolatticeIdeal
+public import SICLean.L5.DistributionNormalized
+public import SICLean.L5.PrimeSpecialization
+public import SICLean.L5.LocalFourierSetup
+public import SICLean.L5.SplitPrimeLatticeAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -81,8 +85,10 @@ theorem split_residue_cards (P : PeriodData K) {p : ℕ} (hp : p.Prime)
   have hchars := split_residue_characteristics P hp h
   have hnorm : Nat.card (FinitePlace.Residue r) *
       Nat.card (FinitePlace.Residue q) = p ^ 2 := by
-    change Ideal.absNorm r.asIdeal * Ideal.absNorm q.asIdeal = p ^ 2
-    rw [← map_mul Ideal.absNorm, h.2, Ideal.absNorm_span_natCast,
+    have e : ∀ s : FinitePlace.Prime K,
+        Nat.card (FinitePlace.Residue s) = Ideal.absNorm s.asIdeal := fun s => by
+      rw [Ideal.absNorm_apply, Submodule.cardQuot_apply]
+    rw [e r, e q, ← map_mul Ideal.absNorm, h.2, Ideal.absNorm_span_natCast,
       NumberField.RingOfIntegers.rank, P.finrank_eq_two]
   rw [FinitePlace.residue_card r, FinitePlace.residue_card q,
     hchars.1, hchars.2, ← pow_add] at hnorm
@@ -135,7 +141,7 @@ theorem mem_inversePrimeCarrier (P : PeriodData K) (I : StablePseudolattice P)
 
 /-- [RW-rec]; a nonzero rational integer in r bounds the colon. -/
 theorem inversePrime_isLattice (P : PeriodData K) (I : StablePseudolattice P)
-    (r : FinitePlace.Prime K) : Submodule.IsLattice ℚ (inversePrimeCarrier P I r) := by
+    (r : FinitePlace.Prime K) : Submodule.IsFullLattice ℚ (inversePrimeCarrier P I r) := by
   let n := FinitePlace.residueChar r
   have hn : (n : K) ≠ 0 := Nat.cast_ne_zero.mpr (FinitePlace.residueChar_prime r).ne_zero
   have hnr : (n : 𝓞 K) ∈ r.asIdeal := by
@@ -152,11 +158,12 @@ theorem inversePrime_isLattice (P : PeriodData K) (I : StablePseudolattice P)
       simpa using I.val.smul_mem (n : ℤ) hy)
     exact (pseudolatticeScale_mem_iff _ _ _).mpr
       ⟨(n : K) * x, hxI, by rw [← mul_assoc, inv_mul_cancel₀ hn, one_mul]⟩
-  constructor
-  · exact ((pseudolatticeScale_isLattice I.val I.property.1 _ (inv_ne_zero hn)).fg).of_le hup
-  · apply top_unique
-    rw [← I.property.1.span_eq_top]
-    exact Submodule.span_mono hlow
+  have hL := Submodule.IsLattice.of_fg ℚ
+    (((pseudolatticeScale_isLattice I.val I.property.1 _ (inv_ne_zero hn)).fg).of_le hup)
+  refine { toIsLattice := hL, span_eq_top := ?_ }
+  apply top_unique
+  rw [← I.property.1.span_eq_top]
+  exact Submodule.span_mono hlow
 
 /-- [RW-rec]; epsilon and epsilon inverse preserve the colon. -/
 theorem inversePrime_periodStable (P : PeriodData K) (I : StablePseudolattice P)
@@ -346,6 +353,5 @@ theorem periodLine_decomposition (P : PeriodData K) (I : StablePseudolattice P)
       exact (show toAmbient P I x ∈ (⊥ : AddSubgroup (AmbientGroup I.val)) from
         (disjoint_iff_inf_le.mp hdisj) hx)
     exact hzero.trans (map_zero _).symm
-
 
 end SICLean.L5.SplitPrimeLattice

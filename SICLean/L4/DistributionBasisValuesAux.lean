@@ -1,5 +1,9 @@
-import SICLean.L4.DistributionLattice
-import SICLean.L4.ModularCocycle
+module
+
+public import SICLean.L4.DistributionLattice
+public import SICLean.L4.ModularCocycle
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -589,7 +593,9 @@ theorem sc_inverseAction_basis (B : DistributionBasis) (hB : B.Valid) :
   simp only [sc_inverseAction, AddMonoidHom.add_apply, AddMonoidHom.id_apply]
   rw [h.1, h.2]
   simp only [Matrix.SpecialLinearGroup.SL2_inv_expl,
-    Matrix.cons_val_zero, Matrix.cons_val_one]
+    Matrix.SpecialLinearGroup.coe_mk, Matrix.of_apply, Matrix.cons_val',
+    Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.empty_val',
+    Matrix.cons_val_fin_one]
   constructor <;> module
 
 theorem sc_change_conjugacy (B C : DistributionBasis)

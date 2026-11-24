@@ -1,4 +1,8 @@
-import SICLean.L2rc.GenericAux
+module
+
+public import SICLean.L2rc.GenericAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

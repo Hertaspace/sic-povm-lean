@@ -1,5 +1,9 @@
-import SICLean.L4.G1RatioTailBounds
-import SICLean.L4.ModularClusterLedger
+module
+
+public import SICLean.L4.G1RatioTailBounds
+public import SICLean.L4.ModularClusterLedger
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -249,7 +253,6 @@ theorem rectangleCCW_eq_zero (lo hi : ℂ) (hre : lo.re ≤ hi.re)
   simp only [smul_eq_mul] at h
   unfold rectangleCCW
   linear_combination h
-
 
 theorem rectangleCCW_add (lo hi : ℂ) (hre : lo.re ≤ hi.re)
     (him : lo.im ≤ hi.im) {f g : ℂ → ℂ}

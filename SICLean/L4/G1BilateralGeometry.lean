@@ -1,6 +1,10 @@
-import SICLean.L4.G1RatioTailBounds
-import SICLean.L4.G1FixedSeparation
-import SICLean.L4.G1BilateralGeometryAux
+module
+
+public import SICLean.L4.G1RatioTailBounds
+public import SICLean.L4.G1FixedSeparation
+public import SICLean.L4.G1BilateralGeometryAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

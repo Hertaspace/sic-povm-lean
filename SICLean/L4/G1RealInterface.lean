@@ -1,5 +1,9 @@
-import SICLean.L4.ModularDivisor
-import SICLean.L4.FinitePrincipalParts
+module
+
+public import SICLean.L4.ModularDivisor
+public import SICLean.L4.FinitePrincipalParts
+
+@[expose] public section
 
 set_option autoImplicit false
 

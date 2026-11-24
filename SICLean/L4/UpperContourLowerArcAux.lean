@@ -1,6 +1,10 @@
-import SICLean.L4.UpperContourBounds
-import Mathlib.MeasureTheory.Integral.DivergenceTheorem
-import Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics
+module
+
+public import SICLean.L4.UpperContourBounds
+public import Mathlib.MeasureTheory.Integral.DivergenceTheorem
+public import Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -276,7 +280,6 @@ theorem affine_exp_bound (P L : ℂ) (r θ lam : ℝ) (hr : 0 ≤ r)
   rw [Complex.add_im, heq]
   nlinarith [Real.pi_pos]
 
-
 theorem radius_mul_exp_tendsto_zero (k : ℝ) (hk : 0 < k) :
     Tendsto (fun r : ℝ => r * Real.exp (-k * r)) atTop (𝓝 0) := by
   simpa only [Real.rpow_one] using
@@ -365,7 +368,6 @@ lemma compact_qPochhammer_bounds (a η b : ℝ) (ha : a < 1) (hη : 0 < η) (hb 
     (hE (Set.mem_image_of_mem _ hp)).trans
       ((le_max_right D E).trans (le_max_right _ _))⟩
 
-
 lemma compact_modularPhi_bounds_of_arguments (M : SL(2, ℤ)) (hM : 0 < M 1 0)
     (a η b : ℝ) (ha : a < 1) (hη : 0 < η) (hb : b < 1) :
     ∃ C : ℝ, 0 < C ∧ ∀ (m n : ℤ) (z τ : ℂ), 0 < τ.im →
@@ -420,7 +422,6 @@ lemma reflected_c_argument (M : SL(2, ℤ)) (n : ℤ) (y z τ : ℂ) :
   exact reflected_q_argument (e (etaMobius M τ)) ((z + y) / etaDenom M τ)
     (e_ne_zero _) n
 
-
 lemma norm_e_le_one_of_im_nonneg (z : ℂ) (hz : 0 ≤ z.im) : ‖e z‖ ≤ 1 := by
   rw [e, Complex.norm_exp, Real.exp_le_one_iff]
   norm_num [Complex.mul_re, Complex.mul_im]
@@ -455,7 +456,6 @@ lemma reflected_c_add (M : SL(2, ℤ)) (n : ℤ) (y z u τ : ℂ) :
   rw [show z + u + y = (z + y) + u by ring, add_div, e_add', neg_div, e_neg']
   simp only [div_eq_mul_inv, mul_inv_rev]
   ring
-
 
 lemma compact_lower_reflected_arguments_all_int (M : SL(2, ℤ)) (h ℓ p n : ℤ)
     (ψ σ ρ δ : ℝ) (hc : UpperWindow.Choices M ψ σ ρ δ)
@@ -513,7 +513,6 @@ lemma compact_lower_reflected_arguments_all_int (M : SL(2, ℤ)) (h ℓ p n : �
   rw [reflected_a_add, reflected_d_add, reflected_b_add, reflected_c_add]
   exact ⟨hmul _ _ hAm' he, hmul _ _ hDm' heT,
     hmul _ _ hBm' he, hmul _ _ hCm' heT⟩
-
 
 lemma compact_lower_reflected_phi_bounds_all_int (M : SL(2, ℤ)) (h ℓ p n : ℤ)
     (ψ σ ρ δ : ℝ) (hc : UpperWindow.Choices M ψ σ ρ δ)
@@ -574,7 +573,6 @@ lemma continuous_modularPhi_of_qDenominator_ne_zero
     filter_upwards [hdana.continuousAt.eventually_ne hd] with w hw
     exact modularPhi_eq_qProduct M hM m n w τ hτ hw
   exact hqcont.congr heq.symm
-
 
 lemma modularPhi_reflection_div (M : SL(2, ℤ)) (hM : 0 < M 1 0)
     (k n : ℤ) (z τ : ℂ) (hτ : τ ∈ modularPhiDomain M)
@@ -718,7 +716,6 @@ lemma ratio_lower_reflection_raw (M : SL(2, ℤ)) (h ℓ p m n : ℤ) (ψ σ ρ 
   simp only [div_eq_mul_inv, mul_inv_rev, inv_inv]
   ring
 
-
 theorem fixed_lower_kernel_exp_bound (kind : Kind) (M : SL(2, ℤ)) (h ℓ p m n : ℤ)
     (ψ σ ρ δ : ℝ) (hc : UpperWindow.Choices M ψ σ ρ δ) (x : UpperWindow.Parameters)
     (hx : x ∈ UpperWindow.domain M h ℓ p ψ σ ρ δ) :
@@ -828,6 +825,5 @@ theorem fixed_lower_kernel_exp_bound (kind : Kind) (M : SL(2, ℤ)) (h ℓ p m n
     refine hg.trans ?_
     simpa only [neg_one_mul, mul_assoc] using
       mul_le_mul_of_nonneg_left (gaussian_le_exponential a b r ha) hD.le
-
 
 end SICLean.L4.UpperContourLowerArcAux

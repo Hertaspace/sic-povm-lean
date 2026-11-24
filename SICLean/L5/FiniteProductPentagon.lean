@@ -1,5 +1,9 @@
-import SICLean.L5.FiniteFourier
-import SICLean.L5.FiniteProductPentagonAux
+module
+
+public import SICLean.L5.FiniteFourier
+public import SICLean.L5.FiniteProductPentagonAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

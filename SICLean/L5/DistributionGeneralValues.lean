@@ -1,9 +1,13 @@
-import SICLean.L5.PeriodPowerValues
-import SICLean.L5.DistributionHermite
-import SICLean.L5.DistributionOrbitGeometry
-import SICLean.L5.DistributionOrbitCocycle
-import SICLean.L5.DistributionGeneralValuesHermiteAux
-import SICLean.L5.DistributionGeneralValuesAssemblyAux
+module
+
+public import SICLean.L5.PeriodPowerValues
+public import SICLean.L5.DistributionHermite
+public import SICLean.L5.DistributionOrbitGeometry
+public import SICLean.L5.DistributionOrbitCocycle
+public import SICLean.L5.DistributionGeneralValuesHermiteAux
+public import SICLean.L5.DistributionGeneralValuesAssemblyAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

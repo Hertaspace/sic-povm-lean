@@ -1,5 +1,9 @@
-import SICLean.L4.G2G1Specialization
-import SICLean.L4.G2IntegralEvaluationAux
+module
+
+public import SICLean.L4.G2G1Specialization
+public import SICLean.L4.G2IntegralEvaluationAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

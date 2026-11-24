@@ -1,5 +1,9 @@
-import SICLean.L5.GoodReductionLocal
-import SICLean.L5.PrimeValuation
+module
+
+public import SICLean.L5.GoodReductionLocal
+public import SICLean.L5.PrimeValuation
+
+@[expose] public section
 
 set_option autoImplicit false
 

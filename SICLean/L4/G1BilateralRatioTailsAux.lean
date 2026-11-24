@@ -1,4 +1,8 @@
-import SICLean.L4.G1BilateralSeparation
+module
+
+public import SICLean.L4.G1BilateralSeparation
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -375,7 +379,6 @@ lemma kernel_measurable (M : SL(2, ℤ)) (hM : 0 < M 1 0)
   have hm : Meromorphic (G1RatioTail.complexKernel M τ w y n h ell p m) :=
     fun z => ModularCluster.kernel_meromorphic M hM _ τ hτ z (Set.mem_univ z)
   exact hm.measurable
-
 
 lemma vertical_joint_continuousAt (M : SL(2, ℤ)) (hM : 0 < M 1 0)
     (w y : ℂ) (n h ell p m : ℤ) (x t : ℝ) {τ : ℂ}

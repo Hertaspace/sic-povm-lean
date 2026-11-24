@@ -1,6 +1,10 @@
-import SICLean.L5.LocalFourierRestriction
-import SICLean.L5.LocalCyclotomicValuation
-import SICLean.L5.LocalFourierMomentsAux
+module
+
+public import SICLean.L5.LocalFourierRestriction
+public import SICLean.L5.LocalCyclotomicValuation
+public import SICLean.L5.LocalFourierMomentsAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

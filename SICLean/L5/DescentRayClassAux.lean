@@ -1,5 +1,9 @@
-import SICLean.L5.RayArithmeticModulus
-import SICLean.L5.ClassFieldModulus
+module
+
+public import SICLean.L5.RayArithmeticModulus
+public import SICLean.L5.ClassFieldModulus
+
+@[expose] public section
 
 set_option autoImplicit false
 

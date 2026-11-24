@@ -1,4 +1,8 @@
-import SICLean.L2b.Convolution
+module
+
+public import SICLean.L2b.Convolution
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,5 +1,9 @@
-import SICLean.L4.PseudolatticeMatrixValues
-import SICLean.L3.PseudolatticeFamily
+module
+
+public import SICLean.L4.PseudolatticeMatrixValues
+public import SICLean.L3.PseudolatticeFamily
+
+@[expose] public section
 
 set_option autoImplicit false
 

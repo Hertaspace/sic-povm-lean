@@ -1,7 +1,11 @@
-import SICLean.L3.PseudolatticeIdeal
-import SICLean.L3.PseudolatticeFinitenessAux
-import Mathlib.LinearAlgebra.FreeModule.Finite.Quotient
-import Mathlib.LinearAlgebra.Quotient.Basic
+module
+
+public import SICLean.L3.PseudolatticeIdeal
+public import SICLean.L3.PseudolatticeFinitenessAux
+public import Mathlib.LinearAlgebra.FreeModule.Finite.Quotient
+public import Mathlib.LinearAlgebra.Quotient.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -138,11 +142,12 @@ theorem fractionalIdealIntermediate_finite (a : FractionalIdeal (𝓞 K)⁰ K)
 /- Every intermediate integer subgroup between fa and a is a full finitely generated lattice. -/
 theorem fractionalIdealIntermediate_isLattice (a : FractionalIdeal (𝓞 K)⁰ K)
     (ha : a ≠ 0) (f : ℕ) (hf : 0 < f) (I : FractionalIdealIntermediate a f) :
-    Submodule.IsLattice ℚ I.1 := by
-  have hbase : Submodule.IsLattice ℚ (fractionalIdealCarrier a) :=
+    Submodule.IsFullLattice ℚ I.1 := by
+  have hbase : Submodule.IsFullLattice ℚ (fractionalIdealCarrier a) :=
     fractionalIdealCarrier_isLattice a ha
   have hfg : I.1.FG := Submodule.FG.of_le hbase.fg I.2.2
-  refine ⟨hfg, ?_⟩
+  haveI := Submodule.IsLattice.of_fg ℚ hfg
+  refine { span_eq_top := ?_ }
   rw [eq_top_iff, ← hbase.span_eq_top]
   apply Submodule.span_le.mpr
   intro x hx

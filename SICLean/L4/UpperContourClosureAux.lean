@@ -1,8 +1,12 @@
-import SICLean.L4.UpperContourGeometry
-import Mathlib.MeasureTheory.Integral.DivergenceTheorem
-import Mathlib.Analysis.Complex.RealDeriv
-import Mathlib.Analysis.SpecialFunctions.Complex.LogDeriv
-import Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus
+module
+
+public import SICLean.L4.UpperContourGeometry
+public import Mathlib.MeasureTheory.Integral.DivergenceTheorem
+public import Mathlib.Analysis.Complex.RealDeriv
+public import Mathlib.Analysis.SpecialFunctions.Complex.LogDeriv
+public import Mathlib.MeasureTheory.Integral.IntervalIntegral.FundThmCalculus
+
+@[expose] public section
 
 set_option autoImplicit false
 

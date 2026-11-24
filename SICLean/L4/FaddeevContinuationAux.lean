@@ -1,7 +1,11 @@
-import Mathlib.Analysis.Complex.CauchyIntegral
-import Mathlib.Topology.ContinuousMap.Compact
-import Mathlib.Topology.ContinuousMap.Units
-import Mathlib.MeasureTheory.Function.LpSpace.ContinuousFunctions
+module
+
+public import Mathlib.Analysis.Complex.CauchyIntegral
+public import Mathlib.Topology.ContinuousMap.Compact
+public import Mathlib.Topology.ContinuousMap.Units
+public import Mathlib.MeasureTheory.Function.LpSpace.ContinuousFunctions
+
+@[expose] public section
 
 set_option autoImplicit false
 

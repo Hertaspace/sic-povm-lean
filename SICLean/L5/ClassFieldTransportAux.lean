@@ -1,5 +1,9 @@
-import Nyll.ClassFieldTheory.Definitions.FrobeniusAndHilbertClassFields.ArithmeticFrobeniusAt
-import Mathlib.RingTheory.Localization.AtPrime.Basic
+module
+
+public import Nyll.ClassFieldTheory.Definitions.FrobeniusAndHilbertClassFields.ArithmeticFrobeniusAt
+public import Mathlib.RingTheory.Localization.AtPrime.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 

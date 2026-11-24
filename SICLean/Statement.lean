@@ -10,7 +10,11 @@ The definitions are taken from that file. The `module`/`public` keywords and the
 `category` attributes are not used here. `ZaunerExistence` is the statement of
 `OpenQuantumProblem23.sicPOVMs`.
 -/
-import Mathlib
+module
+
+public import Mathlib
+
+@[expose] public section
 
 noncomputable section
 

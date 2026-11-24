@@ -1,5 +1,9 @@
-import SICLean.L5.ClassFieldModulus
-import Nyll.ClassFieldTheory.GlobalClassFieldTheory.Reciprocity.ArithmeticNormalization
+module
+
+public import SICLean.L5.ClassFieldModulus
+public import Nyll.ClassFieldTheory.GlobalClassFieldTheory.Reciprocity.ArithmeticNormalization
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -55,7 +59,7 @@ theorem principal_class_from_twist
     G (G.symm (F (QuotientGroup.mk' m'.congruenceSubgroup
       (QuotientGroup.mk' (IdeleGroup.principalSubgroup K) s))))
   rw [G.apply_symm_apply, ← hqa,
-    GlobalClassFieldTheory.GlobalClassFields.rayClassGroupEquivIdealRayClassGroup_mk_primeTo]
+    RayClass.rayClassGroupEquivIdealRayClassGroup_mk_primeTo]
   change QuotientGroup.mk' (RayClass.principalRayIdealSubgroup m')
       ⟨toPrincipalIdeal (𝓞 K) K x, hI⟩ =
     QuotientGroup.mk' (RayClass.principalRayIdealSubgroup m')
@@ -177,12 +181,13 @@ theorem sign_twist_primeTo (M : SL(2, ℤ))
         (realPlace_val_ne M hM hji)]
       simpa using hs.2 j hji
   · intro v hv
-    change (1 : (v.adicCompletion (Base M hM))ˣ) *
-      (IdeleGroup.principalIdele (Base M hM) x).2 v ∈
-        RayClass.localHigherUnitGroup v ((modulus M hM n).finitePart v)
-    rw [one_mul]
-    change finitePlaceUnitEmbedding v x ∈
-      rayLocalHigherUnitGroup v ((modulus M hM n).finitePart v)
+    have hfin : IdeleGroup.finiteCoordinates (s * p) v = finitePlaceUnitEmbedding v x := by
+      rw [map_mul, IdeleGroup.finiteCoordinates_infinitePlaceIdele, one_mul]
+      apply Units.ext
+      exact IdeleGroup.finiteComponent_principalIdele x v
+    change IdeleGroup.finiteCoordinates (s * p) v ∈
+      ClassFieldTheory.rayLocalHigherUnitGroup v ((modulus M hM n).finitePart v)
+    rw [hfin]
     exact hx v hv
 
 end SICLean.L5.ClassFieldSignsAux

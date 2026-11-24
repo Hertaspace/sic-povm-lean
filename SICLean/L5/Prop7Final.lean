@@ -1,5 +1,9 @@
-import SICLean.L5.Prop7FinalReflection
-import SICLean.L5.Prop7FinalConjugation
+module
+
+public import SICLean.L5.Prop7FinalReflection
+public import SICLean.L5.Prop7FinalConjugation
+
+@[expose] public section
 
 set_option autoImplicit false
 

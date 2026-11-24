@@ -1,7 +1,11 @@
-import SICLean.L5.OddPrimeValues
-import SICLean.L5.LocalActualFourier
-import SICLean.L5.OddPrimeCyclicAux
-import Mathlib.GroupTheory.Torsion
+module
+
+public import SICLean.L5.OddPrimeValues
+public import SICLean.L5.LocalActualFourier
+public import SICLean.L5.OddPrimeCyclicAux
+public import Mathlib.GroupTheory.Torsion
+
+@[expose] public section
 
 set_option autoImplicit false
 

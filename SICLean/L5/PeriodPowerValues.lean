@@ -1,5 +1,9 @@
-import SICLean.L5.PeriodPowerMatrix
-import SICLean.L5.PeriodPowerValuesAux
+module
+
+public import SICLean.L5.PeriodPowerMatrix
+public import SICLean.L5.PeriodPowerValuesAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

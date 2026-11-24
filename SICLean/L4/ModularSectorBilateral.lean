@@ -1,4 +1,8 @@
-import SICLean.L4.ModularSectorBilateralAux
+module
+
+public import SICLean.L4.ModularSectorBilateralAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

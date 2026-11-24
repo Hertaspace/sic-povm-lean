@@ -1,4 +1,8 @@
-import SICLean.L4.G2IntegralEvaluation
+module
+
+public import SICLean.L4.G2IntegralEvaluation
+
+@[expose] public section
 
 set_option autoImplicit false
 

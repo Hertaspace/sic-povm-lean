@@ -1,8 +1,12 @@
-import SICLean.L4.G1ContinuationCircles
-import SICLean.L4.G1BilateralGeometry
-import SICLean.L4.G1ContinuationEndRotationAux
-import SICLean.L4.G1ContinuationEndRotationAuxA11
-import SICLean.L4.G1ContinuationEndRotationAuxA12
+module
+
+public import SICLean.L4.G1ContinuationCircles
+public import SICLean.L4.G1BilateralGeometry
+public import SICLean.L4.G1ContinuationEndRotationAux
+public import SICLean.L4.G1ContinuationEndRotationAuxA11
+public import SICLean.L4.G1ContinuationEndRotationAuxA12
+
+@[expose] public section
 
 set_option autoImplicit false
 

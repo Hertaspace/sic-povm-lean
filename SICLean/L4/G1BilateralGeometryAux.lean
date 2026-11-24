@@ -1,4 +1,8 @@
-import SICLean.L4.G1RatioTailBounds
+module
+
+public import SICLean.L4.G1RatioTailBounds
+
+@[expose] public section
 
 set_option autoImplicit false
 

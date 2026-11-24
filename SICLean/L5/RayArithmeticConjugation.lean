@@ -1,7 +1,11 @@
-import SICLean.L5.RayArithmeticModulus
-import SICLean.L5.RayArithmeticConjugationAux
-import Mathlib.RingTheory.FractionalIdeal.Operations
-import Nyll.ClassFieldTheory.Definitions.ConductorsAndRayClassFields.RayClassGroup
+module
+
+public import SICLean.L5.RayArithmeticModulus
+public import SICLean.L5.RayArithmeticConjugationAux
+public import Mathlib.RingTheory.FractionalIdeal.Operations
+public import Nyll.ClassFieldTheory.Definitions.ConductorsAndRayClassFields.RayClassGroup
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -41,8 +45,8 @@ def primeConjugation : HeightOneSpectrum (𝓞 K) ≃ HeightOneSpectrum (𝓞 K)
 
 /-- Precompose the embedding defining a real place by the actual field conjugation; precomposition
 preserves realness. Source: [RW-rec]. -/
-def realPlaceConjugation (v : ClassFieldTheory.RayClassRealPlace K) :
-    ClassFieldTheory.RayClassRealPlace K :=
+def realPlaceConjugation (v : RayClass.RealPlace K) :
+    RayClass.RealPlace K :=
   ⟨InfinitePlace.mk
       (v.1.embedding.comp (RayArithmeticPlaces.conjugation M hM).toRingHom), by
     apply InfinitePlace.isReal_mk_iff.mpr
@@ -214,7 +218,7 @@ theorem primeToIdeals_conjugation (m : ℕ) :
   · intro I hI v hv
     obtain ⟨w, rfl⟩ := (primeConjugation M hM).surjective v
     have hw : w ∈ (RayArithmeticModulus.modulus M hM m).finitePart.support := by
-      simpa only [Finsupp.mem_support_iff,
+      simpa only [Finset.mem_coe, Finsupp.mem_support_iff,
         primeConjugation, RayArithmeticConjugationAux.finitePart_at_conjugate] using hv
     change FractionalIdeal.count K (primeConjugation M hM w)
       (FractionalIdeal.ringEquivOfRingEquiv K K

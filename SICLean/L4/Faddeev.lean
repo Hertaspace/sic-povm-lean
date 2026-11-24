@@ -1,14 +1,18 @@
-import SICLean.L4.FaddeevBounds
-import SICLean.L4.FaddeevContour
-import SICLean.L4.FaddeevHolomorphic
-import SICLean.L4.FaddeevInversionAux
-import SICLean.L4.FaddeevDifferenceAux
-import Mathlib.Topology.Order.Lattice
-import Mathlib.Analysis.Calculus.MeanValue
-import Mathlib.Analysis.Complex.CauchyIntegral
-import Mathlib.Analysis.Calculus.ParametricIntegral
-import Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp
-import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
+module
+
+public import SICLean.L4.FaddeevBounds
+public import SICLean.L4.FaddeevContour
+public import SICLean.L4.FaddeevHolomorphic
+public import SICLean.L4.FaddeevInversionAux
+public import SICLean.L4.FaddeevDifferenceAux
+public import Mathlib.Topology.Order.Lattice
+public import Mathlib.Analysis.Calculus.MeanValue
+public import Mathlib.Analysis.Complex.CauchyIntegral
+public import Mathlib.Analysis.Calculus.ParametricIntegral
+public import Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp
+public import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -438,7 +442,6 @@ lemma zDerivativeKernel_local_bound (b z ζ : ℂ) (h x r : ℝ)
   rw [hp, hm]
   ring
 
-
 lemma isOpen_inStrip (b : ℂ) : IsOpen {z | InStrip b z} := by
   exact isOpen_lt Complex.continuous_im.abs continuous_const
 
@@ -485,7 +488,6 @@ lemma hasDerivAt_logPhiAtHeight_aux (b z : ℂ) (h : ℝ)
   exact (hasDerivAt_integral_of_dominated_loc_of_deriv_le
     (Metric.ball_mem_nhds z hr) hmeas (integrable_lineKernel b z h hb hz hh)
     hDmeas hbound hB hD).2
-
 
 lemma kernel_uniform_tail_bound (b z : ℂ) (H : ℝ) (hb : AdmissibleB b) :
     ∃ C R : ℝ, ∀ h x : ℝ, |h| ≤ H → R ≤ |x| →

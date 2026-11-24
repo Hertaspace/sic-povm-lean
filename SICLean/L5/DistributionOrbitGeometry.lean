@@ -1,8 +1,12 @@
-import SICLean.L5.PeriodPowerData
-import SICLean.L5.DistributionOrbitGeometryAux
-import Mathlib.Dynamics.PeriodicPts.Lemmas
-import Mathlib.GroupTheory.Index
-import Mathlib.GroupTheory.Perm.Cycle.Basic
+module
+
+public import SICLean.L5.PeriodPowerData
+public import SICLean.L5.DistributionOrbitGeometryAux
+public import Mathlib.Dynamics.PeriodicPts.Lemmas
+public import Mathlib.GroupTheory.Index
+public import Mathlib.GroupTheory.Perm.Cycle.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 

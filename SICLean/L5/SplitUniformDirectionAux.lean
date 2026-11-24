@@ -1,6 +1,10 @@
-import SICLean.L5.LocalFourierSetup
-import Mathlib.Algebra.Module.ZMod
-import Mathlib.LinearAlgebra.Pi
+module
+
+public import SICLean.L5.LocalFourierSetup
+public import Mathlib.Algebra.Module.ZMod
+public import Mathlib.LinearAlgebra.Pi
+
+@[expose] public section
 
 set_option autoImplicit false
 

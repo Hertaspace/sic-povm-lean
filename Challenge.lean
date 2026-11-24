@@ -2,7 +2,9 @@
 Copyright 2026 The Formal Conjectures Authors.
 Licensed under the Apache License, Version 2.0.
 -/
-import Mathlib
+module
+
+public import Mathlib
 
 /-!
 # Challenge for `lake comparator`
@@ -11,10 +13,13 @@ The statements of Open Quantum Problem 23 from google-deepmind/formal-conjecture
 `FormalConjectures/OpenQuantumProblems/23.lean` at commit
 90d18f666eb98adec4eee4d12f1d37e30b4eb204 (full file in `vendor/`). The definitions are copied
 verbatim, and the twelve open theorems keep their names, statements and `sorry` proofs. The
-`module` and `public` wrapper, the attributes (which come from `FormalConjecturesUtil`) and the
-other declarations of that file are omitted, and `import Mathlib` replaces its imports. The
+`module` header and the `@[expose] public section` wrapper are kept as in that file. The
+attributes (which come from `FormalConjecturesUtil`) and the other declarations of that file are
+omitted, and `public import Mathlib` replaces its imports. The
 proofs are in `SICLean/Solution.lean`; see `comparator.json`.
 -/
+
+@[expose] public section
 
 noncomputable section
 

@@ -1,9 +1,11 @@
-import Mathlib.Data.Nat.Choose.Basic
-import Mathlib.Algebra.BigOperators.Ring.Finset
-import Mathlib.Algebra.Order.BigOperators.Group.Finset
-import Mathlib.Data.Fintype.Fin
-import Mathlib.Tactic.Linarith
-import Mathlib.Tactic.Ring
+module
+
+public import Mathlib.Data.Nat.Choose.Basic
+public import Mathlib.Algebra.BigOperators.Ring.Finset
+public import Mathlib.Algebra.Order.BigOperators.Group.Finset
+public import Mathlib.Data.Fintype.Fin
+public import Mathlib.Tactic.Linarith
+public import Mathlib.Tactic.Ring
 
 /-!
 # Division-free conversion of binomial moments to monomial moments
@@ -12,6 +14,8 @@ The identity `x * choose x r = r * choose x r + (r + 1) * choose x (r + 1)`
 keeps every index in the box below the target multi-index. Strong induction
 on the total degree therefore works over any commutative semiring.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section
@@ -79,7 +83,7 @@ lemma monomial_moment_of_binomial_box
     ∑ u, g u * (∏ a, (x u a : k) ^ j a) = 0 := by
   classical
   induction hn : (∑ a, j a) using Nat.strong_induction_on generalizing g j with
-  | h n ih =>
+  | ind n ih =>
     by_cases hj0 : ∀ a, j a = 0
     · simpa only [hj0, Nat.choose_zero_right, Nat.cast_one, pow_zero,
         Finset.prod_const_one, mul_one] using hbinomial j le_rfl

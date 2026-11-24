@@ -1,7 +1,11 @@
-import SICLean.Galois.Reciprocity
-import SICLean.L2c.Main
-import SICLean.L2r.Main
-import SICLean.L2rc.Main
+module
+
+public import SICLean.Galois.Reciprocity
+public import SICLean.L2c.Main
+public import SICLean.L2r.Main
+public import SICLean.L2rc.Main
+
+@[expose] public section
 
 set_option autoImplicit false
 

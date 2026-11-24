@@ -1,5 +1,73 @@
 # Verification record
 
+This file has two records. The first, for release v1.1, comes first. The second, for release v1.0, follows it unchanged. The checks of v1.1 repeat the build, the axiom checks, the comparator run and the statement check of v1.0. They do not repeat the two full-environment runs listed under "Not rerun" below.
+
+# v1.1 record
+
+Release v1.1 moves the project to Lean v4.36.0 and to the Lean module system, so that it can be registered with the [Palomar registry](https://palomar-registry.org), which requires every `.lean` file to use modules. It was made at the request of a maintainer of formal-conjectures. The statements of `Challenge.lean` and its definitions are unchanged from v1.0. `git diff 0f4ec7e -- '*.lean'` shows every change to the Lean files.
+
+## v1.1 changes that the checks cover
+
+- Pins: Lean `v4.35.0-rc2` to `v4.36.0`, Mathlib `065356127b1d` to `fc4f59e577feb1a4956671bc04ac18aaaf8cd842`, and the class field theory library n-yamaguchi-0729/ClassFieldTheory ("Nyll") `fbd320c` to `fc644f42dade5bdc7157fc3ef2eef4dbf2d6a565`. Upstream Nyll moved to the module system on 2026-11-11 and to Lean 4.36.0 on 2026-11-21.
+- Every `.lean` file starts with `module`, uses `public import` and opens `@[expose] public section`. `Challenge.lean` keeps the `module` header and the `@[expose] public section` wrapper of the formal-conjectures file, and `verification/check_challenge.py` expects that header.
+- New file `SICLean/NyllBridge/RayClassSubgroup.lean`. It restates, unchanged, two short theorems of Nyll at the pinned commit (`ClassFieldTheory.rayClassSubgroup_existence` and `ClassFieldTheory.rayClassSubgroupRealizations_eq`). Their upstream files are not yet modules, and a module cannot import a file that is not a module. Everything the two theorems import is already a module.
+- About 40 files needed proof adaptations to API changes of Mathlib and Nyll. Examples are the renames `RayClassRealPlace` to `RayClass.RealPlace` and `FractionalIdealGroup` to `NumberFieldFractionalIdealGroup`. Mathlib split `Submodule.IsLattice`, which is no longer "full", from `Submodule.IsFullLattice`. The project's "full lattice" hypotheses now use `IsFullLattice`, which has the meaning that `IsLattice` had at v1.0.
+- Seven files of the vendored `CebotarevDensity/` received small proof adaptations, listed in `CebotarevDensity/PROVENANCE.md`.
+
+## v1.1 environment
+
+All checks below were run between 24 and 25 November 2026 on the machine of the v1.0 checks and with the same bubblewrap wrapper:
+
+- Linux 5.15.0 x86_64, Ubuntu 20.04.6 LTS, in an LXD container.
+- Lean 4.36.0, as pinned in `lean-toolchain`, and the dependencies as pinned in `lake-manifest.json`.
+- bubblewrap for the sandbox of `lake comparator`, called through the wrapper described under "Environment" in the v1.0 record below.
+
+The build time on a Mac was not measured again for v1.1.
+
+## v1.1 results
+
+### 1. Build
+
+`lake build`: success, 21435 jobs.
+
+### 2. Axioms
+
+`lake env lean CheckAxioms.lean`: `SICLean.FinalAssembly.zaunerExistence`, `SICLean.FinalAssembly.hasRSIC`, `OpenQuantumProblem23.sicPOVMs` and the eleven `OpenQuantumProblem23.hasSICPOVM_*` theorems depend only on `[propext, Classical.choice, Quot.sound]`.
+
+### 3. `lake build Challenge`
+
+Success. The only warning is the expected one about `sorry` in the statements of `Challenge.lean`.
+
+### 4. Statement check
+
+`python3 verification/check_challenge.py` printed:
+
+```
+21 declarations of Challenge.lean are whole declarations of vendor/formal-conjectures-OQP23.lean (formal-conjectures commit 90d18f6), verbatim and in order, among them its 12 open theorems, each named once in comparator.json.
+```
+
+### 5. Scans of the compiled environment
+
+`verification/direct_sorry_modules.lean` printed `modules with direct sorryAx uses: []`. `verification/axiom_scan.lean` printed:
+
+```
+scanned 9808 constants from 460 modules matching SICLean|CebotarevDensity; nonstandard axiom uses: []
+```
+
+The count is lower than the 14,298 constants of v1.0 because, under the module system, the private declarations of imported modules are not loaded into the environment that the script scans. The export and kernel checks of step 6 cover the full proofs.
+
+### 6. `lake comparator --paranoid`
+
+The run ended with `Your solution is okay!`. All six kernels accepted the solution: Lean's paranoid kernel, lean4lean, nanoda, con-leche, con-ron (which accepted 141769 declarations) and Lean's default kernel. Wall-clock time 1 h 43 min 8 s, CPU time 10,292 s (166% on average), peak memory 6.6 GB.
+
+### Not rerun for v1.1
+
+The full-environment `lake check --paranoid` and the nanoda run on the export of the project (step 5 of the v1.0 record) were not repeated. Their results remain those of v1.0, obtained with Lean 4.35.0-rc2.
+
+# v1.0 record
+
+The rest of this file is the record of release v1.0, unchanged. Versions, counts and times in it refer to v1.0.
+
 This file records the checks run on commit `7a557d09bf66468e1ed550841b9e6e37e7b57153`. The release tag adds this file, the scripts in `verification/` and the figure in `docs/`, edits `README.md` and `CebotarevDensity/PROVENANCE.md`, and adds `.DS_Store` to `.gitignore`. It also corrects comments in `SICLean.lean`, `SICLean/Inputs.lean` and `SICLean/Final/Unconditional.lean`, which said that `hasRSIC` has no hypotheses. Apart from these comments, the Lean files of `SICLean` and `CebotarevDensity`, `Challenge.lean` and `CheckAxioms.lean` are those of the checked commit. Section 6 records a rebuild of the Lean files of the release.
 
 ## Environment

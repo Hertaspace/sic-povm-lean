@@ -1,5 +1,9 @@
-import SICLean.L4.FaddeevProduct
-import SICLean.L4.EtaMultiplier
+module
+
+public import SICLean.L4.FaddeevProduct
+public import SICLean.L4.EtaMultiplier
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -253,7 +257,6 @@ lemma isOpen_inStrip_joint (k : ℤ) :
     simp [InStrip, sub_neg]]
   exact hlt
 
-
 /-- Analyticity of a continuation denominator composed with a complex affine
 map, with no hypothesis on the affine map. -/
 lemma analyticAt_continuationDenominator_affine (b : ℂ) (k : ℤ) (α β z : ℂ) :
@@ -281,7 +284,6 @@ lemma meromorphicOrderAt_continuationDenominator_affine_ne_top (b : ℂ) (hb : A
   exact meromorphicOrderAt_ne_top_of_analytic_frequently_ne_zero
     (analyticAt_continuationDenominator b (α * z + β) k)
     (continuationDenominator_frequently_ne_zero b (α * z + β) k hb hz)
-
 
 /-- Pointwise joint analyticity of `phiExtended` on its explicit regular
 locus, read off the already proved local quotient. -/

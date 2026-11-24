@@ -1,6 +1,10 @@
-import SICLean.L5.ActualQuadraticField
-import SICLean.L5.RayArithmeticPlacesAux
-import Nyll.ClassFieldTheory.Definitions.ConductorsAndRayClassFields.RayClassModulus
+module
+
+public import SICLean.L5.ActualQuadraticField
+public import SICLean.L5.RayArithmeticPlacesAux
+public import Nyll.ClassFieldTheory.Definitions.ConductorsAndRayClassFields.RayClassModulus
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -57,10 +61,10 @@ theorem infinitePlace₂_isReal : (infinitePlace₂ M hM).IsReal := by
   exact InfinitePlace.isReal_mk_iff.mpr
     (RayArithmeticPlacesAux.ofReal_comp_isReal (ActualField.sigma₂ M hM))
 
-def realPlace₁ : ClassFieldTheory.RayClassRealPlace K :=
+def realPlace₁ : RayClass.RealPlace K :=
   ⟨infinitePlace₁ M hM, infinitePlace₁_isReal M hM⟩
 
-def realPlace₂ : ClassFieldTheory.RayClassRealPlace K :=
+def realPlace₂ : RayClass.RealPlace K :=
   ⟨infinitePlace₂ M hM, infinitePlace₂_isReal M hM⟩
 
 /-- Source: actual sigma_1 identification, via the InfinitePlace real embedding. [RW26, p. 20]. -/
@@ -114,7 +118,7 @@ theorem realPlace_ne : realPlace₁ M hM ≠ realPlace₂ M hM := by
   apply RayArithmeticPlacesAux.sigma₁_ne_sigma₂ M hM
   rw [← realPlace₁_embedding M hM, ← realPlace₂_embedding M hM]
   exact congrArg
-    (fun v : ClassFieldTheory.RayClassRealPlace K => v.1.embedding_of_isReal v.2) h
+    (fun v : RayClass.RealPlace K => v.1.embedding_of_isReal v.2) h
 
 /-- Source: exactly two real places, same sources as realPlace_ne. [RW26, p. 20]. -/
 theorem infinitePlace_eq (v : InfinitePlace K) :
@@ -140,7 +144,7 @@ theorem infinitePlace_eq (v : InfinitePlace K) :
 /-- Source: this is the real-place set, not an extra narrow modulus with finite part zero. [RW26, p.
 20]. -/
 theorem realPlace_pair_eq_univ :
-    ({realPlace₁ M hM, realPlace₂ M hM} : Finset (ClassFieldTheory.RayClassRealPlace K)) =
+    ({realPlace₁ M hM, realPlace₂ M hM} : Finset (RayClass.RealPlace K)) =
       Finset.univ := by
   ext v
   simp only [Finset.mem_insert, Finset.mem_singleton, Finset.mem_univ, iff_true]
@@ -148,7 +152,7 @@ theorem realPlace_pair_eq_univ :
   · exact Or.inl (Subtype.ext h)
   · exact Or.inr (Subtype.ext h)
 
-#check @ClassFieldTheory.RayClassRealPlace
+#check @RayClass.RealPlace
 #check @InfinitePlace.mk
 #check @RingOfIntegers.mapRingEquiv
 #print conjugation

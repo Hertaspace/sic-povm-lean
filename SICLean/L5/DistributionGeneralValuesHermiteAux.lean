@@ -1,6 +1,8 @@
-import SICLean.L5.PeriodPowerValues
-import SICLean.L5.DistributionOrbitGeometry
-import Mathlib.LinearAlgebra.FreeModule.Finite.CardQuotient
+module
+
+public import SICLean.L5.PeriodPowerValues
+public import SICLean.L5.DistributionOrbitGeometry
+public import Mathlib.LinearAlgebra.FreeModule.Finite.CardQuotient
 
 /-!
 # Simultaneous Hermite presentations
@@ -10,6 +12,8 @@ presentations have positive oriented area. A unimodular row operation
 puts it in positive upper triangular form and rebases the smaller
 lattice. Relative index is the absolute determinant of this inclusion.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

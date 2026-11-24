@@ -1,6 +1,10 @@
-import SICLean.L5.ClassFieldModulus
-import SICLean.L5.ClassFieldSignsAux
-import Nyll.ClassFieldTheory.GlobalClassFieldTheory.Reciprocity.ArithmeticNormalization
+module
+
+public import SICLean.L5.ClassFieldModulus
+public import SICLean.L5.ClassFieldSignsAux
+public import Nyll.ClassFieldTheory.GlobalClassFieldTheory.Reciprocity.ArithmeticNormalization
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -94,12 +98,12 @@ theorem exists_singleNegative (i : Fin 2) :
     have hf := hx.2 v hv
     change IdeleGroup.finiteComponent v
       (a * (IdeleGroup.principalIdele (Base M hM) x)⁻¹) ∈
-        RayClass.localHigherUnitGroup v (m.finitePart v) at hf
+        ClassFieldTheory.rayLocalHigherUnitGroup v (m.finitePart v) at hf
     rw [map_mul, map_inv] at hf
     have ha : IdeleGroup.finiteComponent v a = 1 :=
       IdeleGroup.infinitePlaceIdele_finiteComponent _ _ _
     rw [ha, one_mul] at hf
-    exact (RayClass.localHigherUnitGroup v (m.finitePart v)).inv_mem hf
+    exact (ClassFieldTheory.rayLocalHigherUnitGroup v (m.finitePart v)).inv_mem hf
   · have hp := (RayClass.Modulus.mem_infiniteCongruenceSubgroup_iff m _).1 hx.1
       (realPlace M hM i)
       (by simp [m, GlobalClassFieldComparison.rayClassModulusToOriginal, modulus])
@@ -141,16 +145,16 @@ theorem principal_primeTo (x : (Base M hM)ˣ) (hx : FiniteCongruent M hM n x) :
   intro v hv
   rw [← IdeleGroup.fractionalIdeal_principalIdele]
   change FractionalIdeal.count (Base M hM) v
-      (((FractionalIdealGroup.factorization (K := Base M hM))
+      (((NumberFieldFractionalIdealGroup.factorization (K := Base M hM))
         (FiniteIdeleGroup.valuationVector
-          (IdeleGroup.principalIdele (Base M hM) x).2) :
-          FractionalIdealGroup (Base M hM)) :
+          (IdeleGroup.finiteCoordinates (IdeleGroup.principalIdele (Base M hM) x))) :
+          NumberFieldFractionalIdealGroup (Base M hM)) :
         FractionalIdeal (nonZeroDivisors (𝓞 (Base M hM))) (Base M hM)) = 0
-  rw [FractionalIdealGroup.count_factorization,
+  rw [NumberFieldFractionalIdealGroup.count_factorization,
     FiniteIdeleGroup.valuationVector_apply]
   apply (FiniteIdeleGroup.localOrder_eq_zero_iff v
-    ((IdeleGroup.principalIdele (Base M hM) x).2 v)).2
-  apply RayClass.localHigherUnitGroup_le_integralUnits v
+    (IdeleGroup.finiteCoordinates (IdeleGroup.principalIdele (Base M hM) x) v)).2
+  apply ClassFieldTheory.rayLocalHigherUnitGroup_le_integralUnits v
     ((modulus M hM n).finitePart v)
   exact hx v hv
 

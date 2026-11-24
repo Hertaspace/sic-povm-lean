@@ -1,5 +1,9 @@
-import SICLean.L4.FaddeevRotatedKernel
-import Mathlib.Analysis.Complex.ExponentialBounds
+module
+
+public import SICLean.L4.FaddeevRotatedKernel
+public import Mathlib.Analysis.Complex.ExponentialBounds
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -183,7 +187,6 @@ lemma amplitude_tail_bound_aux (b : ℂ) (θ v t lam M : ℝ)
       (inv_le_inv₀ (lt_of_lt_of_le hLpos hL) hLpos).mpr hL
     _ = (4 / v) * Real.exp (2 * v * M) * Real.exp (-2 * lam * |t|) :=
       inv_sq_exp_target lam v M t hv
-
 
 lemma integrable_exp_neg_two_mul_abs (lam : ℝ) (hlam : 0 < lam) :
     Integrable (fun t : ℝ => Real.exp (-2 * lam * |t|)) := by

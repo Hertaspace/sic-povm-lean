@@ -1,8 +1,12 @@
-import SICLean.L4.FaddeevContinuation
-import SICLean.L4.QProduct
-import SICLean.L4.EtaMultiplier
-import SICLean.L4.FinitePrincipalParts
-import SICLean.L4.FaddeevProductBridge
+module
+
+public import SICLean.L4.FaddeevContinuation
+public import SICLean.L4.QProduct
+public import SICLean.L4.EtaMultiplier
+public import SICLean.L4.FinitePrincipalParts
+public import SICLean.L4.FaddeevProductBridge
+
+@[expose] public section
 
 set_option autoImplicit false
 

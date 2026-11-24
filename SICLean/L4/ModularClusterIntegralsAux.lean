@@ -1,7 +1,11 @@
-import SICLean.L4.ModularClusterRegularity
-import SICLean.L4.FaddeevContinuationAux
-import Mathlib.Analysis.Calculus.ParametricIntervalIntegral
-import Mathlib.Analysis.Calculus.ContDiff.Operations
+module
+
+public import SICLean.L4.ModularClusterRegularity
+public import SICLean.L4.FaddeevContinuationAux
+public import Mathlib.Analysis.Calculus.ParametricIntervalIntegral
+public import Mathlib.Analysis.Calculus.ContDiff.Operations
+
+@[expose] public section
 
 set_option autoImplicit false
 

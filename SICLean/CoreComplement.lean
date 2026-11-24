@@ -1,4 +1,6 @@
-import SICLean.WHBasic
+module
+
+public import SICLean.WHBasic
 
 /-!
 # Complements of r-SICs
@@ -6,6 +8,8 @@ import SICLean.WHBasic
 Complementing every projector preserves distinctness and constant pairwise traces, while
 changing its rank from `r` to `d - r`.
 -/
+
+@[expose] public section
 
 noncomputable section
 

@@ -1,6 +1,10 @@
-import SICLean.L4.ModularPhi
-import SICLean.L4.ModularCocycleUpperAux
-import SICLean.L4.ModularCocycleMatrixAux
+module
+
+public import SICLean.L4.ModularPhi
+public import SICLean.L4.ModularCocycleUpperAux
+public import SICLean.L4.ModularCocycleMatrixAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -176,7 +180,6 @@ theorem cross_mul_of_quotient_germ (a b c x y z : ℂ → ℂ) (w₀ : ℂ)
   exact tendsto_nhds_unique_of_eventuallyEq
     ((ha.mul hy).mul hz |>.tendsto.mono_left nhdsWithin_le_nhds)
     ((hb.mul hc).mul hx |>.tendsto.mono_left nhdsWithin_le_nhds) hev
-
 
 /-- Concrete finite translation expression used by the continuation helper.
 These formulas are definitionally the wrappers in `ModularCocycle`; they
@@ -534,6 +537,5 @@ theorem real_germ (M N : SL(2, ℤ))
     m36_constructed_eq_chart _ _ _ _ (w, τ) h₃, ← mul_div_mul_comm]
   apply (div_eq_div_iff hwden.1 (mul_ne_zero hwden.2.1 hwden.2.2)).mpr
   simpa only [modularCocyclePullback, mul_assoc] using hcross κMN κM κN (w, τ) hτ h₁ h₂ h₃
-
 
 end SICLean.L4.ModularCocycleContinuationAux

@@ -1,7 +1,9 @@
-import Mathlib.Analysis.Complex.CauchyIntegral
-import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
-import Mathlib.MeasureTheory.Integral.CurveIntegral.Poincare
-import Mathlib.MeasureTheory.Integral.DominatedConvergence
+module
+
+public import Mathlib.Analysis.Complex.CauchyIntegral
+public import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
+public import Mathlib.MeasureTheory.Integral.CurveIntegral.Poincare
+public import Mathlib.MeasureTheory.Integral.DominatedConvergence
 
 /-!
 # Horizontal contour comparison
@@ -11,6 +13,8 @@ integrals. Vanishing side integrals include the fixed vertical length. The last 
 separate finite identity needed for a clockwise semicircular indentation; it does not assume that
 identity follows from a full-circle Cauchy theorem.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

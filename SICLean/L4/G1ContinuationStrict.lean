@@ -1,6 +1,10 @@
-import SICLean.L4.G1ContinuationHolomorphy
-import SICLean.L4.G1ContinuationEndRotation
-import SICLean.L4.G1ContinuationStrictAux
+module
+
+public import SICLean.L4.G1ContinuationHolomorphy
+public import SICLean.L4.G1ContinuationEndRotation
+public import SICLean.L4.G1ContinuationStrictAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

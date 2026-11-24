@@ -1,5 +1,10 @@
 -- Usage, after `lake build`: lake env lean verification/direct_sorry_modules.lean
-import SICLean
+module
+
+public import SICLean
+
+@[expose] public section
+
 open Lean Elab Command in
 /-- List the SICLean modules containing constants whose own type or value mentions `sorryAx` directly. -/
 elab "#direct_sorry_modules" : command => do

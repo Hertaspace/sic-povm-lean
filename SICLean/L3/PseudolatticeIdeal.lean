@@ -1,8 +1,12 @@
-import SICLean.L3.Pseudolattice
-import SICLean.L3.PseudolatticeIdealAux
-import Mathlib.NumberTheory.NumberField.ClassNumber
-import Mathlib.NumberTheory.NumberField.FractionalIdeal
-import Mathlib.NumberTheory.NumberField.Ideal.KummerDedekind
+module
+
+public import SICLean.L3.Pseudolattice
+public import SICLean.L3.PseudolatticeIdealAux
+public import Mathlib.NumberTheory.NumberField.ClassNumber
+public import Mathlib.NumberTheory.NumberField.FractionalIdeal
+public import Mathlib.NumberTheory.NumberField.Ideal.KummerDedekind
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -68,7 +72,7 @@ theorem epsilonOrder_fg (P : PeriodData K) : (epsilonOrder P).toSubmodule.FG := 
 
 /- ℚ[ε]=K and ε⁻¹=N+2-ε make ℤ[ε] a full ε-stable lattice. -/
 theorem epsilonOrder_isStablePseudolattice (P : PeriodData K) :
-    Submodule.IsLattice ℚ (epsilonOrder P).toSubmodule ∧
+    Submodule.IsFullLattice ℚ (epsilonOrder P).toSubmodule ∧
       PeriodStable P (epsilonOrder P).toSubmodule := by
   have he : P.epsilon ∈ epsilonOrder P := Algebra.subset_adjoin (Set.mem_singleton _)
   have hi : ((P.N : K) + 2) - P.epsilon ∈ epsilonOrder P :=
@@ -77,7 +81,8 @@ theorem epsilonOrder_isStablePseudolattice (P : PeriodData K) :
   have heq : P.epsilon * (((P.N : K) + 2) - P.epsilon) = 1 := by
     linear_combination -P.epsilon_polynomial
   constructor
-  · refine ⟨epsilonOrder_fg P, ?_⟩
+  · haveI := Submodule.IsLattice.of_fg ℚ (epsilonOrder_fg P)
+    refine { span_eq_top := ?_ }
     change Submodule.span ℚ ((Algebra.adjoin ℤ {P.epsilon}).toSubmodule : Set K) = ⊤
     rw [Algebra.adjoin_eq_span, Submodule.span_span_of_tower,
       ← Algebra.adjoin_eq_span, P.epsilon_adjoin_eq_top]
@@ -250,10 +255,12 @@ theorem pseudolatticeSaturation_conductor_le (P : PeriodData K) (I : StablePseud
 /- A nonzero maximal-order fractional ideal is a full lattice; `NumberField.basisOfFractionalIdeal`
 supplies its rational span. -/
 theorem fractionalIdealCarrier_isLattice (a : FractionalIdeal (𝓞 K)⁰ K) (ha : a ≠ 0) :
-    Submodule.IsLattice ℚ (fractionalIdealCarrier a) := by
+    Submodule.IsFullLattice ℚ (fractionalIdealCarrier a) := by
   let u : (FractionalIdeal (𝓞 K)⁰ K)ˣ := Units.mk0 a ha
-  refine ⟨?_, ?_⟩
-  · exact (Module.Finite.iff_fg).mp (inferInstance : Module.Finite ℤ a)
+  haveI := Submodule.IsLattice.of_fg ℚ
+    ((Module.Finite.iff_fg).mp (inferInstance : Module.Finite ℤ a) :
+      (fractionalIdealCarrier a).FG)
+  refine { span_eq_top := ?_ }
   · have hh : Set.range (NumberField.basisOfFractionalIdeal K u) ⊆
         (fractionalIdealCarrier a : Set K) := by
       intro x hx

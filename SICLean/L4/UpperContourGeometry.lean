@@ -1,7 +1,11 @@
-import SICLean.L4.UpperWindowCompact
-import SICLean.L4.FinitePrincipalParts
-import SICLean.L4.ModularCocycle
-import SICLean.L4.UpperContourGeometryAux
+module
+
+public import SICLean.L4.UpperWindowCompact
+public import SICLean.L4.FinitePrincipalParts
+public import SICLean.L4.ModularCocycle
+public import SICLean.L4.UpperContourGeometryAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

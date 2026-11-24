@@ -1,7 +1,11 @@
-import SICLean.L5.LocalFourierSetup
-import SICLean.L5.FiniteQBinomial
-import Mathlib.Algebra.CharP.Reduced
-import Mathlib.RingTheory.RootsOfUnity.Lemmas
+module
+
+public import SICLean.L5.LocalFourierSetup
+public import SICLean.L5.FiniteQBinomial
+public import Mathlib.Algebra.CharP.Reduced
+public import Mathlib.RingTheory.RootsOfUnity.Lemmas
+
+@[expose] public section
 
 set_option autoImplicit false
 

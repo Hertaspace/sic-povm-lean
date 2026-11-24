@@ -1,5 +1,9 @@
-import SICLean.L4.M75Family
-import SICLean.L4.PseudolatticeDownstream
+module
+
+public import SICLean.L4.M75Family
+public import SICLean.L4.PseudolatticeDownstream
+
+@[expose] public section
 
 set_option autoImplicit false
 

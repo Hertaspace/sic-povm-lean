@@ -1,4 +1,8 @@
-import SICLean.L5.GoodReductionLocal
+module
+
+public import SICLean.L5.GoodReductionLocal
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,7 +1,11 @@
-import SICLean.L4.DistributionBasisValues
-import SICLean.L2c.Coordinates
-import SICLean.L2rc.Coordinates
-import SICLean.L4.DistributionCoordinatesAux
+module
+
+public import SICLean.L4.DistributionBasisValues
+public import SICLean.L2c.Coordinates
+public import SICLean.L2rc.Coordinates
+public import SICLean.L4.DistributionCoordinatesAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

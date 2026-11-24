@@ -1,5 +1,7 @@
-import SICLean.Inputs
-import SICLean.WHBasic
+module
+
+public import SICLean.Inputs
+public import SICLean.WHBasic
 
 /-!
 # From the Galois input to a Hermitian fiducial
@@ -7,6 +9,8 @@ import SICLean.WHBasic
 Integer lifts are retained throughout. A coprime diagonal label map is surjective
 only modulo `d`; `D_add_smul` supplies the phase when a lift is changed.
 -/
+
+@[expose] public section
 
 noncomputable section
 

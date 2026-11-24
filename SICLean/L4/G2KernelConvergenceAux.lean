@@ -1,5 +1,9 @@
-import SICLean.L4.G2RawKernel
-import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
+module
+
+public import SICLean.L4.G2RawKernel
+public import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
+
+@[expose] public section
 
 set_option autoImplicit false
 

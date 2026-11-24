@@ -1,5 +1,9 @@
-import SICLean.L5.FiniteTranslationRatio
-import SICLean.L5.FiniteAlgebraicTransportAux
+module
+
+public import SICLean.L5.FiniteTranslationRatio
+public import SICLean.L5.FiniteAlgebraicTransportAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

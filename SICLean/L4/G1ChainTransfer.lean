@@ -1,6 +1,10 @@
-import SICLean.L4.G1FixedSeparation
-import SICLean.L4.G1FiniteChainLedger
-import SICLean.L4.G1ChainTransferAux
+module
+
+public import SICLean.L4.G1FixedSeparation
+public import SICLean.L4.G1FiniteChainLedger
+public import SICLean.L4.G1ChainTransferAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

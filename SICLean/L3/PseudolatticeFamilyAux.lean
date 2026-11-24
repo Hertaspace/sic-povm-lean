@@ -1,4 +1,8 @@
-import SICLean.L4.DistributionOrderTwo
+module
+
+public import SICLean.L4.DistributionOrderTwo
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,6 +1,10 @@
-import SICLean.L4.G1ContinuationGeometry
-import Mathlib.Topology.UnitInterval
-import Mathlib.Analysis.Normed.Module.Convex
+module
+
+public import SICLean.L4.G1ContinuationGeometry
+public import Mathlib.Topology.UnitInterval
+public import Mathlib.Analysis.Normed.Module.Convex
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 1600000
@@ -626,6 +630,5 @@ theorem finite_zero_of_principal_parts {ι : Type*} (s₀ s₁ : Finset ι)
         omega
       rw [← add_mul, ← sub_mul, ← Int.cast_add, ← Int.cast_sub, he]
       simp
-
 
 end SICLean.L4.G1ContinuationCirclesAux

@@ -1,0 +1,294 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "SIC-POVMs exist in every dimension (Open Quantum Problem 23): a Lean 4 formalization"
+  description: >-
+    A Lean 4 proof that symmetric informationally complete POVMs (SIC-POVMs) exist in every
+    finite dimension. The compared statement is OpenQuantumProblem23.sicPOVMs from
+    google-deepmind/formal-conjectures, the existence form of Open Quantum Problem 23 and of
+    Zauner's conjecture: for every d >= 1 there are d^2 unit vectors in C^d whose pairwise
+    squared overlaps all equal 1/(d+1). The configuration also compares the eleven benchmark
+    theorems of the same file, which state the cases d = 56, 58, 59, 60, 64, 68, 69, 70, 71, 72
+    and 75. The mathematics is due to Radchenko and Wheeler, who build the required vectors from
+    special values of the modular quantum dilogarithm and show by class field theory that a
+    suitable Galois automorphism exists, together with the reduction of Appleby, Flammia and
+    Kopp from such "ghost" vectors to SIC-POVMs. The Lean proof follows the argument of these
+    sources in five parts: the reduction to a ghost fiducial with a unimodular Galois flip,
+    the finite identities for the special values, their algebraicity by a 2-adic argument, the
+    analytic properties of Faddeev's quantum dilogarithm, and the reciprocity argument through
+    ray class fields, Artin reciprocity and the Chebotarev density theorem. Class field theory
+    comes from the external Lean library of N. Yamaguchi and the Chebotarev density theorem
+    from a vendored, ported copy of the library of C. Birkbeck. The repository also proves, as
+    a further result outside the compared configuration, the existence of rank-r SICs of
+    Appleby, Flammia and Kopp for r >= 1, d > 2r + 1 and r(d - r) dividing d^2 - 1. All proofs
+    depend only on propext, Classical.choice and Quot.sound, and no sorry remains outside the
+    deliberate placeholders of the Challenge. An earlier, independent Lean formalization of SIC
+    existence by Māris Ozols exists, with its own statements.
+  authors: ["Yaoling Yang"]
+  responsible_maintainers: ["Yaoling Yang"]
+  license: "Apache-2.0"
+
+sources:
+  - title: "Real quadratic fields and finite quantum dilogarithms I"
+    authors: ["D. Radchenko", "C. Wheeler"]
+    id: "arXiv:2609.21892"
+    type: "preprint (arXiv), not known to us to be refereed"
+    location: "Theorems 2, 3, 7 and 11 and Proposition 8, version 2"
+    relationship: "formalizes"
+    note: "Informed by email at the October 2026 release; no endorsement was requested."
+    author_endorsement: "other"
+  - title: "Stark units for real quadratic fields and reciprocity laws"
+    authors: ["D. Radchenko", "C. Wheeler"]
+    id: "https://www.danrad.net/papers/stark-reciprocity.pdf"
+    type: "preprint (author's web page), not known to us to be refereed"
+    location: "Proposition 7, using Theorems 5 and 8 and Proposition 4. Version dated 4 October 2026, accessed October 2026"
+    relationship: "formalizes"
+    note: "Informed by email at the October 2026 release; no endorsement was requested."
+    author_endorsement: "other"
+  - title: "A constructive approach to Zauner's conjecture via the Stark conjectures"
+    authors: ["M. Appleby", "S. T. Flammia", "G. S. Kopp"]
+    id: "arXiv:2501.03970"
+    type: "paper"
+    location: "Theorem 1.46 and the reduction from ghost SICs with a unimodular Galois flip to SICs"
+    relationship: "formalizes"
+    note: "The Lean proof formalizes this reduction. Its conjectures that the Radchenko-Wheeler work settles are proved here, not assumed."
+    author_endorsement: "not-contacted"
+  - title: "The twisted convolution identity and ghost r-SICs from finite quantum dilogarithms"
+    authors: ["M. Appleby", "S. T. Flammia", "G. S. Kopp"]
+    id: "arXiv:2609.39192"
+    type: "paper"
+    location: "extension of the twisted convolution identity to all ranks"
+    relationship: "formalizes"
+    note: "Used only for the rank-r theorem hasRSIC with r > 1, which is not among the compared declarations. The compared SIC statements are the case r = 1."
+    author_endorsement: "not-contacted"
+  - title: "Discrete Heisenberg-Weyl group and modular group"
+    authors: ["L. D. Faddeev"]
+    id: "arXiv:hep-th/9504111"
+    type: "paper"
+    location: "Lett. Math. Phys. 34 (1995), 249-254"
+    relationship: "background"
+    note: "Source of Faddeev's quantum dilogarithm and its integral representation, from which the analytic properties are derived."
+    author_endorsement: "n/a"
+  - title: "SIC-POVMs and Zauner's conjecture (Open Quantum Problem 23)"
+    authors: ["IQOQI Vienna Open Quantum Problems collection"]
+    id: "https://oqp.iqoqi.oeaw.ac.at/sic-povms-and-zauners-conjecture"
+    type: "web discussion"
+    location: "problem 23, existence formulation"
+    relationship: "background"
+    note: "The problem page returned an HTTP 500 error in October 2026. The same problem appears as Problem 23 of arXiv:quant-ph/0504166 (O. Krueger and R. F. Werner, Some Open Problems in Quantum Information Theory)."
+    author_endorsement: "n/a"
+  - title: "Formal statement of Open Quantum Problem 23 in formal-conjectures (OpenQuantumProblems/23.lean)"
+    authors: ["The Formal Conjectures Authors (Google DeepMind)"]
+    id: "https://github.com/google-deepmind/formal-conjectures"
+    type: "other"
+    location: "FormalConjectures/OpenQuantumProblems/23.lean at commit 90d18f666eb98adec4eee4d12f1d37e30b4eb204"
+    relationship: "background"
+    license: "Apache-2.0"
+    note: "The origin of the compared statements. Challenge.lean copies the definitions and the twelve theorem statements verbatim, with import Mathlib in place of the imports of that file."
+    author_endorsement: "n/a"
+
+related_formalizations:
+  - id: "https://github.com/marozols/SIC-existence"
+    relationship: "independent"
+    note: "An earlier Lean 4 formalization of the existence of SIC-POVMs by Māris Ozols, made public on 9 October 2026, with its own statements. We learned of it after completing and releasing this formalization. We did not use its code and did not compare the two developments line by line."
+  - id: "https://github.com/n-yamaguchi-0729/ClassFieldTheory"
+    relationship: "builds-on"
+    note: "Nyll, by Naganori Yamaguchi, Apache-2.0. Supplies ray class fields and Artin reciprocity. Used by the Solution only, pinned in lake-manifest.json at commit fc644f42dade5bdc7157fc3ef2eef4dbf2d6a565, and not in the import closure of the Challenge. Two short theorems of Nyll are restated unchanged in SICLean/NyllBridge/RayClassSubgroup.lean, because their upstream files are not yet Lean modules at that commit. A fork at the commit used by release v1.0 is kept at Hertaspace/ClassFieldTheory."
+  - id: "https://github.com/CBirkbeck/chebotarev-density"
+    relationship: "adapts"
+    note: "Chebotarev density theorem, development branch at commit 8575c9df1ae0a61120ab5c964c7911414254bec7, Apache-2.0, by Chris Birkbeck with commits by Riccardo Brasca. Vendored under CebotarevDensity/ and ported to the Lean and Mathlib versions of this repository. Eight files were changed for release v1.0, as listed in CebotarevDensity/PROVENANCE.md and PORTING.diff, and seven files received small further adaptations for release v1.1 (Lean v4.36.0), also listed in PROVENANCE.md. Used by the Solution only."
+  - id: "https://github.com/google-deepmind/formal-conjectures"
+    relationship: "builds-on"
+    note: "The definitions and statements of Open Quantum Problem 23 are those of formal-conjectures (Apache-2.0), kept verbatim in Challenge.lean and SICLean/Statement.lean."
+
+classification:
+  arxiv: ["quant-ph", "math.NT"]
+  msc2020: ["81P15", "11R37", "11R42", "05B30"]
+
+status:
+  scope: >-
+    The twelve theorems of Open Quantum Problem 23 in formal-conjectures are proved in full: the
+    existence of SIC-POVMs in every dimension d >= 1 and the eleven benchmark dimensions. The
+    statement is the standard description of a SIC-POVM as a family of d^2 unit vectors with
+    constant squared overlap 1/(d+1). The proof takes no hypotheses and assumes no result of the
+    literature without proving it in Lean. Results of the sources are proved here or taken from
+    the pinned Lean libraries named under related_formalizations.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: ["propext", "Classical.choice", "Quot.sound"]
+  main_results:
+    - declaration: "OpenQuantumProblem23.sicPOVMs"
+      file: "SICLean/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "OpenQuantumProblem23.hasSICPOVM_56"
+      file: "SICLean/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "OpenQuantumProblem23.hasSICPOVM_58"
+      file: "SICLean/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "OpenQuantumProblem23.hasSICPOVM_59"
+      file: "SICLean/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "OpenQuantumProblem23.hasSICPOVM_60"
+      file: "SICLean/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "OpenQuantumProblem23.hasSICPOVM_64"
+      file: "SICLean/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "OpenQuantumProblem23.hasSICPOVM_68"
+      file: "SICLean/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "OpenQuantumProblem23.hasSICPOVM_69"
+      file: "SICLean/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "OpenQuantumProblem23.hasSICPOVM_70"
+      file: "SICLean/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "OpenQuantumProblem23.hasSICPOVM_71"
+      file: "SICLean/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "OpenQuantumProblem23.hasSICPOVM_72"
+      file: "SICLean/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "OpenQuantumProblem23.hasSICPOVM_75"
+      file: "SICLean/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "SICLean.FinalAssembly.zaunerExistence"
+      file: "SICLean/L5/ActualProp7.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "not compared by comparator.json"
+      literature_dependencies: []
+    - declaration: "SICLean.FinalAssembly.hasRSIC"
+      file: "SICLean/L5/ActualProp7.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "not compared by comparator.json"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      framework: "LLM coding agents working in a Lean 4 project"
+      tool_setup: >-
+        Large language model agents wrote the Lean files, in parallel and in isolated working
+        copies, with Lean's compiler as the immediate check. A human coordinator split the work,
+        chose the sources and accepted or rejected each merge. Models are not named here by the
+        authors' choice. Many files were produced in several rounds of repair after compiler errors.
+    - method: "agent"
+      tool_setup: >-
+        Independent review by LLM agents from different providers, who read the statements, the
+        definitions and the proofs of the main chain and tried to find errors and gaps. This
+        complements the kernel checks and does not replace them.
+    - method: "manual"
+      tool_setup: >-
+        Human direction: choice of the problem and sources, decomposition of the proof into parts,
+        reading of the statements in Challenge.lean against formal-conjectures, running the build
+        and the verification commands, and final acceptance.
+  notes: >-
+    The Lean code was written largely by LLM agents under human direction, with cross-checking
+    between agents. The trust base does not depend on how the code was produced. A reader needs
+    only the statements in Challenge.lean, Mathlib's definitions of the notions they use, the Lean
+    kernel (or one of the independent checkers) and the three standard axioms. Costs, hardware and
+    prompt logs are not reconstructed here.
+
+fidelity:
+  divergences: >-
+    Challenge.lean keeps the module header and the public section wrapper of the original file.
+    It omits the attributes (which come from FormalConjecturesUtil) and the other declarations
+    of the original file (witness families for small dimensions and the like), and uses
+    public import Mathlib in place of its imports. The
+    definitions and the twelve theorems are verbatim. SICLean/Statement.lean introduces the name
+    ZaunerExistence for the statement of sicPOVMs, and sicPOVMs follows from it directly. The
+    formal proof is not a line-by-line transcription of the sources. Many steps are written out in
+    more detail than in the papers, results used by the papers are proved or imported from Lean
+    libraries, and some arguments are arranged differently to suit Lean. SICLean/NyllBridge/RayClassSubgroup.lean
+    restates two theorems of the Nyll library unchanged, for the reason given under
+    related_formalizations. The statement for d = 1 is trivial. Both Radchenko-Wheeler works are
+    preprints (one on arXiv, the other on the author's web page, with no archival identifier), and
+    we do not know of either having been refereed. The Lean proof of their results is checked by
+    the kernel and does not rest on that.
+
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "Independent LLM review agents (several providers, not named)"
+    - "Lean kernel and the independent checkers lean4lean, nanoda, con-leche and con-ron, through lake comparator --paranoid"
+  notes: >-
+    VERIFICATION.md records the commands and outputs. For release v1.1 (Lean v4.36.0, Mathlib
+    fc4f59e577fe, Nyll fc644f42dade, every file a Lean module), run on 24 and 25 November 2026
+    on Linux 5.15.0 x86_64 (Ubuntu 20.04.6 LTS, LXD container): lake build succeeded (21435
+    jobs), the axioms of zaunerExistence, hasRSIC, sicPOVMs and the eleven hasSICPOVM theorems
+    are the three standard ones, lake build Challenge succeeded with only the expected sorry
+    warning, verification/check_challenge.py confirmed that the 21 declarations of Challenge.lean
+    are those of the formal-conjectures file, a scan of 9808 constants of 460 modules found no
+    direct sorryAx and no nonstandard axiom, and lake comparator --paranoid accepted the solution
+    in all six kernels (1 h 43 min, 6.6 GB peak). The full-environment lake check --paranoid and
+    the nanoda run on the project export were not repeated for v1.1. In the v1.0 record (Lean
+    v4.35.0-rc2) lake check --paranoid was accepted by five kernels, and nanoda ran out of
+    stack on the whole environment but accepted an export of all declarations of this project.
+    No human mathematician has refereed the Lean development. The author has not independently
+    re-derived the mathematics of the sources.
+
+alignment:
+  namespace: "OpenQuantumProblem23"
+  statements:
+    - source: "Open Quantum Problem 23, existence formulation"
+      lean: "OpenQuantumProblem23.sicPOVMs"
+      module: "SICLean.Solution"
+      status: "proved"
+      note: "Same statement in Challenge.lean, copied from formal-conjectures."
+    - source: "Benchmark cases d = 56, 58, 59, 60, 64, 68, 69, 70, 71, 72, 75 of the same file"
+      lean: "OpenQuantumProblem23.hasSICPOVM_56 and ten others"
+      module: "SICLean.Solution"
+      status: "proved"
+      note: "One-line consequences of sicPOVMs."
+    - source: "AFK25 Theorem 1.46, with RW26 and RW-rec"
+      lean: "SICLean.FinalAssembly.zaunerExistence"
+      module: "SICLean.FinalAssembly"
+      status: "proved"
+      note: "The statement ZaunerExistence of sicPOVMs, assembled from the five parts described in the README."
+
+acknowledgements: >-
+  The mathematics is due to D. Radchenko and C. Wheeler, building on the work of M. Appleby,
+  S. T. Flammia and G. S. Kopp. The class field theory library Nyll is by Naganori
+  Yamaguchi and the Chebotarev density development by Chris Birkbeck and Riccardo Brasca. The
+  statements come from the formal-conjectures project. Māris Ozols made an earlier, independent
+  formalization of the same existence result public.

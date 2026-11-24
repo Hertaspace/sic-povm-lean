@@ -1,8 +1,12 @@
-import SICLean.L5.OddPrimeValues
-import SICLean.L5.LocalActualFourier
-import Mathlib.Order.ConditionallyCompleteLattice.Finset
-import Mathlib.GroupTheory.Transfer
-import Mathlib.GroupTheory.SpecificGroups.Cyclic
+module
+
+public import SICLean.L5.OddPrimeValues
+public import SICLean.L5.LocalActualFourier
+public import Mathlib.Order.ConditionallyCompleteLattice.Finset
+public import Mathlib.GroupTheory.Transfer
+public import Mathlib.GroupTheory.SpecificGroups.Cyclic
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -28,13 +32,11 @@ theorem primary_decomposition {G : Type*} [AddCommGroup G] [Finite G]
     exact ⟨k, Subtype.ext hk⟩
   let P : Sylow p (Multiplicative G) :=
     { Q with
-      isPGroup' := hQ
-      is_maximal' := by
+      maximal_isPGroup := ⟨hQ, by
         intro R hR hQR
-        apply le_antisymm ?_ hQR
         intro x hx
         obtain ⟨k, hk⟩ := hR ⟨x, hx⟩
-        exact ⟨k, congrArg Subtype.val hk⟩ }
+        exact ⟨k, congrArg Subtype.val hk⟩⟩ }
   have hP : Subgroup.normalizer (P : Set (Multiplicative G)) ≤
       Subgroup.centralizer (P : Set (Multiplicative G)) := by
     intro x _

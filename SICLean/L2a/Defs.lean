@@ -1,4 +1,6 @@
-import SICLean.Main
+module
+
+public import SICLean.Main
 
 /-!
 # The M-torsion form of [RW26, §4.4]
@@ -6,6 +8,8 @@ import SICLean.Main
 `Index M` labels `(i ε + j)/M`, and contains no model of the larger group G.
 Values descend modulo M; Weyl phases retain integer lifts.
 -/
+
+@[expose] public section
 
 noncomputable section
 

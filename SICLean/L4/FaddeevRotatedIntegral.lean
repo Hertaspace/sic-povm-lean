@@ -1,4 +1,8 @@
-import SICLean.L4.FaddeevRotatedIntegralAux
+module
+
+public import SICLean.L4.FaddeevRotatedIntegralAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

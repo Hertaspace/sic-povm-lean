@@ -1,5 +1,7 @@
-import Mathlib.Data.ZMod.Basic
-import Mathlib.FieldTheory.Finite.Basic
+module
+
+public import Mathlib.Data.ZMod.Basic
+public import Mathlib.FieldTheory.Finite.Basic
 
 /-!
 # Prime-field power sums for finite interpolation
@@ -7,6 +9,8 @@ import Mathlib.FieldTheory.Finite.Basic
 The exponent-zero case is separated because the sum is the characteristic,
 whereas a positive multiple of the unit-group order has sum `-1`.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

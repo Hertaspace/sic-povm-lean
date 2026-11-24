@@ -1,6 +1,10 @@
-import SICLean.L4.FaddeevProduct
-import SICLean.L4.EtaMultiplier
-import SICLean.L4.ModularPhiAux
+module
+
+public import SICLean.L4.FaddeevProduct
+public import SICLean.L4.EtaMultiplier
+public import SICLean.L4.ModularPhiAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -1038,7 +1042,6 @@ lemma modularPhiChart_qProduct_cross_mul_aux (M : SL(2, ℤ)) (hM : 0 < M 1 0)
     ← prod_phiProductNumerator_eq M hM m n p.1 p.2 hτ]
   rw [← Finset.prod_mul_distrib, ← Finset.prod_mul_distrib]
   exact Finset.prod_congr rfl hfac
-
 
 /--
 [RW26, p. 2, (1)] as a fixed-τ germ including common zeros.

@@ -1,5 +1,9 @@
-import SICLean.L5.ClassFieldExistence
-import SICLean.L5.ClassFieldTransportAux
+module
+
+public import SICLean.L5.ClassFieldExistence
+public import SICLean.L5.ClassFieldTransportAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

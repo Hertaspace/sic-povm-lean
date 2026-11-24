@@ -3,6 +3,7 @@ module
 public import CebotarevDensity.ZetaProduct
 public import CebotarevDensity.CyclotomicNormResidue
 public import CebotarevDensity.ForMathlib.CharacterOrthogonality
+public import Mathlib.Analysis.Calculus.SmoothSeries
 public import Mathlib.GroupTheory.FiniteAbelian.Duality
 public import Mathlib.NumberTheory.Cyclotomic.Basic
 public import Mathlib.NumberTheory.NumberField.Cyclotomic.Basic

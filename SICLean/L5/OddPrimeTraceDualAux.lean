@@ -1,11 +1,15 @@
-import SICLean.L5.DistributionSubgroupLattice
-import Mathlib.RingTheory.DedekindDomain.Different
-import Mathlib.Algebra.Group.AddChar
-import Mathlib.GroupTheory.Torsion
-import Mathlib.GroupTheory.SpecificGroups.Cyclic.Basic
-import Mathlib.Analysis.Fourier.FiniteAbelian.PontryaginDuality
-import Mathlib.LinearAlgebra.FreeModule.Finite.CardQuotient
-import Mathlib.GroupTheory.Perm.Cycle.Type
+module
+
+public import SICLean.L5.DistributionSubgroupLattice
+public import Mathlib.RingTheory.DedekindDomain.Different
+public import Mathlib.Algebra.Group.AddChar
+public import Mathlib.GroupTheory.Torsion
+public import Mathlib.GroupTheory.SpecificGroups.Cyclic.Basic
+public import Mathlib.Analysis.Fourier.FiniteAbelian.PontryaginDuality
+public import Mathlib.LinearAlgebra.FreeModule.Finite.CardQuotient
+public import Mathlib.GroupTheory.Perm.Cycle.Type
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -101,12 +105,13 @@ theorem scale_period_relation (P : PeriodData K) (J : Submodule ℤ K)
           (-(P.epsilon * P.epsilon⁻¹) + P.epsilon⁻¹) * x := by ring
       _ = (P.epsilon⁻¹ - 1) * x := by rw [mul_inv_cancel₀ P.epsilon_ne_zero]; ring
 
-lemma lattice_basis (I : Submodule ℤ K) (hI : Submodule.IsLattice ℚ I) :
+lemma lattice_basis (I : Submodule ℤ K) (hI : Submodule.IsFullLattice ℚ I) :
     ∃ b : Basis (Fin (Module.finrank ℚ K)) ℚ K,
       I = Submodule.span ℤ (Set.range b) := by
-  let := hI
+  haveI := Submodule.IsLattice.free ℚ I
+  haveI := Submodule.IsLattice.finite ℚ I
   let bz := Module.finBasis ℤ I
-  let b := bz.extendOfIsLattice ℚ
+  let b := bz.extendOfIsFullLattice ℚ
   refine ⟨b.reindex (b.indexEquiv (Module.finBasis ℚ K)), ?_⟩
   rw [Basis.range_reindex]
   have hb : Submodule.span ℤ (Set.range (fun i => (bz i).val)) = I := by
@@ -115,21 +120,22 @@ lemma lattice_basis (I : Submodule ℤ K) (hI : Submodule.IsLattice ℚ I) :
       Submodule.range_subtype]
   have hbr : (b : _ → K) = (fun i => (bz i).val) := by
     funext i
-    exact Basis.extendOfIsLattice_apply ℚ bz i
+    exact Basis.extendOfIsFullLattice_apply ℚ bz i
   rw [hbr]
   exact hb.symm
 
-lemma traceDual_isLattice (I : Submodule ℤ K) (hI : Submodule.IsLattice ℚ I) :
-    Submodule.IsLattice ℚ (Submodule.traceDual ℤ ℚ I) := by
+lemma traceDual_isLattice (I : Submodule ℤ K) (hI : Submodule.IsFullLattice ℚ I) :
+    Submodule.IsFullLattice ℚ (Submodule.traceDual ℤ ℚ I) := by
   obtain ⟨b, hb⟩ := lattice_basis I hI
   have hd : Submodule.traceDual ℤ ℚ I = Submodule.span ℤ (Set.range b.traceDual) :=
     Submodule.traceDual_span_of_basis ℤ I b hb
   rw [hd]
-  constructor
-  · exact Submodule.fg_span (Set.finite_range _)
-  · rw [Submodule.span_span_of_tower ℤ, b.traceDual.span_eq]
+  have hL := Submodule.IsLattice.of_fg ℚ
+    (Submodule.fg_span (Set.finite_range b.traceDual) : (Submodule.span ℤ (Set.range b.traceDual)).FG)
+  refine { toIsLattice := hL, span_eq_top := ?_ }
+  rw [Submodule.span_span_of_tower ℤ, b.traceDual.span_eq]
 
-lemma traceDual_traceDual (I : Submodule ℤ K) (hI : Submodule.IsLattice ℚ I) :
+lemma traceDual_traceDual (I : Submodule ℤ K) (hI : Submodule.IsFullLattice ℚ I) :
     Submodule.traceDual ℤ ℚ (Submodule.traceDual ℤ ℚ I) = I := by
   obtain ⟨b, hb⟩ := lattice_basis I hI
   have hd : Submodule.traceDual ℤ ℚ I = Submodule.span ℤ (Set.range b.traceDual) :=
@@ -151,7 +157,7 @@ lemma traceDual_changeMatrix {ι : Type*} [Fintype ι] [DecidableEq ι]
   simp only [Algebra.traceForm_apply, mul_comm]
 
 lemma traceDual_index (I J : Submodule ℤ K)
-    (hI : Submodule.IsLattice ℚ I) (hJ : Submodule.IsLattice ℚ J) (hIJ : I ≤ J) :
+    (hI : Submodule.IsFullLattice ℚ I) (hJ : Submodule.IsFullLattice ℚ J) (hIJ : I ≤ J) :
     DistributionOrbitGeometry.inclusionIndex (Submodule.traceDual ℤ ℚ J)
       (Submodule.traceDual ℤ ℚ I) =
       DistributionOrbitGeometry.inclusionIndex I J := by
@@ -189,7 +195,6 @@ lemma traceDual_index (I J : Submodule ℤ K)
   rw [AddSubgroup.relIndex_eq_abs_det _ _ hanti c.traceDual b.traceDual hdc' hdb',
     AddSubgroup.relIndex_eq_abs_det _ _ hIJ b c hb' hc']
   simp only [Basis.det_apply, traceDual_changeMatrix, Matrix.det_transpose]
-
 
 /-- Trace duality exchanges a nonzero field homothety with its inverse. This uses arbitrary integer
 submodules and needs no maximal-order hypothesis. -/
@@ -329,10 +334,9 @@ theorem characterHom_bijective_of_injective_of_card
 
 end CharacterCardinality
 
-
 /-- A full integer lattice in a nontrivial number field has a nonzero element. -/
 theorem exists_nonzero_lattice_element (I : Submodule ℤ K)
-    (hI : Submodule.IsLattice ℚ I) : ∃ a : I, a.val ≠ 0 := by
+    (hI : Submodule.IsFullLattice ℚ I) : ∃ a : I, a.val ≠ 0 := by
   have hIne : I ≠ ⊥ := by
     intro hIbot
     have hspan := hI.span_eq_top
@@ -346,7 +350,7 @@ theorem exists_nonzero_lattice_element (I : Submodule ℤ K)
 
 /-- A nonzero homothety of a full lattice contains a nonzero element. -/
 theorem exists_nonzero_scaled_lattice_element (I : Submodule ℤ K)
-    (hI : Submodule.IsLattice ℚ I) (c : K) (hc : c ≠ 0) :
+    (hI : Submodule.IsFullLattice ℚ I) (c : K) (hc : c ≠ 0) :
     ∃ a : K, a ∈ pseudolatticeScale c I ∧ a ≠ 0 := by
   obtain ⟨a, ha⟩ := exists_nonzero_lattice_element I hI
   exact ⟨c * a.val, (pseudolatticeScale_mem_iff _ _ _).mpr
@@ -365,7 +369,7 @@ theorem scale_period_sub_one_le (P : PeriodData K) (I : Submodule ℤ K)
 /-- A full stable lattice has a nonzero literal period relation. This supplies a nonzero label even
 for the trivial character. -/
 theorem exists_nonzero_period_relation (P : PeriodData K) (I : Submodule ℤ K)
-    (hI : Submodule.IsLattice ℚ I) (hstable : PeriodStable P I) :
+    (hI : Submodule.IsFullLattice ℚ I) (hstable : PeriodStable P I) :
     ∃ a : I, a.val ≠ 0 ∧ a.val ∈ pseudolatticeScale (P.epsilon - 1) I := by
   obtain ⟨a, ha, hane⟩ := exists_nonzero_scaled_lattice_element I hI
     (P.epsilon - 1) (epsilon_sub_one_ne_zero P)
@@ -385,7 +389,6 @@ theorem exists_nonzero_preimage {A B : Type*} [AddGroup A] [AddGroup B]
     intro ha
     apply hb
     simpa [ha] using hfa.symm
-
 
 section FiniteCharacterDuality
 
@@ -480,7 +483,6 @@ theorem primary_faithful_iff_dual_quotient_primeTo [Finite G] [Finite D]
       ¬ p ∣ Nat.card (D ⧸ AddSubgroup.zmultiples a) := by
   rw [primary_restriction_injective_iff_kernel_primeTo (e a) p hp,
     characterKernel_card e a]
-
 
 end FiniteCharacterDuality
 

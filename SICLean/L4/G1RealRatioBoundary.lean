@@ -1,6 +1,10 @@
-import SICLean.L4.G1ContinuationBoundary
-import SICLean.L4.G1RealEtaPhase
-import SICLean.L4.G1RealRatioBoundaryAux
+module
+
+public import SICLean.L4.G1ContinuationBoundary
+public import SICLean.L4.G1RealEtaPhase
+public import SICLean.L4.G1RealRatioBoundaryAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

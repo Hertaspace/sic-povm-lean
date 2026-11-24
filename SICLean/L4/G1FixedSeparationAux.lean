@@ -1,4 +1,8 @@
-import SICLean.L4.G1PinchGeometry
+module
+
+public import SICLean.L4.G1PinchGeometry
+
+@[expose] public section
 
 set_option autoImplicit false
 

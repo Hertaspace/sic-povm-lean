@@ -1,7 +1,11 @@
-import SICLean.L4.G1BilateralGeometry
-import Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral
-import Mathlib.Analysis.Complex.Liouville
-import Mathlib.Analysis.Calculus.ParametricIntegral
+module
+
+public import SICLean.L4.G1BilateralGeometry
+public import Mathlib.Analysis.SpecialFunctions.Gaussian.GaussianIntegral
+public import Mathlib.Analysis.Complex.Liouville
+public import Mathlib.Analysis.Calculus.ParametricIntegral
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -25,7 +29,6 @@ theorem finite_real_bounds (F : Finset ℤ) (f : ℤ → ℝ) :
 /-- The outward lower-ray Jacobian has unit modulus. -/
 theorem norm_lower_direction (ψ : ℝ) : ‖g1LowerDirection ψ‖ = 1 := by
   simp [g1LowerDirection, Complex.norm_exp, Complex.mul_re]
-
 
 /-- A quadratic exponential with strictly negative leading coefficient is integrable. -/
 theorem integrable_real_quadratic_exp (a B : ℝ) (ha : 0 < a) :
@@ -51,7 +54,7 @@ theorem integrableOn_if_le (f : ℝ → ℝ) (C R b : ℝ)
   have htail : IntegrableOn f (Iic R)ᶜ (volume.restrict (Ici b)) :=
     (show Integrable f (volume.restrict (Ici b)) from hf).integrableOn
   change Integrable ((Iic R).piecewise (fun _ : ℝ => C) f) (volume.restrict (Ici b))
-  exact Integrable.piecewise measurableSet_Iic hc htail
+  exact Integrable.piecewise measurableSet_Iic.nullMeasurableSet hc htail
 
 /-- Joint regularity gives continuity of a fixed-parameter path pullback. -/
 theorem kernel_pullback_continuousOn (M : SL(2, ℤ)) (hM : 0 < M 1 0)
@@ -61,7 +64,6 @@ theorem kernel_pullback_continuousOn (M : SL(2, ℤ)) (hM : 0 < M 1 0)
     ContinuousOn (fun t => ModularCluster.kernel M k (q t) τ * v) s := by
   have hc := (ModularCluster.kernel_joint_analytic M hM k).continuousOn
   exact (hc.comp (hq.prodMk continuousOn_const) hreg).mul continuousOn_const
-
 
 lemma finite_continuous_bound (F : Finset ℤ) (K : Set ℂ) (hK : IsCompact K)
     (f : ℤ → ℂ → ℂ) (hf : ∀ m ∈ F, ContinuousOn (f m) K) :
@@ -137,7 +139,6 @@ lemma norm_vertical_e (M : SL(2, ℤ)) (τ w : ℂ) (x t : ℝ) (n h ell m : ℤ
   congr 1
   simp [mul_add, Complex.mul_re, Complex.mul_im]
   ring
-
 
 lemma branch_pole_re (M : SL(2, ℤ)) (τ : ℂ) (n m : ℤ) (K J : ℕ) :
     (modularPhiPolePoint M (m + 1) n τ K J).re =
@@ -359,7 +360,6 @@ lemma differentiableOn_integral_of_disk_bound
     (by filter_upwards [ae_restrict_mem hs] with t ht; exact fun v hv => hder v (hsmall hv) t ht)
   exact hd.2.differentiableAt.differentiableWithinAt
 
-
 lemma bent_integral_differentiableOn_of_bound
     (M : SL(2, ℤ)) (hM : 0 < M 1 0) (k : ModularCluster.KernelData)
     (p : ℂ) (ρ x ψ : ℝ) (bu bl : ℝ → ℝ) (hρ : 0 < ρ)
@@ -398,6 +398,5 @@ lemma bent_integral_differentiableOn_of_bound
     · exact fun τ hτ t ht => (hb τ hτ).2 t ht
     · exact hl
   exact hll.neg.add huv
-
 
 end SICLean.L4.G1BilateralSingleTailsAux

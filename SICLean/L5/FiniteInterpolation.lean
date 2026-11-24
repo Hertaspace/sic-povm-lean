@@ -1,7 +1,9 @@
-import Mathlib.Data.ZMod.Basic
-import Mathlib.FieldTheory.Finite.Basic
-import Mathlib.LinearAlgebra.Lagrange
-import SICLean.L5.FiniteInterpolationAux
+module
+
+public import Mathlib.Data.ZMod.Basic
+public import Mathlib.FieldTheory.Finite.Basic
+public import Mathlib.LinearAlgebra.Lagrange
+public import SICLean.L5.FiniteInterpolationAux
 
 /-!
 # Finite interpolation for Lemma 1
@@ -11,6 +13,8 @@ in [RW-rec, Lemma 1]. The coefficient field may be any field of characteristic `
 it need not be the prime field, and it need not be finite.
 The one-variable moment cutoff uses `2 * r < p - 1`, so the same cutoff applies at `p = 2`.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,4 +1,8 @@
-import SICLean.L4.PseudolatticeValues
+module
+
+public import SICLean.L4.PseudolatticeValues
+
+@[expose] public section
 
 set_option autoImplicit false
 

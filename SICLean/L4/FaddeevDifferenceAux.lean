@@ -1,6 +1,8 @@
-import Mathlib.Analysis.SpecialFunctions.Trigonometric.Complex
-import Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp
-import Mathlib.Analysis.Complex.RemovableSingularity
+module
+
+public import Mathlib.Analysis.SpecialFunctions.Trigonometric.Complex
+public import Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp
+public import Mathlib.Analysis.Complex.RemovableSingularity
 
 /-!
 # The single-sinh kernel in the difference equation
@@ -9,6 +11,8 @@ The only pole between heights zero and `2π Re b` is `iπb`. Divided differences
 part and a holomorphic remainder; the contour computation can therefore use a rectangle with a
 small-circle correction rather than a general residue theorem.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

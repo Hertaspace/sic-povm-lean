@@ -1,5 +1,9 @@
-import SICLean.L4.UpperContourGeometry
-import SICLean.L4.UpperContourShiftsAux
+module
+
+public import SICLean.L4.UpperContourGeometry
+public import SICLean.L4.UpperContourShiftsAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

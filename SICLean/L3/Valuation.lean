@@ -1,4 +1,8 @@
-import SICLean.L3.ValuationSupport
+module
+
+public import SICLean.L3.ValuationSupport
+
+@[expose] public section
 
 set_option autoImplicit false
 

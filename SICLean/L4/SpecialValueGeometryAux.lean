@@ -1,11 +1,15 @@
-import SICLean.L4.ModularDivisor
-import SICLean.L4.ModularCocycle
-import SICLean.L2r.Group
-import Mathlib.LinearAlgebra.FreeModule.Finite.CardQuotient
-import Mathlib.GroupTheory.Index
-import Mathlib.LinearAlgebra.Matrix.ToLin
-import Mathlib.LinearAlgebra.Basis.Fin
-import Mathlib.NumberTheory.Real.Irrational
+module
+
+public import SICLean.L4.ModularDivisor
+public import SICLean.L4.ModularCocycle
+public import SICLean.L2r.Group
+public import Mathlib.LinearAlgebra.FreeModule.Finite.CardQuotient
+public import Mathlib.GroupTheory.Index
+public import Mathlib.LinearAlgebra.Matrix.ToLin
+public import Mathlib.LinearAlgebra.Basis.Fin
+public import Mathlib.NumberTheory.Real.Irrational
+
+@[expose] public section
 
 set_option autoImplicit false
 

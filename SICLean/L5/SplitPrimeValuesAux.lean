@@ -1,6 +1,10 @@
-import SICLean.L5.OddPrimeSpecialization
-import SICLean.L5.SplitPrimeGeometry
-import SICLean.L5.SplitUniformDirection
+module
+
+public import SICLean.L5.OddPrimeSpecialization
+public import SICLean.L5.SplitPrimeGeometry
+public import SICLean.L5.SplitUniformDirection
+
+@[expose] public section
 
 set_option autoImplicit false
 

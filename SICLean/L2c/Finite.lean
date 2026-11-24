@@ -1,4 +1,8 @@
-import SICLean.L2c.FiniteAux
+module
+
+public import SICLean.L2c.FiniteAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -106,7 +110,6 @@ private theorem sqrtEpsilon_cube_quadratic_real (M : ℕ) [Fact (4 ≤ M)] :
   rw [sqrt_order_real M, ← hsub]
   field_simp
   linear_combination (Real.sqrt (L2a.epsilon M) ^ 2 - 1) * hq
-
 
 theorem originPlus_eq_sqrtEpsilon_cube (M : ℕ) [Fact (4 ≤ M)] :
     originPlus M = L2a.sqrtEpsilon M ^ 3 := by

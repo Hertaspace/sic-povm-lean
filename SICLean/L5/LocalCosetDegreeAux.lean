@@ -1,4 +1,8 @@
-import SICLean.L5.LocalFourierSetup
+module
+
+public import SICLean.L5.LocalFourierSetup
+
+@[expose] public section
 
 set_option autoImplicit false
 

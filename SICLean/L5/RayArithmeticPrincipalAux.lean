@@ -1,4 +1,8 @@
-import SICLean.L5.RayArithmeticSigns
+module
+
+public import SICLean.L5.RayArithmeticSigns
+
+@[expose] public section
 
 set_option autoImplicit false
 

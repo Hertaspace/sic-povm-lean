@@ -1,4 +1,8 @@
-import SICLean.L4.G1RealInterface
+module
+
+public import SICLean.L4.G1RealInterface
+
+@[expose] public section
 
 set_option autoImplicit false
 

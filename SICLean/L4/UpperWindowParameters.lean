@@ -1,6 +1,10 @@
-import SICLean.L4.UpperWindowGeometry
-import SICLean.L4.ModularPhi
-import SICLean.L4.UpperWindowParametersAux
+module
+
+public import SICLean.L4.UpperWindowGeometry
+public import SICLean.L4.ModularPhi
+public import SICLean.L4.UpperWindowParametersAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

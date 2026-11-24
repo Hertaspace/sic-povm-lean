@@ -1,5 +1,9 @@
-import SICLean.L4.FaddeevContour
-import Mathlib.Analysis.SpecialFunctions.Complex.LogDeriv
+module
+
+public import SICLean.L4.FaddeevContour
+public import Mathlib.Analysis.SpecialFunctions.Complex.LogDeriv
+
+@[expose] public section
 
 set_option autoImplicit false
 

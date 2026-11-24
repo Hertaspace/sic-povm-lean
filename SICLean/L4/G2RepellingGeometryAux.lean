@@ -1,5 +1,9 @@
-import Mathlib.NumberTheory.Real.Irrational
-import SICLean.L4.SpecialValueGeometry
+module
+
+public import Mathlib.NumberTheory.Real.Irrational
+public import SICLean.L4.SpecialValueGeometry
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,5 +1,9 @@
-import SICLean.L5.SplitFrobeniusFinite
-import SICLean.L5.ClassFieldInfinite
+module
+
+public import SICLean.L5.SplitFrobeniusFinite
+public import SICLean.L5.ClassFieldInfinite
+
+@[expose] public section
 
 set_option autoImplicit false
 

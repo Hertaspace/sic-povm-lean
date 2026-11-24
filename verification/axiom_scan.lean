@@ -1,5 +1,10 @@
 -- Usage, after `lake build`: lake env lean verification/axiom_scan.lean
-import SICLean
+module
+
+public import SICLean
+
+@[expose] public section
+
 open Lean Elab Command in
 /-- Scan every constant from SICLean modules whose name starts with one of the `|`-separated prefixes. -/
 elab "#axiom_scan_prefix " pfx:str : command => do

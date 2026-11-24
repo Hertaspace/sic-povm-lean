@@ -1,5 +1,9 @@
-import SICLean.L4.G2ResidueLedger
-import SICLean.L4.G2SingleBentAux
+module
+
+public import SICLean.L4.G2ResidueLedger
+public import SICLean.L4.G2SingleBentAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -306,19 +310,19 @@ theorem rawG_bent_integrable (M : SL(2, ℤ)) (hM : SpecialValueAdmissible M)
       IntegrableOn f (Ici a) := by
     let T := max a T₀
     have hmid : IntegrableOn f (Icc a T) :=
-      (hf.mono (fun _ ht => ht.1)).integrableOn_compact isCompact_Icc
+      (hf.mono (fun _ ht => (Set.mem_Icc.mp ht).1)).integrableOn_compact isCompact_Icc
     have hright : IntegrableOn f (Ioi T) := by
       apply ((integrableOn_exp_mul_Ioi (neg_neg_of_pos hκ) T).const_mul C).mono'
-        ((hf.mono (fun t ht => (le_max_left a T₀).trans ht.le)).aestronglyMeasurable
+        ((hf.mono (fun t ht => (le_max_left a T₀).trans (Set.mem_Ioi.mp ht).le)).aestronglyMeasurable
           measurableSet_Ioi)
       filter_upwards [ae_restrict_mem measurableSet_Ioi] with t ht
-      exact hb t ((le_max_right a T₀).trans ht.le)
+      exact hb t ((le_max_right a T₀).trans (Set.mem_Ioi.mp ht).le)
     have hcover : Icc a T ∪ Ioi T = Ici a := by
       ext t
       constructor
       · rintro (⟨ha, _⟩ | ht)
         · exact ha
-        · exact (le_max_left a T₀).trans ht.le
+        · exact (le_max_left a T₀).trans (Set.mem_Ioi.mp ht).le
       · intro ht
         by_cases h : t ≤ T
         · exact Or.inl ⟨ht, h⟩

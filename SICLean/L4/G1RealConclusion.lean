@@ -1,5 +1,9 @@
-import SICLean.L4.G1RealSingleRemovable
-import SICLean.L4.G1RealRatioRemovable
+module
+
+public import SICLean.L4.G1RealSingleRemovable
+public import SICLean.L4.G1RealRatioRemovable
+
+@[expose] public section
 
 set_option autoImplicit false
 

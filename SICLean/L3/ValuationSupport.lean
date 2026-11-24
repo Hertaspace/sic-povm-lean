@@ -1,4 +1,8 @@
-import SICLean.L3.FiniteSystem
+module
+
+public import SICLean.L3.FiniteSystem
+
+@[expose] public section
 
 set_option autoImplicit false
 

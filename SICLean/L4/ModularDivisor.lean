@@ -1,5 +1,9 @@
-import SICLean.L4.ModularPhi
-import SICLean.L4.ModularDivisorAuxA
+module
+
+public import SICLean.L4.ModularPhi
+public import SICLean.L4.ModularDivisorAuxA
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 800000
@@ -406,7 +410,6 @@ theorem modularPhi_lattice_mobius_aux (M : SL(2, ℤ)) (k l : ℤ) (τ : ℂ)
   push_cast
   exact mobius_algebra _ _ _ _ _ _ _ hT hdet
 
-
 lemma pole_label_mem (M : SL(2, ℤ)) (hM : 0 < M 1 0) (m n : ℤ)
     (u v j : ℕ) (hj : j < (M 1 0).toNat) :
     modularPhiPoleFactorLabel M m n j u v ∈ modularPhiPoleLabels M m n := by
@@ -666,8 +669,6 @@ lemma zero_label_surj (M : SL(2, ℤ)) (hM : 0 < M 1 0) (m n : ℤ) :
       rw [← hJmod]
       exact Nat.div_add_mod J c
 
-
-
 lemma fiber_finite (T : ℂ) (hT : T ∈ Complex.slitPlane) (C : ℂ) :
     {p : ℕ × ℕ | (p.1 : ℂ) * T + (p.2 : ℂ) = C}.Finite := by
   by_cases him : T.im = 0
@@ -723,8 +724,6 @@ lemma fiber_finite (T : ℂ) (hT : T ∈ Complex.slitPlane) (C : ℂ) :
       intro p hp q hq
       exact hinj (hp.trans hq.symm)
     exact hsub.finite
-
-
 
 lemma not_nat_mul_slitPlane_neg (T : ℂ) (hT : T ∈ Complex.slitPlane)
     (k j : ℕ) (hk : 0 < k) : (k : ℂ) * T ≠ -(j : ℂ) := by
@@ -816,8 +815,6 @@ lemma pole_residue_mod (M : SL(2, ℤ)) (hM : 0 < M 1 0) (m n : ℤ) (K J : ℕ)
   have h1 : ((J % c : ℕ) : ℤ) = ((J : ℤ) % (c : ℤ)) := Int.natCast_emod J c
   have h2 : ((J % c : ℕ) : ℤ) = ((modularPhiResidue M m n j).toNat : ℤ) := by rw [h1, heq]
   simpa [hcdef, hjdef] using (Nat.cast_injective h2)
-
-
 
 lemma pole_label_decompose (M : SL(2, ℤ)) (hM : 0 < M 1 0) (m n : ℤ) (K J : ℕ)
     (hlab : (K, J) ∈ modularPhiPoleLabels M m n) :
@@ -920,8 +917,6 @@ lemma pole_multiplicity_eq_sum (M : SL(2, ℤ)) (hM : 0 < M 1 0)
   intro j hj
   rfl
 
-
-
 lemma zero_label_residue_mod (M : SL(2, ℤ)) (hM : 0 < M 1 0) (m n : ℤ) (K J : ℕ)
     (h : Int.ModEq (M 1 0) ((J : ℤ) + M 1 1 * (K : ℤ)) (n - 1 - M 1 1 * m)) :
     J % (M 1 0).toNat =
@@ -980,8 +975,6 @@ lemma zero_label_decompose (M : SL(2, ℤ)) (hM : 0 < M 1 0) (m n : ℤ) (K J : 
   · have hmod := zero_label_residue_mod M hM m n K J hlab
     rw [← hmod]
     exact (Nat.div_add_mod J (M 1 0).toNat).symm
-
-
 
 lemma zero_multiplicity_eq_sum (M : SL(2, ℤ)) (hM : 0 < M 1 0)
     (m n : ℤ) (z τ : ℂ) (hτ : τ ∈ modularPhiDomain M) :
@@ -1066,8 +1059,6 @@ lemma zero_multiplicity_eq_sum (M : SL(2, ℤ)) (hM : 0 < M 1 0)
   intro j hj
   rfl
 
-
-
 lemma polePoint_inj_of_im_ne (M : SL(2, ℤ)) (hM : 0 < M 1 0) (m n : ℤ) (τ : ℂ)
     (him : (etaDenom M τ).im ≠ 0) (K J K' J' : ℕ)
     (h : modularPhiPolePoint M m n τ K J = modularPhiPolePoint M m n τ K' J') :
@@ -1099,7 +1090,6 @@ lemma polePoint_inj_of_im_ne (M : SL(2, ℤ)) (hM : 0 < M 1 0) (m n : ℤ) (τ :
       exact add_left_cancel h3
     exact_mod_cast h4
   exact ⟨hK, hJ⟩
-
 
 lemma zeroPoint_inj_of_im_ne (M : SL(2, ℤ)) (hM : 0 < M 1 0) (m n : ℤ) (τ : ℂ)
     (him : (etaDenom M τ).im ≠ 0) (K J K' J' : ℕ)
@@ -1864,7 +1854,6 @@ lemma m37b_commonZeroFactor_eq (ζ T : ℂ) (hT : T ≠ 0)
     apply (div_eq_iff hdenne).mpr
     rw [← neg_sub (e ζ) 1, ← neg_sub (e (ζ / T)) 1, ← hnum, ← hden]
     field_simp
-
 
 lemma m37b_commonZeroFactor_identity (ζ T : ℂ) (hT : T ≠ 0)
     (hG : m37b_expSlope (ζ / T) ≠ 0) :

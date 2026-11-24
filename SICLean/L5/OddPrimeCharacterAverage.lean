@@ -1,7 +1,11 @@
-import SICLean.L5.OddPrimeValues
-import SICLean.L5.OddPrimeCharacterAverageAux
-import Mathlib.Analysis.Fourier.FiniteAbelian.PontryaginDuality
-import Mathlib.GroupTheory.FiniteAbelian.Duality
+module
+
+public import SICLean.L5.OddPrimeValues
+public import SICLean.L5.OddPrimeCharacterAverageAux
+public import Mathlib.Analysis.Fourier.FiniteAbelian.PontryaginDuality
+public import Mathlib.GroupTheory.FiniteAbelian.Duality
+
+@[expose] public section
 
 set_option autoImplicit false
 

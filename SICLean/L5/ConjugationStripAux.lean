@@ -1,4 +1,8 @@
-import SICLean.L4.Faddeev
+module
+
+public import SICLean.L4.Faddeev
+
+@[expose] public section
 
 set_option autoImplicit false
 

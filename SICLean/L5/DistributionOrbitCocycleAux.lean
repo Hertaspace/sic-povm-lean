@@ -1,5 +1,9 @@
-import SICLean.L4.ModularDistribution
-import SICLean.L4.SpecialValueUnitAction
+module
+
+public import SICLean.L4.ModularDistribution
+public import SICLean.L4.SpecialValueUnitAction
+
+@[expose] public section
 
 set_option autoImplicit false
 

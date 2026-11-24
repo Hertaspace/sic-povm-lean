@@ -1,4 +1,8 @@
-import SICLean.L2c.Coordinates
+module
+
+public import SICLean.L2c.Coordinates
+
+@[expose] public section
 
 set_option autoImplicit false
 

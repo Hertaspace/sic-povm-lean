@@ -1,5 +1,9 @@
-import SICLean.L5.ConjugationSpecialPoint
-import SICLean.L4.M74Gaussian
+module
+
+public import SICLean.L5.ConjugationSpecialPoint
+public import SICLean.L4.M74Gaussian
+
+@[expose] public section
 
 set_option autoImplicit false
 

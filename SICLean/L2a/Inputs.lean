@@ -1,4 +1,6 @@
-import SICLean.L2a.Defs
+module
+
+public import SICLean.L2a.Defs
 
 /-!
 # The two explicit inputs for L2a
@@ -6,6 +8,8 @@ import SICLean.L2a.Defs
 These structures are propositions passed to theorems. No existence, algebraicity,
 analytic property, conjugation law, or action on all of G is hidden in a definition.
 -/
+
+@[expose] public section
 
 noncomputable section
 

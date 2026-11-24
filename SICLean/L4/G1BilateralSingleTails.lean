@@ -1,4 +1,8 @@
-import SICLean.L4.G1BilateralSingleTailsAux
+module
+
+public import SICLean.L4.G1BilateralSingleTailsAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

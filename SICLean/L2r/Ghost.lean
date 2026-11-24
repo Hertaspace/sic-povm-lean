@@ -1,4 +1,8 @@
-import SICLean.L2r.GhostProofs
+module
+
+public import SICLean.L2r.GhostProofs
+
+@[expose] public section
 
 set_option autoImplicit false
 

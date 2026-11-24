@@ -1,6 +1,10 @@
-import SICLean.L5.ClassFieldModulus
-import Nyll.ClassFieldTheory.AlgebraicNumberTheory.SUnit.GaloisAction
-import Nyll.ValuedFieldTheory.Valuation.DiscreteValuationField.Complete
+module
+
+public import SICLean.L5.ClassFieldModulus
+public import Nyll.ClassFieldTheory.AlgebraicNumberTheory.SUnit.GaloisAction
+public import Nyll.ValuedFieldTheory.Valuation.DiscreteValuationField.Complete
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -232,7 +236,7 @@ lemma realEmbedding_cases (M : SL(2, ℤ)) (hM : L4.SpecialValueAdmissible M)
     apply NumberField.ComplexEmbedding.isReal_iff.mpr
     ext x
     simp [φ, NumberField.ComplexEmbedding.conjugate_coe_eq]
-  let w : RayClassRealPlace (ClassFieldModulus.Base M hM) :=
+  let w : RayClass.RealPlace (ClassFieldModulus.Base M hM) :=
     ⟨InfinitePlace.mk φ, φ, hφ, rfl⟩
   have hw : w.1.embedding_of_isReal w.2 = f := by
     ext x

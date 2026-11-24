@@ -96,7 +96,7 @@ theorem UnramifiedIn.ramificationIdx_eq_one [IsGalois K L]
   have := hP
   have h𝔓 : 𝔓 ≠ ⊥ := Ideal.ne_bot_of_liesOver_of_ne_bot h𝔭 𝔓
   rw [Ideal.ramificationIdx'_eq_ramificationIdx _ _
-    (Ideal.IsIntegral.comap_ne_bot (𝓞 K) h𝔓)]
+    (Ideal.IsIntegral.under_ne_bot (𝓞 K) h𝔓)]
   exact Ideal.ramificationIdx_eq_one_iff.mpr
     (hunr 𝔓 (‹𝔓.IsPrime›.isMaximal h𝔓) hP)
 
@@ -114,7 +114,7 @@ theorem inertiaGroup_trivial_of_unramified [IsGalois K L]
     (𝔓 : Ideal (𝓞 L)) [𝔓.IsPrime] (hunr : Ideal.ramificationIdx' (𝔓.under (𝓞 K)) 𝔓 = 1) :
     Ideal.inertia Gal(L/K) 𝔓 = ⊥ := by
   have hPbot : 𝔓 ≠ ⊥ := ne_bot_of_ramificationIdx_eq_one K L hunr
-  have hpbot : 𝔓.under (𝓞 K) ≠ ⊥ := Ideal.IsIntegral.comap_ne_bot (𝓞 K) hPbot
+  have hpbot : 𝔓.under (𝓞 K) ≠ ⊥ := Ideal.IsIntegral.under_ne_bot (𝓞 K) hPbot
   have : 𝔓.IsMaximal := ‹𝔓.IsPrime›.isMaximal hPbot
   have : (𝔓.under (𝓞 K)).IsMaximal :=
     (inferInstance : (𝔓.under (𝓞 K)).IsPrime).isMaximal hpbot
@@ -122,7 +122,9 @@ theorem inertiaGroup_trivial_of_unramified [IsGalois K L]
   have : Algebra.IsSeparable (𝓞 K ⧸ 𝔓.under (𝓞 K)) (𝓞 L ⧸ 𝔓) := by
     let : Field (𝓞 K ⧸ 𝔓.under (𝓞 K)) := Ideal.Quotient.field _
     let : Field (𝓞 L ⧸ 𝔓) := Ideal.Quotient.field _
-    exact IsGalois.to_isSeparable
+    have : Module.Finite (𝓞 K ⧸ 𝔓.under (𝓞 K)) (𝓞 L ⧸ 𝔓) := Module.Finite.of_finite
+    have : Algebra.IsAlgebraic (𝓞 K ⧸ 𝔓.under (𝓞 K)) (𝓞 L ⧸ 𝔓) := Algebra.IsAlgebraic.of_finite _ _
+    exact Algebra.IsAlgebraic.isSeparable_of_perfectField
   rwa [Subgroup.eq_bot_iff_card,
       Ideal.card_inertia_eq_ramificationIdxIn (𝔓.under (𝓞 K)) 𝔓,
       Ideal.ramificationIdxIn_eq_ramificationIdx (𝔓.under (𝓞 K)) 𝔓 Gal(L/K),
@@ -225,7 +227,7 @@ theorem orderOf_eq_finrank_of_isArithFrobAt
     (h : Ideal.ramificationIdx' (𝔓.under (𝓞 K)) 𝔓 = 1) (hσ : IsArithFrobAt (𝓞 K) σ 𝔓) :
     orderOf σ = Module.finrank (𝓞 K ⧸ 𝔓.under (𝓞 K)) (𝓞 L ⧸ 𝔓) := by
   have hPbot : 𝔓 ≠ ⊥ := ne_bot_of_ramificationIdx_eq_one K L h
-  have hpbot : 𝔓.under (𝓞 K) ≠ ⊥ := Ideal.IsIntegral.comap_ne_bot (𝓞 K) hPbot
+  have hpbot : 𝔓.under (𝓞 K) ≠ ⊥ := Ideal.IsIntegral.under_ne_bot (𝓞 K) hPbot
   have : 𝔓.IsMaximal := ‹𝔓.IsPrime›.isMaximal hPbot
   have : (𝔓.under (𝓞 K)).IsMaximal :=
     (inferInstance : (𝔓.under (𝓞 K)).IsPrime).isMaximal hpbot
@@ -238,7 +240,9 @@ theorem orderOf_eq_finrank_of_isArithFrobAt
   let : Field (𝓞 L ⧸ 𝔓) := Ideal.Quotient.field _
   have : Finite (𝓞 K ⧸ 𝔓.under (𝓞 K)) :=
     Ideal.finiteQuotientOfFreeOfNeBot (𝔓.under (𝓞 K)) hpbot
-  have : Algebra.IsSeparable (𝓞 K ⧸ 𝔓.under (𝓞 K)) (𝓞 L ⧸ 𝔓) := IsGalois.to_isSeparable
+  have : Module.Finite (𝓞 K ⧸ 𝔓.under (𝓞 K)) (𝓞 L ⧸ 𝔓) := Module.Finite.of_finite
+  have : Algebra.IsSeparable (𝓞 K ⧸ 𝔓.under (𝓞 K)) (𝓞 L ⧸ 𝔓) :=
+    Algebra.IsAlgebraic.isSeparable_of_perfectField
   have : Algebra.IsAlgebraic (𝓞 K ⧸ 𝔓.under (𝓞 K)) (𝓞 L ⧸ 𝔓) := Algebra.IsAlgebraic.of_finite _ _
   let : Fintype (𝓞 K ⧸ 𝔓.under (𝓞 K)) := Fintype.ofFinite _
   set g₀ : MulAction.stabilizer Gal(L/K) 𝔓 :=
@@ -286,7 +290,9 @@ theorem card_primesAbove_mul_finrank_eq
   have : Algebra.IsSeparable (𝓞 K ⧸ 𝔓₀.under (𝓞 K)) (𝓞 L ⧸ 𝔓₀) := by
     let : Field (𝓞 K ⧸ 𝔓₀.under (𝓞 K)) := Ideal.Quotient.field _
     let : Field (𝓞 L ⧸ 𝔓₀) := Ideal.Quotient.field _
-    exact IsGalois.to_isSeparable
+    have : Module.Finite (𝓞 K ⧸ 𝔓₀.under (𝓞 K)) (𝓞 L ⧸ 𝔓₀) := Module.Finite.of_finite
+    have : Algebra.IsAlgebraic (𝓞 K ⧸ 𝔓₀.under (𝓞 K)) (𝓞 L ⧸ 𝔓₀) := Algebra.IsAlgebraic.of_finite _ _
+    exact Algebra.IsAlgebraic.isSeparable_of_perfectField
   have H := Ideal.ncard_primesOver_mul_card_inertia_mul_finrank
     (G := Gal(L/K)) (𝔓₀.under (𝓞 K)) 𝔓₀
   rw [inertiaGroup_trivial_of_unramified K L 𝔓₀ he, Subgroup.card_bot, mul_one] at H

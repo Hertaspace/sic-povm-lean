@@ -1,5 +1,9 @@
-import SICLean.L3.Pseudolattice
-import SICLean.L3.PeriodDataExistenceAux
+module
+
+public import SICLean.L3.Pseudolattice
+public import SICLean.L3.PeriodDataExistenceAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

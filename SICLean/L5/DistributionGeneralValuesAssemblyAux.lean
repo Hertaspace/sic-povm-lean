@@ -1,4 +1,8 @@
-import SICLean.L5.DistributionGeneralValuesZeroAux
+module
+
+public import SICLean.L5.DistributionGeneralValuesZeroAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -98,7 +102,6 @@ lemma hermite_value (C : D.Chart hIJ x) :
   simp_rw [hi]
   exact (Fin.prod_univ_eq_prod_range
     (fun i => ∏ j ∈ Finset.range D.m, f i j) D.n).symm
-
 
 lemma weighted_grid_product (C : D.Chart hIJ x) :
     etaMultiplier D.BI.matrix ^ inclusionIndex I.val J.val * M72.value P J x =

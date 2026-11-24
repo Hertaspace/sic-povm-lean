@@ -1,6 +1,10 @@
-import SICLean.L4.G2CombResidues
-import SICLean.L4.G2StripCounting
-import SICLean.L4.G2ComponentJumpsAux
+module
+
+public import SICLean.L4.G2CombResidues
+public import SICLean.L4.G2StripCounting
+public import SICLean.L4.G2ComponentJumpsAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

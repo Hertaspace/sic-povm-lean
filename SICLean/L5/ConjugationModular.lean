@@ -1,6 +1,10 @@
-import SICLean.L5.ConjugationContinuation
-import SICLean.L5.ConjugationPhase
-import SICLean.L4.ModularCocycle
+module
+
+public import SICLean.L5.ConjugationContinuation
+public import SICLean.L5.ConjugationPhase
+public import SICLean.L4.ModularCocycle
+
+@[expose] public section
 
 set_option autoImplicit false
 

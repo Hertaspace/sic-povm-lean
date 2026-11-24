@@ -1,5 +1,9 @@
-import SICLean.L5.LocalFourierSetup
-import SICLean.L5.FiniteAlgebraicTransport
+module
+
+public import SICLean.L5.LocalFourierSetup
+public import SICLean.L5.FiniteAlgebraicTransport
+
+@[expose] public section
 
 set_option autoImplicit false
 

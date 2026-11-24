@@ -2124,8 +2124,9 @@ bounded norm), so the defining `tsum` of `galoisCharacterCoeff` is over a finite
 private theorem finite_nonzeroIdeal_absNorm_eq
     (K : Type*) [Field K] [NumberField K] (n : ℕ) :
     Finite {𝔞 : NonzeroIdeal K // Ideal.absNorm 𝔞.1 = n} :=
-  Set.Finite.to_subtype <| Set.Finite.of_finite_image (f := fun I : NonzeroIdeal K ↦ I.1)
-    ((Ideal.finite_setOf_absNorm_eq (S := 𝓞 K) n).subset (by rintro _ ⟨⟨I, _⟩, rfl, rfl⟩; rfl))
+  Set.Finite.to_subtype <| Set.Finite.of_finite_image (s := {I : NonzeroIdeal K | Ideal.absNorm I.1 = n})
+    (f := fun I : NonzeroIdeal K ↦ I.1)
+    ((Ideal.finite_setOf_absNorm_eq (S := 𝓞 K) n).subset (by rintro _ ⟨⟨I, _⟩, h, rfl⟩; exact h))
     (fun _ _ _ _ ↦ Subtype.ext)
 
 /-- The `0`-th coefficient vanishes: no nonzero ideal has norm `0`, so the fibre is empty. -/
@@ -2487,6 +2488,7 @@ norm `0`) nor `1` (only `⊤` has norm `1`). -/
 private theorem two_le_absNorm {R : Type*} [CommRing R] [IsDedekindDomain R]
     [Module.Free ℤ R] [Module.Finite ℤ R] {𝔭 : Ideal R} (hp : 𝔭.IsPrime) (hb : 𝔭 ≠ ⊥) :
     2 ≤ Ideal.absNorm 𝔭 := by
+  have : Ring.HasFiniteQuotients R := .of_module_finite ℤ R
   have hne0 : Ideal.absNorm 𝔭 ≠ 0 := fun h ↦ hb (Ideal.absNorm_eq_zero_iff.mp h)
   have hne1 : Ideal.absNorm 𝔭 ≠ 1 := fun h ↦ hp.ne_top (Ideal.absNorm_eq_one_iff.mp h)
   lia

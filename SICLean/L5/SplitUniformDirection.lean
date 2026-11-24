@@ -1,6 +1,10 @@
-import SICLean.L5.SplitGroupRing
-import SICLean.L5.LocalLemmaOne
-import SICLean.L5.SplitUniformDirectionAux
+module
+
+public import SICLean.L5.SplitGroupRing
+public import SICLean.L5.LocalLemmaOne
+public import SICLean.L5.SplitUniformDirectionAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -337,6 +341,5 @@ theorem uniform_translation (f : G → L) (c : Coordinates (G := G) p)
   · right
     intro x u
     simpa only [zero_add, hzero, add_zero, reduction] using hsecond x 0 0 u
-
 
 end SICLean.L5.SplitUniformDirection

@@ -1,7 +1,11 @@
-import Mathlib
+module
+
+public import Mathlib
 
 /-! Mathlib API and typeclass checks.
 No theorem, axiom, or proof is declared in this file. -/
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option pp.universes false

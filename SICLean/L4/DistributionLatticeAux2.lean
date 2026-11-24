@@ -1,6 +1,10 @@
-import Mathlib.LinearAlgebra.FreeModule.Finite.CardQuotient
-import Mathlib.GroupTheory.Index
-import Mathlib.Tactic
+module
+
+public import Mathlib.LinearAlgebra.FreeModule.Finite.CardQuotient
+public import Mathlib.GroupTheory.Index
+public import Mathlib.Tactic
+
+@[expose] public section
 
 set_option autoImplicit false
 

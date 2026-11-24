@@ -1,6 +1,10 @@
-import SICLean.L4.ModularCocycle
-import SICLean.L4.ModularDivisor
-import SICLean.L4.ModularDistributionAux
+module
+
+public import SICLean.L4.ModularCocycle
+public import SICLean.L4.ModularDivisor
+public import SICLean.L4.ModularDistributionAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,5 +1,9 @@
-import SICLean.L5.LocalFourierMoments
-import SICLean.L5.LocalCosetDegreeAux
+module
+
+public import SICLean.L5.LocalFourierMoments
+public import SICLean.L5.LocalCosetDegreeAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

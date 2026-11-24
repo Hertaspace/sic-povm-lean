@@ -1,6 +1,10 @@
-import SICLean.L4.FaddeevRotatedIntegral
-import SICLean.L4.FaddeevContinuation
-import SICLean.L4.FaddeevRotatedContourAux
+module
+
+public import SICLean.L4.FaddeevRotatedIntegral
+public import SICLean.L4.FaddeevContinuation
+public import SICLean.L4.FaddeevRotatedContourAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

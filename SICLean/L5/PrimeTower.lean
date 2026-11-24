@@ -1,4 +1,8 @@
-import SICLean.L5.PrimeReductionArithmetic
+module
+
+public import SICLean.L5.PrimeReductionArithmetic
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -54,7 +58,7 @@ theorem residueChar_above : residueChar Q = residueChar P := by
 
 /-- Relative e is positive, including at ramified primes. -/
 theorem relativeRamification_pos : 0 < relativeRamification L Q := by
-  exact Ideal.ramificationIdx_pos Q.asIdeal (𝓞 L)
+  exact Ideal.ramificationIdx_pos (R := 𝓞 L) (q := Q.asIdeal)
 
 /-- Relative f is positive, including at inert primes. -/
 theorem relativeResidueDegree_pos : 0 < relativeResidueDegree L Q := by
@@ -73,8 +77,7 @@ theorem absoluteResidueDegree_tower :
 /-- Integral orders scale by relative e, with top handled by positive e. -/
 theorem ord_algebraMap (x : L) :
     ord Q (algebraMap L M x) = relativeRamification L Q • ord P x := by
-  have he : P.asIdeal.ramificationIdx' Q.asIdeal = relativeRamification L Q :=
-    Ideal.ramificationIdx'_eq_ramificationIdx P.asIdeal Q.asIdeal P.ne_bot
+  have he : Q.asIdeal.ramificationIdx (𝓞 L) = relativeRamification L Q := rfl
   have hval := P.valuation_liesOver M Q x
   rw [he] at hval
   by_cases hx : x = 0

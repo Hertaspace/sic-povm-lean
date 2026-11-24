@@ -1,5 +1,9 @@
-import SICLean.L4.QProduct
-import SICLean.L4.EtaMultiplierAux
+module
+
+public import SICLean.L4.QProduct
+public import SICLean.L4.EtaMultiplierAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -246,7 +250,6 @@ theorem etaRatio_eq_etaMultiplier (M : SL(2, ℤ)) (hM : 0 < M 1 0) (τ : ℍ) :
     (continuous_etaRatio M hM).continuousOn
     (fun τ _ => etaRatio_pow_twentyFour M hM τ) (by trivial) (by trivial)
 
-
 theorem etaMultiplier_pow_twentyFour (M : SL(2, ℤ)) (hM : 0 < M 1 0) :
     etaMultiplier M ^ 24 = 1 := by
   exact etaRatio_pow_twentyFour M hM UpperHalfPlane.I
@@ -274,7 +277,6 @@ theorem eta_smul_eq (M : SL(2, ℤ)) (hM : 0 < M 1 0) (τ : ℍ) :
   have h := (div_eq_iff (mul_ne_zero hs (ModularForm.eta_ne_zero τ.2))).mp
     (etaRatio_eq_etaMultiplier M hM τ)
   simpa only [mul_assoc] using h
-
 
 theorem qPochhammer_eta_prefactor_mul (M : SL(2, ℤ)) (hM : 0 < M 1 0) (τ : ℍ) :
     etaDenom M τ * qPochhammer (e τ) (e τ) =

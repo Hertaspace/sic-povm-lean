@@ -1,7 +1,11 @@
-import Mathlib.Analysis.Fourier.FiniteAbelian.PontryaginDuality
-import Mathlib.GroupTheory.FiniteAbelian.Duality
-import Mathlib.Analysis.Complex.Polynomial.Basic
-import Mathlib.RingTheory.RootsOfUnity.AlgebraicallyClosed
+module
+
+public import Mathlib.Analysis.Fourier.FiniteAbelian.PontryaginDuality
+public import Mathlib.GroupTheory.FiniteAbelian.Duality
+public import Mathlib.Analysis.Complex.Polynomial.Basic
+public import Mathlib.RingTheory.RootsOfUnity.AlgebraicallyClosed
+
+@[expose] public section
 
 set_option autoImplicit false
 

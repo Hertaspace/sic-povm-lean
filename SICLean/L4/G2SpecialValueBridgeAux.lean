@@ -1,4 +1,8 @@
-import SICLean.L4.G2RepellingPointValues
+module
+
+public import SICLean.L4.G2RepellingPointValues
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,4 +1,8 @@
-import SICLean.L4.UpperContourGeometry
+module
+
+public import SICLean.L4.UpperContourGeometry
+
+@[expose] public section
 
 set_option autoImplicit false
 

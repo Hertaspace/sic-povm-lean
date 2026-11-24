@@ -1,10 +1,12 @@
-import Mathlib.Data.Nat.Choose.Lucas
-import Mathlib.LinearAlgebra.Matrix.NonsingularInverse
-import Mathlib.LinearAlgebra.Matrix.Block
-import Mathlib.Order.Extension.Linear
-import Mathlib.Algebra.MvPolynomial.Degrees
-import Mathlib.Algebra.MvPolynomial.Eval
-import SICLean.L5.FiniteCosetMomentsAux
+module
+
+public import Mathlib.Data.Nat.Choose.Lucas
+public import Mathlib.LinearAlgebra.Matrix.NonsingularInverse
+public import Mathlib.LinearAlgebra.Matrix.Block
+public import Mathlib.Order.Extension.Linear
+public import Mathlib.Algebra.MvPolynomial.Degrees
+public import Mathlib.Algebra.MvPolynomial.Eval
+public import SICLean.L5.FiniteCosetMomentsAux
 
 /-!
 # Partial Lucas and low moments on `H[p]`-cosets
@@ -18,6 +20,8 @@ Every degree hypothesis uses the strict integer inequality `2 * degree < bound`.
 The restriction `d = 1 ∨ d = 2` transfers the global cutoff to every choice of
 lower digits. No valuation or special value occurs here.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

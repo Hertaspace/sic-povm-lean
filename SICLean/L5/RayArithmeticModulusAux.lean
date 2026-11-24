@@ -1,7 +1,11 @@
-import Nyll.ClassFieldTheory.Definitions.ConductorsAndRayClassFields.IsRayCongruent
-import Mathlib.RingTheory.Valuation.Discrete.Basic
-import Mathlib.RingTheory.Ideal.Quotient.Defs
-import Mathlib.RingTheory.LocalRing.Basic
+module
+
+public import Nyll.ClassFieldTheory.Definitions.ConductorsAndRayClassFields.IsRayCongruent
+public import Mathlib.RingTheory.Valuation.Discrete.Basic
+public import Mathlib.RingTheory.Ideal.Quotient.Defs
+public import Mathlib.RingTheory.LocalRing.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 

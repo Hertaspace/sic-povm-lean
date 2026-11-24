@@ -1,4 +1,8 @@
-import SICLean.L4.M74Gaussian
+module
+
+public import SICLean.L4.M74Gaussian
+
+@[expose] public section
 
 set_option autoImplicit false
 

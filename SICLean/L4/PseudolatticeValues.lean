@@ -1,5 +1,9 @@
-import SICLean.L3.PseudolatticePresentation
-import SICLean.L4.SpecialValueDescent
+module
+
+public import SICLean.L3.PseudolatticePresentation
+public import SICLean.L4.SpecialValueDescent
+
+@[expose] public section
 
 set_option autoImplicit false
 

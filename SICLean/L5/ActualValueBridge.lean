@@ -1,5 +1,9 @@
-import SICLean.L5.ActualPseudolattice
-import SICLean.L5.ActualValueBridgeAux
+module
+
+public import SICLean.L5.ActualPseudolattice
+public import SICLean.L5.ActualValueBridgeAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

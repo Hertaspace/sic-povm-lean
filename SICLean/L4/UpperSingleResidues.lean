@@ -1,7 +1,11 @@
-import SICLean.L4.UpperResidueIndex
-import SICLean.L4.UpperResidueParameters
-import SICLean.L4.UpperContourClosure
-import SICLean.L4.UpperSingleResiduesAux
+module
+
+public import SICLean.L4.UpperResidueIndex
+public import SICLean.L4.UpperResidueParameters
+public import SICLean.L4.UpperContourClosure
+public import SICLean.L4.UpperSingleResiduesAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

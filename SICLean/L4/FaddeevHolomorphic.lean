@@ -1,5 +1,7 @@
-import Mathlib.Analysis.Complex.Schwarz
-import Mathlib.Analysis.Calculus.ParametricIntegral
+module
+
+public import Mathlib.Analysis.Complex.Schwarz
+public import Mathlib.Analysis.Calculus.ParametricIntegral
 
 /-!
 # Holomorphic parameter integrals from local bounds
@@ -8,6 +10,8 @@ A Schwarz estimate turns a bound for a holomorphic function on the larger ball i
 bound on the smaller ball. This lets the Faddeev application dominate the kernel itself rather than
 expand its parameter derivative into coth factors.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

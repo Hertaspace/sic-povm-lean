@@ -1,5 +1,9 @@
-import SICLean.L4.SpecialValueUnitAction
-import SICLean.L2c.Inputs
+module
+
+public import SICLean.L4.SpecialValueUnitAction
+public import SICLean.L2c.Inputs
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -60,7 +64,6 @@ theorem epsilon_gt_one (M : ℕ) [Fact (4 ≤ M)] : 1 < L2a.epsilon M := by
   have hs : 0 ≤ Real.sqrt (((M : ℝ) - 1) ^ 2 - 4) := Real.sqrt_nonneg _
   rw [L2a.epsilon]
   nlinarith
-
 
 theorem epsilon_cube_eq (M : ℕ) [Fact (4 ≤ M)] :
     L2a.epsilon M ^ 3 =
@@ -124,7 +127,6 @@ theorem epsilon_cube_relation (M : ℕ) [Fact (4 ≤ M)] :
   have ha2 : a ^ 2 - 1 = (M : ℝ) * ((M : ℝ) - 2) := by rw [ha]; ring
   rw [hcube, ha2, ha]
   ring
-
 
 theorem epsilon_cube_inv_eq (M : ℕ) [Fact (4 ≤ M)] :
     (L2a.epsilon M ^ 3)⁻¹ =

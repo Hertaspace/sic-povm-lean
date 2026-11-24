@@ -1,7 +1,11 @@
-import SICLean.L5.ActualPseudolattice
-import SICLean.L5.RayArithmeticOrderAux
-import Mathlib.GroupTheory.Exponent
-import Mathlib.LinearAlgebra.FreeModule.Finite.Quotient
+module
+
+public import SICLean.L5.ActualPseudolattice
+public import SICLean.L5.RayArithmeticOrderAux
+public import Mathlib.GroupTheory.Exponent
+public import Mathlib.LinearAlgebra.FreeModule.Finite.Quotient
+
+@[expose] public section
 
 set_option autoImplicit false
 

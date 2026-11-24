@@ -1,4 +1,8 @@
-import SICLean.L5.FrobeniusRestriction
+module
+
+public import SICLean.L5.FrobeniusRestriction
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,8 +1,10 @@
-import Mathlib.Analysis.Complex.CauchyIntegral
-import Mathlib.Analysis.Calculus.ParametricIntegral
-import Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp
-import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
-import Mathlib.MeasureTheory.Integral.Asymptotics
+module
+
+public import Mathlib.Analysis.Complex.CauchyIntegral
+public import Mathlib.Analysis.Calculus.ParametricIntegral
+public import Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp
+public import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
+public import Mathlib.MeasureTheory.Integral.Asymptotics
 
 /-!
 # Exponential bounds for the Faddeev integrand
@@ -11,6 +13,8 @@ The two sinh factors are estimated separately using reverse triangle inequality.
 is independent of `p` in these lemmas; the Faddeev application specializes it to `p⁻¹`. No contour
 or special-function identity is assumed here.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

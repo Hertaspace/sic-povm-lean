@@ -1,4 +1,8 @@
-import SICLean.L5.LocalCyclotomicValuation
+module
+
+public import SICLean.L5.LocalCyclotomicValuation
+
+@[expose] public section
 
 set_option autoImplicit false
 

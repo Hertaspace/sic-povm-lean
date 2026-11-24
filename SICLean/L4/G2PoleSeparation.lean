@@ -1,5 +1,9 @@
-import SICLean.L4.G2RepresentativeWindow
-import SICLean.L4.G2PoleSeparationAux
+module
+
+public import SICLean.L4.G2RepresentativeWindow
+public import SICLean.L4.G2PoleSeparationAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

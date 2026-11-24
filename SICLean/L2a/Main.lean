@@ -1,6 +1,10 @@
-import SICLean.L2a.Ghost
+module
+
+public import SICLean.L2a.Ghost
 
 /-! # L2a interface: A and B imply the rank-one input -/
+
+@[expose] public section
 
 noncomputable section
 

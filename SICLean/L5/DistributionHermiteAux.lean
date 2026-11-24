@@ -1,6 +1,10 @@
-import SICLean.L4.ModularDistribution
-import Mathlib.FieldTheory.KummerExtension
-import Mathlib.RingTheory.RootsOfUnity.Complex
+module
+
+public import SICLean.L4.ModularDistribution
+public import Mathlib.FieldTheory.KummerExtension
+public import Mathlib.RingTheory.RootsOfUnity.Complex
+
+@[expose] public section
 
 set_option autoImplicit false
 /-! Finite-product and analytic helpers for the Hermite statements.
@@ -177,7 +181,6 @@ theorem hermite_q_numerators (n m : ℕ) (k u : ℤ) (z τ : ℂ)
       prod_shift_mod n hn u (fun r => qPochhammer ((e τ ^ u * e z) * e τ ^ r) (e τ ^ n))
     _ = _ := (qPochhammer_residue_classes (e τ ^ u * e z) (e τ) n hn hq0 hq1).symm
 
-
 def hermiteMatrix (n m : ℕ) (k : ℤ) : Matrix (Fin 2) (Fin 2) ℤ :=
   !![(n : ℤ), k; 0, (m : ℤ)]
 def hermiteDenIndex (MJ : SL(2, ℤ)) (n i j : ℕ) : ℤ :=
@@ -222,7 +225,6 @@ theorem hermite_orbit_index_match (MJ : SL(2, ℤ)) (n : ℕ) (hn : 0 < n)
   simp only [hermiteNumIndex, hermiteDenIndex, heq,
     Int.add_mul_ediv_right _ _ (show (n : ℤ) ≠ 0 by omega)]
   omega
-
 
 theorem hermite_matrix_entries (MI MJ : SL(2, ℤ)) (n m : ℕ) (k : ℤ)
     (hH : (MI : Matrix (Fin 2) (Fin 2) ℤ) * hermiteMatrix n m k =
@@ -280,7 +282,6 @@ theorem hermite_domain (MI MJ : SL(2, ℤ)) (n m : ℕ) (k : ℤ) (τ : ℂ)
       hermiteMatrix n m k * (MJ : Matrix (Fin 2) (Fin 2) ℤ)) :
     hermiteTau n m k τ ∈ modularPhiDomain MI ↔ τ ∈ modularPhiDomain MJ := by
   simp only [modularPhiDomain, Set.mem_ofPred_eq, hermite_denom MI MJ n m k τ hm hH]
-
 
 theorem hermite_inverse_lattice (MI MJ : SL(2, ℤ)) (n m : ℕ) (k : ℤ)
     (hH : (MI : Matrix (Fin 2) (Fin 2) ℤ) * hermiteMatrix n m k =
@@ -356,7 +357,6 @@ theorem hermite_inverse_residues_bijOn (MI MJ : SL(2, ℤ)) (n m : ℕ) (k : ℤ
       Int.emod_eq_of_lt hy.2.1 hy.2.2] using hmod
   exact Prod.ext hfirsteq hsecondeq
 
-
 lemma denominator_term (MI MJ : SL(2, ℤ)) (n m : ℕ) (k : ℤ) (z τ : ℂ)
     (hn : 0 < n) (hm : 0 < m)
     (hH : (MI : Matrix (Fin 2) (Fin 2) ℤ) * hermiteMatrix n m k =
@@ -410,7 +410,6 @@ lemma denominator_term (MI MJ : SL(2, ℤ)) (n m : ℕ) (k : ℤ) (z τ : ℂ)
   rw [(hermite_automorphy MI MJ n m k τ hn hm hH hD).1,
     (hermite_automorphy MI MJ n m k τ hn hm hH hD).2]
   rw [zpow_zero, one_mul, e_int_mul, ← e_add', hphase, e_add', e_intCast, mul_one]
-
 
 lemma denominator_product (MI MJ : SL(2, ℤ)) (n m : ℕ) (k : ℤ) (z τ : ℂ)
     (hn : 0 < n) (hm : 0 < m) (_hI : 0 < MI 1 0) (_hJ : 0 < MJ 1 0)
@@ -509,8 +508,6 @@ lemma denominator_product (MI MJ : SL(2, ℤ)) (n m : ℕ) (k : ℤ) (z τ : ℂ
         intro i hi
         rw [hzero i hi]
       · rfl
-
-
 
 /-- Continue finite products through compatible analytic quotient charts. -/
 theorem product_chart_cross_mul_of_upper {α : Type*} [Fintype α]
@@ -717,6 +714,5 @@ theorem product_germ_of_upper {α : Type*} [Fintype α]
       (fun w => ∏ t, modularPhi N (r t) (s t) (Z t w τ) (T τ)) := by
   exact product_germ_of_chart_cross_mul M N hM hN u v r s T Z hmap hslice hdom
     (product_chart_cross_mul_of_upper M N hM hN u v r s T Z hmap hslice hdom hupper) z τ hτ
-
 
 end SICLean.L5.DistributionHermiteAux

@@ -1,8 +1,12 @@
-import SICLean.L5.SplitPrimeGeometry
-import SICLean.L5.SplitUniformDirection
-import SICLean.L5.LocalActualFourier
-import SICLean.L5.ActualOriginal
-import SICLean.L5.SplitPrimeValuesAux
+module
+
+public import SICLean.L5.SplitPrimeGeometry
+public import SICLean.L5.SplitUniformDirection
+public import SICLean.L5.LocalActualFourier
+public import SICLean.L5.ActualOriginal
+public import SICLean.L5.SplitPrimeValuesAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -356,6 +360,5 @@ theorem theorem7_normalized (P : PeriodData K) (I : StablePseudolattice P)
   intro x a
   simp only [normalizedLift, SplitPrimeValuesAux.reduce_div_of_units v _ _ (hu _) (hu 0),
     htrans x a]
-
 
 end SICLean.L5.SplitPrimeValues

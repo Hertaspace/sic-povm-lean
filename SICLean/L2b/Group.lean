@@ -1,4 +1,8 @@
-import SICLean.L2b.FiniteQD
+module
+
+public import SICLean.L2b.FiniteQD
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -708,7 +712,6 @@ theorem torusPoint_range : (torusPoint M).range = fixedTorus M := by
           ((M : ℚ) * ((M : ℚ) - 3) + 1) * he2
     exact AddMonoidHom.mem_range.mpr ⟨coordinate M x y, by rw [torusPoint_coordinate, hp]⟩
 
-
 private theorem epsAutInv_on_coordinate (x y : ℤ) :
     coordinate M (((M : ℤ) - 2) * ((coordinate M x y).1.val : ℤ)
         - ((coordinate M x y).2.val : ℤ))
@@ -1061,7 +1064,6 @@ theorem iota_range_eq_torsion :
         (hb := ⟨-((((g.2.val : ℤ)) / ((cofactor M : ℤ))) / ((M : ℤ))), by
           linear_combination ((cofactor M : ℤ)) * et + hvt + ((((g.2.val : ℤ)) / ((cofactor M : ℤ))) / ((M : ℤ))) * hnm⟩)
     exact hcoord.trans (coordinate_val M g)
-
 
 def annihilatorGenerator : G M := coordinate M 0 (-(M : ℤ))
 

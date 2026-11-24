@@ -1,4 +1,6 @@
-import SICLean.L5.ActualProp7
+module
+
+public import SICLean.L5.ActualProp7
 
 /-!
 # Solution of Open Quantum Problem 23
@@ -7,6 +9,8 @@ The twelve statements of `Challenge.lean` (Open Quantum Problem 23 in
 google-deepmind/formal-conjectures),
 with the same names and statements, proved from `SICLean.FinalAssembly.zaunerExistence`.
 -/
+
+@[expose] public section
 
 namespace OpenQuantumProblem23
 

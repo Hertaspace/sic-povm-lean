@@ -1,5 +1,9 @@
-import SICLean.L4.M75Doubling
-import SICLean.L3.ValuationSupport
+module
+
+public import SICLean.L4.M75Doubling
+public import SICLean.L3.ValuationSupport
+
+@[expose] public section
 
 set_option autoImplicit false
 

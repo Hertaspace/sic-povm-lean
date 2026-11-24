@@ -1,9 +1,13 @@
-import SICLean.L4.Faddeev
-import SICLean.L4.FaddeevContinuationAux
-import Mathlib.Analysis.Meromorphic.Order
-import Mathlib.Analysis.Meromorphic.IsolatedZeros
-import Mathlib.Data.Finset.NatAntidiagonal
-import Mathlib.SetTheory.Cardinal.Finite
+module
+
+public import SICLean.L4.Faddeev
+public import SICLean.L4.FaddeevContinuationAux
+public import Mathlib.Analysis.Meromorphic.Order
+public import Mathlib.Analysis.Meromorphic.IsolatedZeros
+public import Mathlib.Data.Finset.NatAntidiagonal
+public import Mathlib.SetTheory.Cardinal.Finite
+
+@[expose] public section
 
 set_option autoImplicit false
 

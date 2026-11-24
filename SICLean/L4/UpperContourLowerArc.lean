@@ -1,6 +1,10 @@
-import SICLean.L4.UpperContourBounds
-import SICLean.L4.UpperContourSides
-import SICLean.L4.UpperContourLowerArcAux
+module
+
+public import SICLean.L4.UpperContourBounds
+public import SICLean.L4.UpperContourSides
+public import SICLean.L4.UpperContourLowerArcAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

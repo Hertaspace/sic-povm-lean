@@ -1,10 +1,14 @@
-import Mathlib.NumberTheory.NumberField.Basic
-import Mathlib.LinearAlgebra.FreeModule.PID
-import Mathlib.Data.ZMod.QuotientGroup
-import Mathlib.GroupTheory.SpecificGroups.Cyclic
-import Mathlib.Tactic.FinCases
-import Mathlib.Tactic.LinearCombination
-import Mathlib.Tactic.Ring
+module
+
+public import Mathlib.NumberTheory.NumberField.Basic
+public import Mathlib.LinearAlgebra.FreeModule.PID
+public import Mathlib.Data.ZMod.QuotientGroup
+public import Mathlib.GroupTheory.SpecificGroups.Cyclic
+public import Mathlib.Tactic.FinCases
+public import Mathlib.Tactic.LinearCombination
+public import Mathlib.Tactic.Ring
+
+@[expose] public section
 
 set_option autoImplicit false
 

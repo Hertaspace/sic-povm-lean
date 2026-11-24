@@ -1,5 +1,9 @@
-import SICLean.L4.SpecialValueReflection
-import SICLean.L4.SpecialValueUnitActionAux
+module
+
+public import SICLean.L4.SpecialValueReflection
+public import SICLean.L4.SpecialValueUnitActionAux
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 1000000

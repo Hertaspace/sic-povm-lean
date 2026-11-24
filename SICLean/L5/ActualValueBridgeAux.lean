@@ -1,4 +1,8 @@
-import SICLean.L5.ActualPseudolattice
+module
+
+public import SICLean.L5.ActualPseudolattice
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,5 +1,9 @@
-import Mathlib.Analysis.Real.Sqrt
-import Mathlib.Tactic
+module
+
+public import Mathlib.Analysis.Real.Sqrt
+public import Mathlib.Tactic
+
+@[expose] public section
 
 set_option autoImplicit false
 

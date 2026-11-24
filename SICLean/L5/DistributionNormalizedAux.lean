@@ -1,5 +1,9 @@
-import SICLean.L5.DistributionGeneralValues
-import SICLean.L5.DistributionSubgroupLattice
+module
+
+public import SICLean.L5.DistributionGeneralValues
+public import SICLean.L5.DistributionSubgroupLattice
+
+@[expose] public section
 
 set_option autoImplicit false
 

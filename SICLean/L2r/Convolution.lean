@@ -1,4 +1,8 @@
-import SICLean.L2r.Inputs
+module
+
+public import SICLean.L2r.Inputs
+
+@[expose] public section
 
 set_option autoImplicit false
 

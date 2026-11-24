@@ -1,6 +1,10 @@
-import Mathlib
-import SICLean.L4.UpperIntegralIdentities
-import SICLean.L4.G1ChainTransfer
+module
+
+public import Mathlib
+public import SICLean.L4.UpperIntegralIdentities
+public import SICLean.L4.G1ChainTransfer
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -148,7 +152,6 @@ lemma sum_label (M : SL(2, ℤ)) (n p m : ℤ) (K J K' J' : ℕ)
     (n - 1 - M 1 1 * (m + p)) at hZ
   push_cast
   convert hP.add hZ using 1 <;> ring
-
 
 lemma div_re_coords (T z : ℂ) (hT : T.im ≠ 0) :
     (z / T).re = (UpperWindow.coords T z).1 +

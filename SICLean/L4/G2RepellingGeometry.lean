@@ -1,6 +1,10 @@
-import SICLean.L4.G1RealInterface
-import SICLean.L4.SpecialValueGeometry
-import SICLean.L4.G2RepellingGeometryAux
+module
+
+public import SICLean.L4.G1RealInterface
+public import SICLean.L4.SpecialValueGeometry
+public import SICLean.L4.G2RepellingGeometryAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

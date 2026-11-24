@@ -1,4 +1,8 @@
-import SICLean.L4.ModularClusterIntegrals
+module
+
+public import SICLean.L4.ModularClusterIntegrals
+
+@[expose] public section
 
 set_option autoImplicit false
 

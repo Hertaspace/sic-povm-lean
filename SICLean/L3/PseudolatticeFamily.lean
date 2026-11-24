@@ -1,7 +1,11 @@
-import SICLean.L3.PseudolatticeFiniteness
-import SICLean.L3.PseudolatticePresentation
-import SICLean.L3.PseudolatticeFamilyAux
-import SICLean.L4.DistributionContract
+module
+
+public import SICLean.L3.PseudolatticeFiniteness
+public import SICLean.L3.PseudolatticePresentation
+public import SICLean.L3.PseudolatticeFamilyAux
+public import SICLean.L4.DistributionContract
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,5 +1,9 @@
-import SICLean.Final.Unconditional
-import SICLean.L5.ActualQuadraticFieldAux
+module
+
+public import SICLean.Final.Unconditional
+public import SICLean.L5.ActualQuadraticFieldAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

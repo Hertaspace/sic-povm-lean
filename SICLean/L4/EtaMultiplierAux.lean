@@ -1,4 +1,8 @@
-import SICLean.L4.QProduct
+module
+
+public import SICLean.L4.QProduct
+
+@[expose] public section
 
 set_option autoImplicit false
 

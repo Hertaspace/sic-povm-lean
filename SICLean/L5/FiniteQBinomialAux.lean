@@ -1,8 +1,12 @@
-import Mathlib.Algebra.Polynomial.BigOperators
-import Mathlib.Algebra.BigOperators.Ring.Finset
-import Mathlib.Data.Nat.Choose.Basic
-import Mathlib.Tactic.Ring
-import Mathlib.Tactic.LinearCombination
+module
+
+public import Mathlib.Algebra.Polynomial.BigOperators
+public import Mathlib.Algebra.BigOperators.Ring.Finset
+public import Mathlib.Data.Nat.Choose.Basic
+public import Mathlib.Tactic.Ring
+public import Mathlib.Tactic.LinearCombination
+
+@[expose] public section
 
 set_option autoImplicit false
 

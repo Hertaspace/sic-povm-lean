@@ -1,5 +1,9 @@
-import SICLean.L5.LocalCosetDegree
-import SICLean.L5.LocalLemmaOneAux
+module
+
+public import SICLean.L5.LocalCosetDegree
+public import SICLean.L5.LocalLemmaOneAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

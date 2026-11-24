@@ -1,5 +1,9 @@
-import SICLean.L4.ModularCocycleReflectionAux
-import SICLean.L4.ModularCocycleUpperAux
+module
+
+public import SICLean.L4.ModularCocycleReflectionAux
+public import SICLean.L4.ModularCocycleUpperAux
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 800000

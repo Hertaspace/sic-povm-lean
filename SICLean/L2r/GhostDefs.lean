@@ -1,6 +1,10 @@
-import SICLean.L2r.Convolution
+module
+
+public import SICLean.L2r.Convolution
 
 /-! # Rank-r phase, coefficient, and projector definitions -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

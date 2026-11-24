@@ -1,5 +1,9 @@
-import SICLean.L4.G2ContourChain
-import SICLean.L4.ModularSectorUpper
+module
+
+public import SICLean.L4.G2ContourChain
+public import SICLean.L4.ModularSectorUpper
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -200,7 +204,6 @@ lemma rawKernel_polynomial_im (M : SL(2, ℤ)) (hM : SpecialValueAdmissible M)
 
 /-! Isolated exponential denominators, actual off-axis units, exact shifts, and the two rational
 identities used by the kernel germs. -/
-
 
 lemma e_affine_eventually_ne_one (a b z : ℂ) (ha : a ≠ 0) :
     ∀ᶠ w : ℂ in 𝓝[≠] z, e (a * w + b) ≠ 1 := by

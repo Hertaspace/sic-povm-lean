@@ -1,4 +1,8 @@
-import SICLean.L5.ActualValueBridge
+module
+
+public import SICLean.L5.ActualValueBridge
+
+@[expose] public section
 
 set_option autoImplicit false
 

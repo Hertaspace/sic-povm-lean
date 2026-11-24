@@ -1,7 +1,11 @@
-import SICLean
+module
+
+public import SICLean
 
 /-! Run with `lake env lean CheckAxioms.lean` after `lake build`.
 Every theorem below should depend only on `propext`, `Classical.choice` and `Quot.sound`. -/
+
+@[expose] public section
 
 #print OpenQuantumProblem23.ZaunerExistence
 #print axioms SICLean.FinalAssembly.zaunerExistence

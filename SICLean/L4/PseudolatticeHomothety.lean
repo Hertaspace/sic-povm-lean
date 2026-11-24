@@ -1,5 +1,9 @@
-import SICLean.L4.PseudolatticeValues
-import SICLean.L4.PseudolatticeHomothetyAux
+module
+
+public import SICLean.L4.PseudolatticeValues
+public import SICLean.L4.PseudolatticeHomothetyAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

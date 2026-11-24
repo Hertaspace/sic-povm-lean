@@ -1,6 +1,10 @@
-import SICLean.L4.G1ContinuationBoundary
-import SICLean.L4.G1RealEtaPhase
-import SICLean.L4.G1RealSingleBoundaryAux
+module
+
+public import SICLean.L4.G1ContinuationBoundary
+public import SICLean.L4.G1RealEtaPhase
+public import SICLean.L4.G1RealSingleBoundaryAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -215,7 +219,7 @@ theorem rhs_one_sided_joint_limits (M : SL(2, ℤ)) (hM : 0 < M 1 0)
         (upper_rhs_joint_germ M hM τ₀ w δ ψ n h ell hT hs hδ hψ hψ')
   · refine ⟨G1RealSingleBoundaryAux.lower_good_nhdsWithin_neBot M hM τ₀ w h ell hT, ?_⟩
     exact ((joint_lower_tendsto M hM τ₀ w δ ψ n h ell hT hs hδ hψ hψ').mono_left
-      (nhdsWithin_mono _ (fun _ hu => hu.2))).congr'
+      (nhdsWithin_mono _ (fun _ hu => And.right hu))).congr'
         (lower_rhs_joint_germ M hM τ₀ w δ ψ n h ell hT hs hδ hψ hψ')
 
 /-- SB14. Bilateral off-real RHS limit with explicit nontriviality. This is a joint limit to the

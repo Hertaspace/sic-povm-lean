@@ -1,5 +1,9 @@
-import SICLean.L4.PseudolatticeHomothety
-import SICLean.L4.PseudolatticeMatrixValuesAux
+module
+
+public import SICLean.L4.PseudolatticeHomothety
+public import SICLean.L4.PseudolatticeMatrixValuesAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -201,7 +205,7 @@ Arithmetic rank two. [RW26, p. 20].
 -/
 theorem matrixLattice_isLattice (P : PeriodData K) (M : SL(2, ℤ))
     (hM : L4.SpecialValueAdmissible M) (hN : L4.specialValueOrder M = (P.N : ℤ)) :
-    Submodule.IsLattice ℚ (matrixLattice P M) := by
+    Submodule.IsFullLattice ℚ (matrixLattice P M) := by
   exact L4.PseudolatticeMatrixValuesAux.lattice_isLattice P M hM hN
 
 /--

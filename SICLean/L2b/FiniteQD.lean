@@ -1,5 +1,9 @@
-import SICLean.L2b.FiniteQDAux
-import SICLean.L2b.FiniteQDCore
+module
+
+public import SICLean.L2b.FiniteQDAux
+public import SICLean.L2b.FiniteQDCore
+
+@[expose] public section
 
 set_option autoImplicit false
 

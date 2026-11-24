@@ -1,5 +1,9 @@
-import SICLean.L5.ClassFieldConjugation
-import SICLean.L5.ClassFieldSigns
+module
+
+public import SICLean.L5.ClassFieldConjugation
+public import SICLean.L5.ClassFieldSigns
+
+@[expose] public section
 
 set_option autoImplicit false
 

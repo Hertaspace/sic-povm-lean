@@ -1,4 +1,6 @@
-import SICLean.Defs
+module
+
+public import SICLean.Defs
 
 /-!
 # The input hypotheses
@@ -15,6 +17,8 @@ Both are proved later in this repository. The final theorem
 * `UnimodularFlip d r G σ` comes from [RW-rec, Prop. 7], through the dictionary
   between ghost overlaps and finite quantum dilogarithm values.
 -/
+
+@[expose] public section
 
 noncomputable section
 

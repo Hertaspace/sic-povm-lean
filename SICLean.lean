@@ -1,235 +1,237 @@
-import SICLean.Statement
-import SICLean.Defs
-import SICLean.Inputs
-import SICLean.WHBasic
-import SICLean.LowDim
-import SICLean.CoreGalois
-import SICLean.CoreOrbit
-import SICLean.CoreRankOne
-import SICLean.CoreComplement
-import SICLean.Main
-import SICLean.L2a.Main
-import SICLean.L2b.Main
-import SICLean.L2c.Main
-import SICLean.L2r.Audit
-import SICLean.L2rc.Audit
-import SICLean.L4.Faddeev
-import SICLean.L4.FaddeevContinuation
-import SICLean.L4.QProduct
-import SICLean.L4.EtaMultiplier
-import SICLean.L4.FinitePrincipalParts
-import SICLean.L4.FaddeevProduct
-import SICLean.L4.ModularPhi
-import SICLean.L4.ModularCocycle
-import SICLean.L4.ModularDivisor
-import SICLean.L4.FaddeevSectorGeometry
-import SICLean.L4.FaddeevRotatedKernel
-import SICLean.L4.FaddeevRotatedBounds
-import SICLean.L4.FaddeevRotatedIntegral
-import SICLean.L4.FaddeevRotatedContour
-import SICLean.L4.FaddeevSectorDecay
-import SICLean.L4.SpecialValueGeometry
-import SICLean.L4.SpecialValueDescent
-import SICLean.L4.SpecialValueReflection
-import SICLean.L4.SpecialValueUnitAction
-import SICLean.L4.SpecialValueL2c
-import SICLean.L4.SpecialValueL2rc
-import SICLean.L4.ModularDistribution
-import SICLean.L4.DistributionLattice
-import SICLean.L4.DistributionBasisValues
-import SICLean.L4.DistributionCoordinates
-import SICLean.L4.DistributionOrderTwo
-import SICLean.L4.DistributionValues
-import SICLean.L4.DistributionContract
-import SICLean.L4.G1RealInterface
-import SICLean.L4.G2RepellingGeometry
-import SICLean.L4.G2RepresentativeWindow
-import SICLean.L4.G2PoleSeparation
-import SICLean.L4.G2ContourChain
-import SICLean.L4.MathlibChecks
-import SICLean.L3.Algebraicity
-import SICLean.L3.Pseudolattice
-import SICLean.L3.PseudolatticeIdeal
-import SICLean.L3.PseudolatticeFiniteness
-import SICLean.L3.PseudolatticePresentation
-import SICLean.L3.PseudolatticeFamily
-import SICLean.L3.M7MathlibChecks
-import SICLean.Galois.L2Inputs
-import SICLean.L4.UpperWindowGeometry
-import SICLean.L4.UpperWindowParameters
-import SICLean.L4.UpperWindowDivisor
-import SICLean.L4.UpperWindowCompact
-import SICLean.L4.ModularClusterGeometry
-import SICLean.L4.ModularClusterRegularity
-import SICLean.L4.ModularClusterIntegrals
-import SICLean.L4.ModularClusterLedger
-import SICLean.L4.ModularSectorGeometry
-import SICLean.L4.ModularSectorFactors
-import SICLean.L4.ModularSectorUpper
-import SICLean.L4.ModularSectorBilateral
-import SICLean.L4.UpperContourGeometry
-import SICLean.L4.UpperContourShifts
-import SICLean.L4.UpperContourBounds
-import SICLean.L4.UpperContourSides
-import SICLean.L4.UpperContourUpperArc
-import SICLean.L4.UpperContourLowerArc
-import SICLean.L4.UpperContourClosure
-import SICLean.L4.G2RawKernel
-import SICLean.L4.G2KernelConvergence
-import SICLean.L4.G2ExactTelescoping
-import SICLean.L4.G2G1Specialization
-import SICLean.L4.G2IntegralEvaluation
-import SICLean.L4.G1PinchGeometry
-import SICLean.L4.G1FixedSeparation
-import SICLean.L4.G1RatioTailBounds
-import SICLean.L4.G1FiniteChainLedger
-import SICLean.L4.G1ChainTransfer
-import SICLean.L4.M74Normalization
-import SICLean.L4.M74Gaussian
-import SICLean.L4.M74Coefficients
-import SICLean.L4.M74Equations
-import SICLean.L4.PseudolatticeValues
-import SICLean.L4.PseudolatticeHomothety
-import SICLean.L4.PseudolatticeMatrixValues
-import SICLean.L4.PseudolatticeSignedTransport
-import SICLean.L4.PseudolatticeFiniteTransport
-import SICLean.L4.PseudolatticeDownstream
-import SICLean.L4.G2ReflectionGeometry
-import SICLean.L4.G2RepellingPointValues
-import SICLean.L4.G2SpecialValueBridge
-import SICLean.L4.G1BilateralGeometry
-import SICLean.L4.G1BilateralSeparation
-import SICLean.L4.G1BilateralSingleTails
-import SICLean.L4.G1BilateralRatioTails
-import SICLean.L4.G2CombResidues
-import SICLean.L4.G2StripCounting
-import SICLean.L4.G2ComponentJumps
-import SICLean.L4.G2ResidueLedger
-import SICLean.L4.UpperResidueIndex
-import SICLean.L4.UpperResidueParameters
-import SICLean.L4.UpperSingleResidues
-import SICLean.L4.UpperRatioResidues
-import SICLean.L4.UpperIntegralIdentities
-import SICLean.L4.G2SingleBent
-import SICLean.L4.G2SingleFinite
-import SICLean.L4.G2DegenerateParameters
-import SICLean.L4.G2AttractingIdentities
-import SICLean.L4.G2AnalyticInputs
-import SICLean.L4.M75Gaussian
-import SICLean.L4.M75Doubling
-import SICLean.L4.M75Family
-import SICLean.L4.M78Point
-import SICLean.L4.M78Transport
-import SICLean.L4.M78Specializations
-import SICLean.L4.G1ContinuationGeometry
-import SICLean.L4.G1ContinuationCircles
-import SICLean.L4.G1ContinuationHolomorphy
-import SICLean.L4.G1ContinuationEndRotation
-import SICLean.L4.G1ContinuationStrict
-import SICLean.L4.G1ContinuationBoundary
-import SICLean.L4.G1RealEtaPhase
-import SICLean.L4.G1RealLoci
-import SICLean.L4.G1RealSingleBoundary
-import SICLean.L4.G1RealRatioBoundary
-import SICLean.L4.G1RealSingleRemovable
-import SICLean.L4.G1RealRatioRemovable
-import SICLean.L4.G1RealConclusion
-import SICLean.L3.PeriodDataExistence
-import SICLean.Final.Assembly
-import SICLean.Final.Unconditional
-import SICLean.L5.PeriodPowerData
-import SICLean.L5.PeriodPowerMatrix
-import SICLean.L5.PeriodPowerValues
-import SICLean.L5.DistributionHermite
-import SICLean.L5.DistributionOrbitGeometry
-import SICLean.L5.DistributionOrbitCocycle
-import SICLean.L5.DistributionGeneralValues
-import SICLean.L5.DistributionSubgroupLattice
-import SICLean.L5.DistributionNormalized
-import SICLean.L5.FiniteFourier
-import SICLean.L5.FiniteProductPentagon
-import SICLean.L5.FiniteTranslationRatio
-import SICLean.L5.FiniteAlgebraicTransport
-import SICLean.L5.FiniteQBinomial
-import SICLean.L5.FiniteCosetMoments
-import SICLean.L5.FiniteInterpolation
-import SICLean.L5.FiniteMomentConsequences
-import SICLean.L5.ActualQuadraticField
-import SICLean.L5.ActualPseudolattice
-import SICLean.L5.ActualValueBridge
-import SICLean.L5.ActualOriginal
-import SICLean.L5.ActualRank
-import SICLean.L5.ActualProp7
-import SICLean.L5.ConjugationStrip
-import SICLean.L5.ConjugationContinuation
-import SICLean.L5.ConjugationPhase
-import SICLean.L5.ConjugationModular
-import SICLean.L5.ConjugationSpecialPoint
-import SICLean.L5.ConjugationSpecialValue
-import SICLean.L5.FiniteGaloisEnvelope
-import SICLean.L5.FiniteGaloisFixed
-import SICLean.L5.GoodReductionLocal
-import SICLean.L5.FrobeniusPrimes
-import SICLean.L5.FrobeniusRestriction
-import SICLean.L5.FrobeniusSplitting
-import SICLean.L5.GoodReductionSupport
-import SICLean.L5.GoodReductionSeparation
-import SICLean.L5.PrimePlace
-import SICLean.L5.PrimeValuation
-import SICLean.L5.PrimeReduction
-import SICLean.L5.PrimeReductionArithmetic
-import SICLean.L5.PrimeCongruence
-import SICLean.L5.PrimeUnits
-import SICLean.L5.PrimeTower
-import SICLean.L5.PrimeFiniteModel
-import SICLean.L5.PrimeSpecialization
-import SICLean.L5.RayArithmeticOrder
-import SICLean.L5.RayArithmeticPlaces
-import SICLean.L5.RayArithmeticModulus
-import SICLean.L5.RayArithmeticConjugation
-import SICLean.L5.RayArithmeticSigns
-import SICLean.L5.RayArithmeticPrincipal
-import SICLean.L5.ClassFieldModulus
-import SICLean.L5.ClassFieldExistence
-import SICLean.L5.ClassFieldTransport
-import SICLean.L5.ClassFieldIdealAction
-import SICLean.L5.ClassFieldConjugation
-import SICLean.L5.ClassFieldSigns
-import SICLean.L5.ClassFieldInfinite
-import SICLean.L5.LocalFourierSetup
-import SICLean.L5.LocalFourierRestriction
-import SICLean.L5.LocalCyclotomicValuation
-import SICLean.L5.LocalFourierMoments
-import SICLean.L5.LocalCosetDegree
-import SICLean.L5.LocalLemmaOne
-import SICLean.L5.LocalActualFourier
-import SICLean.L5.SplitPrimeLattice
-import SICLean.L5.SplitGroupRing
-import SICLean.L5.SplitPrimeGeometry
-import SICLean.L5.SplitUniformDirection
-import SICLean.L5.SplitPrimeValues
-import SICLean.L5.SplitFrobenius
-import SICLean.L5.SplitFrobeniusFinite
-import SICLean.L5.OddPrimeValues
-import SICLean.L5.OddPrimeCyclic
-import SICLean.L5.OddPrimeCharacterAverage
-import SICLean.L5.OddPrimeTraceDual
-import SICLean.L5.OddPrimeLatticeChain
-import SICLean.L5.OddPrimeMaximum
-import SICLean.L5.OddPrimeUnits
-import SICLean.L5.OddPrimeSpecialization
-import SICLean.L5.DescentField
-import SICLean.L5.DescentChebotarev
-import SICLean.L5.DescentRayClass
-import SICLean.L5.DescentCandidates
-import SICLean.L5.DescentSplitPrimes
-import SICLean.L5.DescentGoodPrimes
-import SICLean.L5.DescentArtin
-import SICLean.L5.Descent
-import SICLean.L5.Prop7FinalConjugation
-import SICLean.L5.Prop7FinalReflection
-import SICLean.L5.Prop7Final
-import SICLean.Solution
+module
+
+public import SICLean.Statement
+public import SICLean.Defs
+public import SICLean.Inputs
+public import SICLean.WHBasic
+public import SICLean.LowDim
+public import SICLean.CoreGalois
+public import SICLean.CoreOrbit
+public import SICLean.CoreRankOne
+public import SICLean.CoreComplement
+public import SICLean.Main
+public import SICLean.L2a.Main
+public import SICLean.L2b.Main
+public import SICLean.L2c.Main
+public import SICLean.L2r.Audit
+public import SICLean.L2rc.Audit
+public import SICLean.L4.Faddeev
+public import SICLean.L4.FaddeevContinuation
+public import SICLean.L4.QProduct
+public import SICLean.L4.EtaMultiplier
+public import SICLean.L4.FinitePrincipalParts
+public import SICLean.L4.FaddeevProduct
+public import SICLean.L4.ModularPhi
+public import SICLean.L4.ModularCocycle
+public import SICLean.L4.ModularDivisor
+public import SICLean.L4.FaddeevSectorGeometry
+public import SICLean.L4.FaddeevRotatedKernel
+public import SICLean.L4.FaddeevRotatedBounds
+public import SICLean.L4.FaddeevRotatedIntegral
+public import SICLean.L4.FaddeevRotatedContour
+public import SICLean.L4.FaddeevSectorDecay
+public import SICLean.L4.SpecialValueGeometry
+public import SICLean.L4.SpecialValueDescent
+public import SICLean.L4.SpecialValueReflection
+public import SICLean.L4.SpecialValueUnitAction
+public import SICLean.L4.SpecialValueL2c
+public import SICLean.L4.SpecialValueL2rc
+public import SICLean.L4.ModularDistribution
+public import SICLean.L4.DistributionLattice
+public import SICLean.L4.DistributionBasisValues
+public import SICLean.L4.DistributionCoordinates
+public import SICLean.L4.DistributionOrderTwo
+public import SICLean.L4.DistributionValues
+public import SICLean.L4.DistributionContract
+public import SICLean.L4.G1RealInterface
+public import SICLean.L4.G2RepellingGeometry
+public import SICLean.L4.G2RepresentativeWindow
+public import SICLean.L4.G2PoleSeparation
+public import SICLean.L4.G2ContourChain
+public import SICLean.L4.MathlibChecks
+public import SICLean.L3.Algebraicity
+public import SICLean.L3.Pseudolattice
+public import SICLean.L3.PseudolatticeIdeal
+public import SICLean.L3.PseudolatticeFiniteness
+public import SICLean.L3.PseudolatticePresentation
+public import SICLean.L3.PseudolatticeFamily
+public import SICLean.L3.M7MathlibChecks
+public import SICLean.Galois.L2Inputs
+public import SICLean.L4.UpperWindowGeometry
+public import SICLean.L4.UpperWindowParameters
+public import SICLean.L4.UpperWindowDivisor
+public import SICLean.L4.UpperWindowCompact
+public import SICLean.L4.ModularClusterGeometry
+public import SICLean.L4.ModularClusterRegularity
+public import SICLean.L4.ModularClusterIntegrals
+public import SICLean.L4.ModularClusterLedger
+public import SICLean.L4.ModularSectorGeometry
+public import SICLean.L4.ModularSectorFactors
+public import SICLean.L4.ModularSectorUpper
+public import SICLean.L4.ModularSectorBilateral
+public import SICLean.L4.UpperContourGeometry
+public import SICLean.L4.UpperContourShifts
+public import SICLean.L4.UpperContourBounds
+public import SICLean.L4.UpperContourSides
+public import SICLean.L4.UpperContourUpperArc
+public import SICLean.L4.UpperContourLowerArc
+public import SICLean.L4.UpperContourClosure
+public import SICLean.L4.G2RawKernel
+public import SICLean.L4.G2KernelConvergence
+public import SICLean.L4.G2ExactTelescoping
+public import SICLean.L4.G2G1Specialization
+public import SICLean.L4.G2IntegralEvaluation
+public import SICLean.L4.G1PinchGeometry
+public import SICLean.L4.G1FixedSeparation
+public import SICLean.L4.G1RatioTailBounds
+public import SICLean.L4.G1FiniteChainLedger
+public import SICLean.L4.G1ChainTransfer
+public import SICLean.L4.M74Normalization
+public import SICLean.L4.M74Gaussian
+public import SICLean.L4.M74Coefficients
+public import SICLean.L4.M74Equations
+public import SICLean.L4.PseudolatticeValues
+public import SICLean.L4.PseudolatticeHomothety
+public import SICLean.L4.PseudolatticeMatrixValues
+public import SICLean.L4.PseudolatticeSignedTransport
+public import SICLean.L4.PseudolatticeFiniteTransport
+public import SICLean.L4.PseudolatticeDownstream
+public import SICLean.L4.G2ReflectionGeometry
+public import SICLean.L4.G2RepellingPointValues
+public import SICLean.L4.G2SpecialValueBridge
+public import SICLean.L4.G1BilateralGeometry
+public import SICLean.L4.G1BilateralSeparation
+public import SICLean.L4.G1BilateralSingleTails
+public import SICLean.L4.G1BilateralRatioTails
+public import SICLean.L4.G2CombResidues
+public import SICLean.L4.G2StripCounting
+public import SICLean.L4.G2ComponentJumps
+public import SICLean.L4.G2ResidueLedger
+public import SICLean.L4.UpperResidueIndex
+public import SICLean.L4.UpperResidueParameters
+public import SICLean.L4.UpperSingleResidues
+public import SICLean.L4.UpperRatioResidues
+public import SICLean.L4.UpperIntegralIdentities
+public import SICLean.L4.G2SingleBent
+public import SICLean.L4.G2SingleFinite
+public import SICLean.L4.G2DegenerateParameters
+public import SICLean.L4.G2AttractingIdentities
+public import SICLean.L4.G2AnalyticInputs
+public import SICLean.L4.M75Gaussian
+public import SICLean.L4.M75Doubling
+public import SICLean.L4.M75Family
+public import SICLean.L4.M78Point
+public import SICLean.L4.M78Transport
+public import SICLean.L4.M78Specializations
+public import SICLean.L4.G1ContinuationGeometry
+public import SICLean.L4.G1ContinuationCircles
+public import SICLean.L4.G1ContinuationHolomorphy
+public import SICLean.L4.G1ContinuationEndRotation
+public import SICLean.L4.G1ContinuationStrict
+public import SICLean.L4.G1ContinuationBoundary
+public import SICLean.L4.G1RealEtaPhase
+public import SICLean.L4.G1RealLoci
+public import SICLean.L4.G1RealSingleBoundary
+public import SICLean.L4.G1RealRatioBoundary
+public import SICLean.L4.G1RealSingleRemovable
+public import SICLean.L4.G1RealRatioRemovable
+public import SICLean.L4.G1RealConclusion
+public import SICLean.L3.PeriodDataExistence
+public import SICLean.Final.Assembly
+public import SICLean.Final.Unconditional
+public import SICLean.L5.PeriodPowerData
+public import SICLean.L5.PeriodPowerMatrix
+public import SICLean.L5.PeriodPowerValues
+public import SICLean.L5.DistributionHermite
+public import SICLean.L5.DistributionOrbitGeometry
+public import SICLean.L5.DistributionOrbitCocycle
+public import SICLean.L5.DistributionGeneralValues
+public import SICLean.L5.DistributionSubgroupLattice
+public import SICLean.L5.DistributionNormalized
+public import SICLean.L5.FiniteFourier
+public import SICLean.L5.FiniteProductPentagon
+public import SICLean.L5.FiniteTranslationRatio
+public import SICLean.L5.FiniteAlgebraicTransport
+public import SICLean.L5.FiniteQBinomial
+public import SICLean.L5.FiniteCosetMoments
+public import SICLean.L5.FiniteInterpolation
+public import SICLean.L5.FiniteMomentConsequences
+public import SICLean.L5.ActualQuadraticField
+public import SICLean.L5.ActualPseudolattice
+public import SICLean.L5.ActualValueBridge
+public import SICLean.L5.ActualOriginal
+public import SICLean.L5.ActualRank
+public import SICLean.L5.ActualProp7
+public import SICLean.L5.ConjugationStrip
+public import SICLean.L5.ConjugationContinuation
+public import SICLean.L5.ConjugationPhase
+public import SICLean.L5.ConjugationModular
+public import SICLean.L5.ConjugationSpecialPoint
+public import SICLean.L5.ConjugationSpecialValue
+public import SICLean.L5.FiniteGaloisEnvelope
+public import SICLean.L5.FiniteGaloisFixed
+public import SICLean.L5.GoodReductionLocal
+public import SICLean.L5.FrobeniusPrimes
+public import SICLean.L5.FrobeniusRestriction
+public import SICLean.L5.FrobeniusSplitting
+public import SICLean.L5.GoodReductionSupport
+public import SICLean.L5.GoodReductionSeparation
+public import SICLean.L5.PrimePlace
+public import SICLean.L5.PrimeValuation
+public import SICLean.L5.PrimeReduction
+public import SICLean.L5.PrimeReductionArithmetic
+public import SICLean.L5.PrimeCongruence
+public import SICLean.L5.PrimeUnits
+public import SICLean.L5.PrimeTower
+public import SICLean.L5.PrimeFiniteModel
+public import SICLean.L5.PrimeSpecialization
+public import SICLean.L5.RayArithmeticOrder
+public import SICLean.L5.RayArithmeticPlaces
+public import SICLean.L5.RayArithmeticModulus
+public import SICLean.L5.RayArithmeticConjugation
+public import SICLean.L5.RayArithmeticSigns
+public import SICLean.L5.RayArithmeticPrincipal
+public import SICLean.L5.ClassFieldModulus
+public import SICLean.L5.ClassFieldExistence
+public import SICLean.L5.ClassFieldTransport
+public import SICLean.L5.ClassFieldIdealAction
+public import SICLean.L5.ClassFieldConjugation
+public import SICLean.L5.ClassFieldSigns
+public import SICLean.L5.ClassFieldInfinite
+public import SICLean.L5.LocalFourierSetup
+public import SICLean.L5.LocalFourierRestriction
+public import SICLean.L5.LocalCyclotomicValuation
+public import SICLean.L5.LocalFourierMoments
+public import SICLean.L5.LocalCosetDegree
+public import SICLean.L5.LocalLemmaOne
+public import SICLean.L5.LocalActualFourier
+public import SICLean.L5.SplitPrimeLattice
+public import SICLean.L5.SplitGroupRing
+public import SICLean.L5.SplitPrimeGeometry
+public import SICLean.L5.SplitUniformDirection
+public import SICLean.L5.SplitPrimeValues
+public import SICLean.L5.SplitFrobenius
+public import SICLean.L5.SplitFrobeniusFinite
+public import SICLean.L5.OddPrimeValues
+public import SICLean.L5.OddPrimeCyclic
+public import SICLean.L5.OddPrimeCharacterAverage
+public import SICLean.L5.OddPrimeTraceDual
+public import SICLean.L5.OddPrimeLatticeChain
+public import SICLean.L5.OddPrimeMaximum
+public import SICLean.L5.OddPrimeUnits
+public import SICLean.L5.OddPrimeSpecialization
+public import SICLean.L5.DescentField
+public import SICLean.L5.DescentChebotarev
+public import SICLean.L5.DescentRayClass
+public import SICLean.L5.DescentCandidates
+public import SICLean.L5.DescentSplitPrimes
+public import SICLean.L5.DescentGoodPrimes
+public import SICLean.L5.DescentArtin
+public import SICLean.L5.Descent
+public import SICLean.L5.Prop7FinalConjugation
+public import SICLean.L5.Prop7FinalReflection
+public import SICLean.L5.Prop7Final
+public import SICLean.Solution
 
 /-!
 # SIC-POVMs exist in every dimension
@@ -248,3 +250,5 @@ the modular quantum dilogarithm, and `L5` proves [RW-rec, Prop. 7]. Theorems in 
 files may carry explicit hypotheses, for example these inputs. The final assembly proves all of
 these inputs.
 -/
+
+@[expose] public section

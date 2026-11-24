@@ -1,6 +1,10 @@
-import SICLean.L4.G2AttractingIdentities
-import SICLean.L4.SpecialValueL2c
-import SICLean.L4.SpecialValueL2rc
+module
+
+public import SICLean.L4.G2AttractingIdentities
+public import SICLean.L4.SpecialValueL2c
+public import SICLean.L4.SpecialValueL2rc
+
+@[expose] public section
 
 set_option autoImplicit false
 

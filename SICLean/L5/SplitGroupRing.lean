@@ -1,11 +1,15 @@
-import SICLean.L5.LocalFourierSetup
-import Mathlib.Algebra.MonoidAlgebra.Basic
-import Mathlib.Algebra.Group.AddChar
-import Mathlib.GroupTheory.SpecificGroups.Cyclic
-import Mathlib.GroupTheory.Complement
-import Mathlib.Algebra.Group.Subgroup.Finite
-import Mathlib.Data.Complex.Basic
-import SICLean.L5.SplitGroupRingAux
+module
+
+public import SICLean.L5.LocalFourierSetup
+public import Mathlib.Algebra.MonoidAlgebra.Basic
+public import Mathlib.Algebra.Group.AddChar
+public import Mathlib.GroupTheory.SpecificGroups.Cyclic
+public import Mathlib.GroupTheory.Complement
+public import Mathlib.Algebra.Group.Subgroup.Finite
+public import Mathlib.Data.Complex.Basic
+public import SICLean.L5.SplitGroupRingAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -328,6 +332,5 @@ theorem coordinate_factorization {A : Type*} [CommGroup A] (g : H → A) (a b : 
         rw [mul_left_comm (g (x + w • b)) ((g x)⁻¹),
           mul_left_comm (g (x + w • b)) (g (x + (w • b + b)))]
         simp [mul_comm]
-
 
 end SICLean.L5.SplitGroupRing

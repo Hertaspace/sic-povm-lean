@@ -1,6 +1,10 @@
-import SICLean.L3.Pseudolattice
-import SICLean.L4.DistributionOrderTwo
-import SICLean.L3.PseudolatticePresentationAux
+module
+
+public import SICLean.L3.Pseudolattice
+public import SICLean.L4.DistributionOrderTwo
+public import SICLean.L3.PseudolatticePresentationAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -296,11 +300,14 @@ theorem pseudolatticeOverlattice_bounds (P : PeriodData K)
 theorem pseudolatticeOverlattice_isLattice (P : PeriodData K)
     (I : StablePseudolattice P) (h : PseudolatticeGroup P I)
     (hh : h ≠ 0 ∧ h + h = 0) :
-    Submodule.IsLattice ℚ (pseudolatticeOverlattice P I h) := by
+    Submodule.IsFullLattice ℚ (pseudolatticeOverlattice P I h) := by
   let := I.property.1
-  refine ⟨I.property.1.fg.sup (Submodule.fg_span_singleton _), ?_⟩
+  have hL := Submodule.IsLattice.of_fg ℚ
+    (I.property.1.toIsLattice.fg.sup (Submodule.fg_span_singleton _) :
+      (pseudolatticeOverlattice P I h).FG)
+  refine { toIsLattice := hL, span_eq_top := ?_ }
   apply top_unique
-  rw [← Submodule.IsLattice.span_eq_top (A := ℚ) (M := I.val)]
+  rw [← I.property.1.span_eq_top]
   exact Submodule.span_mono (show (I.val : Set K) ⊆
     (pseudolatticeOverlattice P I h : Set K) from
       fun _ hx => (show I.val ≤ pseudolatticeOverlattice P I h from le_sup_left) hx)

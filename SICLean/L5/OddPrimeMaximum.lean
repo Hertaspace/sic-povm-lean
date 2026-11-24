@@ -1,5 +1,9 @@
-import SICLean.L5.OddPrimeValues
-import SICLean.L5.OddPrimeCharacterAverage
+module
+
+public import SICLean.L5.OddPrimeValues
+public import SICLean.L5.OddPrimeCharacterAverage
+
+@[expose] public section
 
 set_option autoImplicit false
 

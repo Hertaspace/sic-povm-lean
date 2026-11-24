@@ -1,5 +1,9 @@
-import SICLean.L4.G1ContinuationBoundary
-import Mathlib.Analysis.Complex.ReImTopology
+module
+
+public import SICLean.L4.G1ContinuationBoundary
+public import Mathlib.Analysis.Complex.ReImTopology
+
+@[expose] public section
 
 set_option autoImplicit false
 

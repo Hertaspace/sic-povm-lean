@@ -1,5 +1,9 @@
-import SICLean.L4.G2SingleFinite
-import SICLean.L4.G2DegenerateParametersAux
+module
+
+public import SICLean.L4.G2SingleFinite
+public import SICLean.L4.G2DegenerateParametersAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

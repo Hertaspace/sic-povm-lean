@@ -1,6 +1,10 @@
-import SICLean.L2a.Weyl
+module
+
+public import SICLean.L2a.Weyl
 
 /-! # The algebraic core of [RW26, Thm. 7]. -/
+
+@[expose] public section
 
 noncomputable section
 

@@ -1,6 +1,10 @@
-import SICLean.L4.G1RealRatioBoundary
-import SICLean.L4.G1RealLoci
-import SICLean.L4.G1RealRatioRemovableAux
+module
+
+public import SICLean.L4.G1RealRatioBoundary
+public import SICLean.L4.G1RealLoci
+public import SICLean.L4.G1RealRatioRemovableAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

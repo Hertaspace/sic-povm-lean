@@ -1,5 +1,9 @@
-import SICLean.L4.G2SingleBent
-import SICLean.L4.G2SingleFiniteAux
+module
+
+public import SICLean.L4.G2SingleBent
+public import SICLean.L4.G2SingleFiniteAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

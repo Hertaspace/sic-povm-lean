@@ -1,9 +1,13 @@
-import SICLean.L5.ActualValueBridge
-import SICLean.L5.ActualOriginal
-import SICLean.L5.ConjugationSpecialValue
-import SICLean.L5.ClassFieldInfinite
-import SICLean.L5.SplitPrimeValues
-import SICLean.L5.Prop7FinalConjugationAux
+module
+
+public import SICLean.L5.ActualValueBridge
+public import SICLean.L5.ActualOriginal
+public import SICLean.L5.ConjugationSpecialValue
+public import SICLean.L5.ClassFieldInfinite
+public import SICLean.L5.SplitPrimeValues
+public import SICLean.L5.Prop7FinalConjugationAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

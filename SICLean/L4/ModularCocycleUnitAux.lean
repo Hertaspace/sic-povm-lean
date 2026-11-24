@@ -1,4 +1,8 @@
-import SICLean.L4.ModularPhi
+module
+
+public import SICLean.L4.ModularPhi
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

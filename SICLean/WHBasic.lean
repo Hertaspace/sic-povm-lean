@@ -1,8 +1,12 @@
-import SICLean.Defs
+module
+
+public import SICLean.Defs
 
 /-!
 # Basic Weyl–Heisenberg facts
 -/
+
+@[expose] public section
 
 noncomputable section
 
@@ -633,7 +637,6 @@ theorem exists_map_D [NeZero d] (σ : ℂ →+* ℂ) :
       ring
   · rw [if_neg hc, if_neg hc]
     exact map_zero σ
-
 
 /-- For an idempotent matrix over `ℂ`, rank equals trace. -/
 theorem rank_eq_trace_of_idem (A : Matrix (Fin d) (Fin d) ℂ) (hA : A * A = A) :

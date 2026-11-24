@@ -1,6 +1,10 @@
-import SICLean.L5.PeriodPowerMatrix
-import SICLean.L5.DistributionHermite
-import SICLean.L5.DistributionOrbitCocycleAux
+module
+
+public import SICLean.L5.PeriodPowerMatrix
+public import SICLean.L5.DistributionHermite
+public import SICLean.L5.DistributionOrbitCocycleAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,7 +1,11 @@
-import SICLean.L4.ModularDivisor
-import SICLean.L4.ModularCocycle
-import SICLean.L2r.Group
-import SICLean.L4.SpecialValueGeometryAux
+module
+
+public import SICLean.L4.ModularDivisor
+public import SICLean.L4.ModularCocycle
+public import SICLean.L2r.Group
+public import SICLean.L4.SpecialValueGeometryAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

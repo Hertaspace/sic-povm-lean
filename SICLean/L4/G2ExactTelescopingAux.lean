@@ -1,4 +1,8 @@
-import SICLean.L4.G2KernelConvergence
+module
+
+public import SICLean.L4.G2KernelConvergence
+
+@[expose] public section
 
 set_option autoImplicit false
 

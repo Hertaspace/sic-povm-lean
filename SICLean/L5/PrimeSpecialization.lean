@@ -1,5 +1,9 @@
-import SICLean.L5.PrimeFiniteModel
-import SICLean.L5.PrimeUnits
+module
+
+public import SICLean.L5.PrimeFiniteModel
+public import SICLean.L5.PrimeUnits
+
+@[expose] public section
 
 set_option autoImplicit false
 

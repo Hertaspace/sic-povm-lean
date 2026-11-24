@@ -1,4 +1,8 @@
-import SICLean.L5.PrimeReduction
+module
+
+public import SICLean.L5.PrimeReduction
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,7 +1,11 @@
-import SICLean.L5.ActualQuadraticField
-import Nyll.ClassFieldTheory.Theorems.ConductorsAndRayClassFields.RayClassSubgroupExistence
-import Nyll.ClassFieldTheory.Theorems.ConductorsAndRayClassFields.RayPrincipalIdealMembership
-import Nyll.ClassFieldTheory.Definitions.ConductorsAndRayClassFields.NarrowRayClassModulus
+module
+
+public import SICLean.L5.ActualQuadraticField
+public import SICLean.NyllBridge.RayClassSubgroup
+public import Nyll.ClassFieldTheory.Theorems.ConductorsAndRayClassFields.RayPrincipalIdealMembership
+public import Nyll.ClassFieldTheory.Definitions.ConductorsAndRayClassFields.NarrowRayClassModulus
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -40,7 +44,7 @@ theorem place_isReal (i : Fin 2) :
     (InfinitePlace.mk (complexEmbedding M hM i)).IsReal := by
   exact InfinitePlace.isReal_mk_iff.mpr (complexEmbedding_isReal M hM i)
 
-def realPlace (i : Fin 2) : RayClassRealPlace (Base M hM) :=
+def realPlace (i : Fin 2) : RayClass.RealPlace (Base M hM) :=
   ⟨InfinitePlace.mk (complexEmbedding M hM i), place_isReal M hM i⟩
 
 def finiteExponent (n : ℕ) (v : HeightOneSpectrum (𝓞 (Base M hM))) : ℕ :=
@@ -94,7 +98,7 @@ theorem realPlace_embedding (i : Fin 2) :
 /-- The quadratic field has two distinct real places. [RW-rec, Def. 1]; [RW26, p. 20]. -/
 theorem realPlace_ne : realPlace M hM 0 ≠ realPlace M hM 1 := by
   intro h
-  have he := congrArg (fun v : RayClassRealPlace (Base M hM) =>
+  have he := congrArg (fun v : RayClass.RealPlace (Base M hM) =>
     v.1.embedding_of_isReal v.2) h
   rw [realPlace_embedding, realPlace_embedding] at he
   have hepsilon := RingHom.congr_fun he (ActualField.epsilon M hM)
@@ -107,19 +111,19 @@ theorem realPlace_ne : realPlace M hM 0 ≠ realPlace M hM 1 := by
   nlinarith
 
 /-- Every real place is one of these two. -/
-theorem realPlace_exhaustive (v : RayClassRealPlace (Base M hM)) :
+theorem realPlace_exhaustive (v : RayClass.RealPlace (Base M hM)) :
     v = realPlace M hM 0 ∨ v = realPlace M hM 1 := by
   by_contra hv
   push Not at hv
   have hcard := InfinitePlace.card_add_two_mul_card_eq_rank (Base M hM)
   rw [(ActualField.baseField_isRealQuadratic M hM).degree_two] at hcard
-  have hle : 3 ≤ Fintype.card (RayClassRealPlace (Base M hM)) := by
+  have hle : 3 ≤ Fintype.card (RayClass.RealPlace (Base M hM)) := by
     calc
       3 = ({realPlace M hM 0, realPlace M hM 1, v} :
-          Finset (RayClassRealPlace (Base M hM))).card := by
+          Finset (RayClass.RealPlace (Base M hM))).card := by
         simp [realPlace_ne M hM, Ne.symm hv.1, Ne.symm hv.2]
       _ ≤ _ := Finset.card_le_card (Finset.subset_univ _)
-  change Fintype.card (RayClassRealPlace (Base M hM)) +
+  change Fintype.card (RayClass.RealPlace (Base M hM)) +
     2 * InfinitePlace.nrComplexPlaces (Base M hM) = 2 at hcard
   omega
 

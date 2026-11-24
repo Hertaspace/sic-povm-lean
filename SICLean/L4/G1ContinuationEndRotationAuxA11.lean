@@ -1,4 +1,8 @@
-import SICLean.L4.G1ContinuationEndRotationAux
+module
+
+public import SICLean.L4.G1ContinuationEndRotationAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -138,7 +142,7 @@ theorem integrableOn_Ioi_of_eventual_exp_bound (f : ℝ → ℂ) (C k : ℝ)
   let R : ℝ := max 0 R₀
   have hR : 0 ≤ R := le_max_left _ _
   have hhead : IntegrableOn f (Icc 0 R) :=
-    (hf.mono (fun r hr => hr.1)).integrableOn_Icc
+    (hf.mono (fun r (hr : r ∈ Icc (0 : ℝ) R) => hr.1)).integrableOn_Icc
   have hcont : ContinuousOn f (Ioi R) :=
     hf.mono (fun r hr => hR.trans hr.le)
   have hmajor : IntegrableOn (fun r : ℝ => C * Real.exp (-k * r)) (Ioi R) :=

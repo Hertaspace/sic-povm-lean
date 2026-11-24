@@ -1,4 +1,8 @@
-import SICLean.L4.ModularDivisor
+module
+
+public import SICLean.L4.ModularDivisor
+
+@[expose] public section
 
 set_option autoImplicit false
 

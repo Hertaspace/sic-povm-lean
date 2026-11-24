@@ -1,7 +1,11 @@
-import Mathlib.Algebra.Polynomial.BigOperators
-import Mathlib.Algebra.BigOperators.Group.Finset.Pi
-import Mathlib.Data.Nat.Choose.Basic
-import SICLean.L5.FiniteQBinomialAux
+module
+
+public import Mathlib.Algebra.Polynomial.BigOperators
+public import Mathlib.Algebra.BigOperators.Group.Finset.Pi
+public import Mathlib.Data.Nat.Choose.Basic
+public import SICLean.L5.FiniteQBinomialAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

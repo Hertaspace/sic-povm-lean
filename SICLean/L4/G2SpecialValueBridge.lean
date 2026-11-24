@@ -1,5 +1,9 @@
-import SICLean.L4.G2RepellingPointValues
-import SICLean.L4.G2SpecialValueBridgeAux
+module
+
+public import SICLean.L4.G2RepellingPointValues
+public import SICLean.L4.G2SpecialValueBridgeAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

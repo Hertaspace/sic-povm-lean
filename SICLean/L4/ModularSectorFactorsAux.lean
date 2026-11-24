@@ -1,4 +1,8 @@
-import SICLean.L4.ModularSectorGeometry
+module
+
+public import SICLean.L4.ModularSectorGeometry
+
+@[expose] public section
 
 set_option autoImplicit false
 

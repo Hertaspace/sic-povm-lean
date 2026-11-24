@@ -1,4 +1,8 @@
-import SICLean.L5.FiniteProductPentagon
+module
+
+public import SICLean.L5.FiniteProductPentagon
+
+@[expose] public section
 
 set_option autoImplicit false
 

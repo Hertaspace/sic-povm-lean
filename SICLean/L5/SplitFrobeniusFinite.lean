@@ -1,8 +1,12 @@
-import SICLean.L5.SplitFrobenius
-import SICLean.L5.RayArithmeticPrincipal
-import SICLean.L5.GoodReductionSeparation
-import SICLean.L5.OddPrimeSpecialization
-import SICLean.L5.SplitFrobeniusFiniteAux
+module
+
+public import SICLean.L5.SplitFrobenius
+public import SICLean.L5.RayArithmeticPrincipal
+public import SICLean.L5.GoodReductionSeparation
+public import SICLean.L5.OddPrimeSpecialization
+public import SICLean.L5.SplitFrobeniusFiniteAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -297,6 +301,5 @@ theorem theorem8_reflection_target (P0 : PeriodData K) (I : StablePseudolattice 
     ∀ x, GoodReductionLocal.congruentAt F P (u x ^ p) (u (-x)) := by
   exact theorem8_common_target F P0 I hodd hm h P hP u (fun x => u (-x)) hu
     (fun x => (hr x).trans (hu (-x)).symm) (fun x => (hq x).trans (hu (-x)).symm)
-
 
 end SICLean.L5.SplitFrobeniusFinite

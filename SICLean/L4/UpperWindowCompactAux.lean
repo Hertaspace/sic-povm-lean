@@ -1,4 +1,8 @@
-import SICLean.L4.UpperWindowDivisor
+module
+
+public import SICLean.L4.UpperWindowDivisor
+
+@[expose] public section
 
 set_option autoImplicit false
 

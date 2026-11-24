@@ -1,5 +1,9 @@
-import SICLean.L4.G2CombResidues
-import SICLean.L4.G2StripCounting
+module
+
+public import SICLean.L4.G2CombResidues
+public import SICLean.L4.G2StripCounting
+
+@[expose] public section
 
 set_option autoImplicit false
 

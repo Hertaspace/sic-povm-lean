@@ -1,5 +1,9 @@
-import SICLean.L4.DistributionValues
-import SICLean.L3.Algebraicity
+module
+
+public import SICLean.L4.DistributionValues
+public import SICLean.L3.Algebraicity
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -121,7 +125,7 @@ theorem distributionCoefficientField_isAlgebraic (N : ℕ) (hN : 0 < N)
   have hx : IsAlgebraic ℚ (x : ℂ) :=
     IntermediateField.adjoin_induction (F := ℚ)
       (s := distributionCoefficientSet N gaussian B target)
-      (p := fun y _ => IsAlgebraic ℚ y) (fun y hy => hgen y hy)
+      (motive := fun y _ => IsAlgebraic ℚ y) (fun y hy => hgen y hy)
       (fun q => isAlgebraic_algebraMap q) (fun a b _ _ ha hb => ha.add hb)
       (fun a _ ha => ha.inv) (fun a b _ _ ha hb => ha.mul hb) x.property
   exact (IntermediateField.coe_isIntegral_iff

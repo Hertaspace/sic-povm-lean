@@ -1,7 +1,11 @@
-import SICLean.L3.PseudolatticeIdeal
-import SICLean.L5.DistributionNormalized
-import SICLean.L5.PrimeSpecialization
-import SICLean.L5.LocalFourierSetup
+module
+
+public import SICLean.L3.PseudolatticeIdeal
+public import SICLean.L5.DistributionNormalized
+public import SICLean.L5.PrimeSpecialization
+public import SICLean.L5.LocalFourierSetup
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -29,7 +33,7 @@ theorem inclusionIndex_scale_le (I J : Submodule ℤ K) :
     I.toAddSubgroup.nsmul_relIndex_mem (K := J.toAddSubgroup) hy
 
 theorem coprime_relIndex_of_scale_le (I J : Submodule ℤ K)
-    (hI : Submodule.IsLattice ℚ I) (hJ : Submodule.IsLattice ℚ J) (hIJ : I ≤ J)
+    (hI : Submodule.IsFullLattice ℚ I) (hJ : Submodule.IsFullLattice ℚ J) (hIJ : I ≤ J)
     {p C : ℕ} (hp : p.Prime) (hpc : ¬ p ∣ C)
     (hbound : pseudolatticeScale (C : K) J ≤ I) :
     Nat.Coprime p (inclusionIndex I J) := by

@@ -1,5 +1,9 @@
-import SICLean.L4.G2ComponentJumps
-import SICLean.L4.ModularClusterLedgerAux
+module
+
+public import SICLean.L4.G2ComponentJumps
+public import SICLean.L4.ModularClusterLedgerAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -728,6 +732,5 @@ theorem comb_assignment_support (M : SL(2, ℤ)) (hM : SpecialValueAdmissible M)
   · have hleft : ¬combCoordinate M m k + (M 1 0 : ℝ) * length M < -δ := by
       linarith
     simp only [if_neg hright, if_neg hleft, sub_self]
-
 
 end SICLean.L4.G2ResidueLedgerAux

@@ -1,4 +1,6 @@
-import Mathlib
+module
+
+public import Mathlib
 
 /-!
 # Checked Mathlib entry points
@@ -6,6 +8,8 @@ import Mathlib
 This file contains `#check` commands for the Mathlib API used in the project, not new
 mathematical claims.
 -/
+
+@[expose] public section
 
 -- Complex integration and parameter dependence.
 #check Complex.integral_boundary_rect_eq_zero_of_differentiableOn

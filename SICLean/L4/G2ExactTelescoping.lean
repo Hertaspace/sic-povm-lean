@@ -1,5 +1,9 @@
-import SICLean.L4.G2KernelConvergence
-import SICLean.L4.G2ExactTelescopingAux
+module
+
+public import SICLean.L4.G2KernelConvergence
+public import SICLean.L4.G2ExactTelescopingAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

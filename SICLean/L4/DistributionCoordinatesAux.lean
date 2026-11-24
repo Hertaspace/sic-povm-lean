@@ -1,6 +1,10 @@
-import SICLean.L4.DistributionBasisValues
-import SICLean.L2c.Coordinates
-import SICLean.L2rc.Coordinates
+module
+
+public import SICLean.L4.DistributionBasisValues
+public import SICLean.L2c.Coordinates
+public import SICLean.L2rc.Coordinates
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -137,7 +141,6 @@ lemma distributionPeriodDifference_combination (B : DistributionBasis) (hB : B.V
   rw [map_add, distributionPeriodDifference_smul, distributionPeriodDifference_smul, h1, h2]
   simp_rw [← Int.cast_smul_eq_zsmul ℝ]
   module
-
 
 /-! ### Row-lattice matrix identities. -/
 

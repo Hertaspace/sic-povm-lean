@@ -1,6 +1,10 @@
-import SICLean.L4.G1RealInterface
-import SICLean.L4.ModularClusterRegularity
-import SICLean.L4.G1PinchGeometryAux
+module
+
+public import SICLean.L4.G1RealInterface
+public import SICLean.L4.ModularClusterRegularity
+public import SICLean.L4.G1PinchGeometryAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

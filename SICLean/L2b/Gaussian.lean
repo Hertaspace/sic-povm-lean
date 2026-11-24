@@ -1,4 +1,8 @@
-import SICLean.L2b.Group
+module
+
+public import SICLean.L2b.Group
+
+@[expose] public section
 
 set_option autoImplicit false
 

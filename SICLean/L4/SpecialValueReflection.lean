@@ -1,4 +1,8 @@
-import SICLean.L4.SpecialValueReflectionAux
+module
+
+public import SICLean.L4.SpecialValueReflectionAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -44,7 +48,7 @@ intermediate step integral.
 -/
 
 /-- The Gaussian exponent as a single phase; the sign is absorbed exactly. -/
-private def specialValueGaussianPhase (M : SL(2, ℤ)) (u : ℤ × ℤ) : ℂ :=
+def specialValueGaussianPhase (M : SL(2, ℤ)) (u : ℤ × ℤ) : ℂ :=
   (specialValueOmega (L2r.rowAction (M : Matrix (Fin 2) (Fin 2) ℤ) u) u : ℂ) /
       (2 * (specialValueOrder M : ℂ)) + ((u.1 + u.2 + u.1 * u.2 : ℤ) : ℂ) / 2
 
@@ -171,8 +175,6 @@ private lemma gaussian_lattice_periodic (M : SL(2, ℤ)) (hM : SpecialValueAdmis
   rw [e_add_three, e_intCast, e_half_int, hmm.neg_one_zpow]
   ring
 
-
-
 private lemma omega_add_fst (x y z : ℤ × ℤ) :
     specialValueOmega (x + y) z = specialValueOmega x z + specialValueOmega y z := by
   simp only [specialValueOmega, Prod.fst_add, Prod.snd_add]
@@ -199,7 +201,6 @@ private lemma omega_sub_one_sq (M : SL(2, ℤ)) (α v : ℤ × ℤ) :
   rw [reflAux_rowAction_sub_one_sq]
   simp only [specialValueOmega, Prod.smul_fst, Prod.smul_snd, smul_eq_mul]
   ring
-
 
 /-- Periodicity of the positive-sign pairing in both variables. -/
 private lemma pairing_lattice_periodic (M : SL(2, ℤ)) (hM : SpecialValueAdmissible M)
@@ -230,7 +231,6 @@ private lemma pairing_lattice_periodic (M : SL(2, ℤ)) (hM : SpecialValueAdmiss
     specialValueOmega (L2r.rowAction ((M : Matrix (Fin 2) (Fin 2) ℤ) - 1) α) β, ?_⟩
   push_cast
   ring
-
 
 /-- The algebraic core of the reflection phase. All hypotheses are the
 concrete relations satisfied by `τ`, `ε`, the fixed point quadratic and the

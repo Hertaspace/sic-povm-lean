@@ -1,4 +1,8 @@
-import SICLean.L2r.Convolution
+module
+
+public import SICLean.L2r.Convolution
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

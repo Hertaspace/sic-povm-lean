@@ -7,6 +7,7 @@ This repository contains a complete, machine-checked proof in Lean 4 that **symm
 - **Mathematics:** the recent proof of Radchenko and Wheeler [RW26, RW-rec], together with a theorem of Appleby, Flammia and Kopp [AFK25].
 - **Axioms:** only `propext`, `Classical.choice` and `Quot.sound`.
 - **Checks:** six kernels accept the proof (see [Verification](#verification)).
+- **Release v1.1:** the same proofs on Lean v4.36.0 and Mathlib `fc4f59e`, with every Lean file written as a Lean module, as the Palomar registry requires. The statements are unchanged from v1.0 (see [Verification](#verification)).
 - **Related work:** an earlier, independent Lean 4 formalization by Māris Ozols, [marozols/SIC-existence](https://github.com/marozols/SIC-existence) (public since 9 October 2026), proves the same existence results. We learned of it after completing and releasing this formalization.
 
 ## Main theorem
@@ -81,9 +82,24 @@ For r > 1 the proof uses the extension of the twisted convolution identity to al
 
 ### Results
 
-The checks below were run with Lean `v4.35.0-rc2` on Linux, on commit `7a557d0`. The Lean files of this release differ from that commit only in three comments, and a rebuild of the release reported the same axioms. `VERIFICATION.md` records the environment, the commands and the outputs, and `verification/` contains the scripts.
+The checks of release v1.1 were run on 24 and 25 November 2026 with Lean `v4.36.0` on Linux (Ubuntu 20.04.6 LTS, kernel 5.15.0, x86_64, in a container), on the machine of the v1.0 checks. Release v1.1 differs from v1.0 in the pinned versions, in the module syntax that every Lean file now uses, in proof adaptations to the newer Mathlib and class field theory library, and in one new file, `SICLean/NyllBridge/RayClassSubgroup.lean`. The twelve compared statements and the definitions of `Challenge.lean` are unchanged. `git diff 0f4ec7e -- '*.lean'` shows all changes of the Lean files since v1.0.
 
-| Check | What it checks | Result |
+| Check | What it checks | Result (v1.1) |
+|---|---|---|
+| `lake build` | `SICLean` and everything it imports compile | success (21435 jobs) |
+| `lake env lean CheckAxioms.lean` | the axioms of `zaunerExistence`, `hasRSIC`, `sicPOVMs` and the eleven `hasSICPOVM_*` theorems | only `propext`, `Classical.choice`, `Quot.sound` |
+| `lake build Challenge` | `Challenge.lean` compiles | success, with the expected `sorry` warning only |
+| `python3 verification/check_challenge.py` | the declarations of `Challenge.lean` are those of the formal-conjectures file, and `comparator.json` names the twelve theorems | passes |
+| `verification/direct_sorry_modules.lean`, `verification/axiom_scan.lean` | no direct use of `sorryAx`, and no axiom beyond the three standard ones, in 9808 constants of 460 modules | no use, no axiom |
+| `lake comparator --paranoid` | the twelve theorems have exactly the statements in `Challenge.lean`, and their proofs are replayed | all six kernels accept (1 h 43 min, at most 6.6 GB) |
+
+The scan covers fewer constants than at v1.0 (14,298), because under the module system the private declarations of imported modules are not loaded into the environment that the script scans. The export and kernel checks of the comparator cover the full proofs. The full-environment `lake check --paranoid` and the nanoda run on an export of the project were not repeated for v1.1. Their results are those of v1.0, given below. The build time on a Mac was not measured again for v1.1.
+
+The checks of release v1.0 were run with Lean `v4.35.0-rc2` on Linux, on commit `7a557d0`. The Lean files of that release differ from that commit only in three comments, and a rebuild of the release reported the same axioms. `VERIFICATION.md` records the environment, the commands and the outputs of both releases, and `verification/` contains the scripts.
+
+**Results of v1.0 (Lean `v4.35.0-rc2`).**
+
+| Check | What it checks | Result (v1.0) |
 |---|---|---|
 | `lake build` | `SICLean` and everything it imports compile | success (10339 jobs) |
 | `lake env lean CheckAxioms.lean` | the axioms of `zaunerExistence`, `hasRSIC` and the twelve theorems of `SICLean/Solution.lean` | only `propext`, `Classical.choice`, `Quot.sound` |
@@ -113,7 +129,7 @@ We have tested these steps on macOS and Linux.
 curl https://elan.lean-lang.org/elan-init.sh -sSf | sh
 ```
 
-and open a new terminal afterwards. The elan page explains the installation on Windows. You do not choose a Lean version yourself: the file `lean-toolchain` of this repository asks for Lean `v4.35.0-rc2`, and elan downloads it the first time a Lean command runs in the repository.
+and open a new terminal afterwards. The elan page explains the installation on Windows. You do not choose a Lean version yourself: the file `lean-toolchain` of this repository asks for Lean `v4.36.0`, and elan downloads it the first time a Lean command runs in the repository.
 
 **Step 2. Download this repository.**
 
@@ -136,7 +152,7 @@ Lake is Lean's build tool and comes with Lean. On first use it downloads the lib
 lake build
 ```
 
-This compiles `SICLean` together with the Chebotarev files in `CebotarevDensity/` and about 950 modules of the class field theory library. Compiling a Lean file means checking it: Lean's kernel verifies every proof, and the build fails if any proof does not check. None of these files is downloaded in compiled form, so all their proofs are checked again on your machine. On a MacBook Pro with an Apple M5 Max this took about 20 minutes. A successful build ends with a line that begins with `Build completed successfully`. Along the way it prints about 1,900 warnings, for example about deprecated names, and the output of the `#check` and `#print axioms` commands in many files. These are expected.
+This compiles `SICLean` together with the Chebotarev files in `CebotarevDensity/` and about 950 modules of the class field theory library (the count at v1.0). Compiling a Lean file means checking it: Lean's kernel verifies every proof, and the build fails if any proof does not check. None of these files is downloaded in compiled form, so all their proofs are checked again on your machine. At v1.0, on a MacBook Pro with an Apple M5 Max, this took about 20 minutes. We have not measured the build time of v1.1 on a Mac. A successful build ends with a line that begins with `Build completed successfully`. At v1.0 it printed about 1,900 warnings along the way, for example about deprecated names, and the output of the `#check` and `#print axioms` commands in many files. These are expected.
 
 Mathlib and the libraries it builds on are not compiled here, because step 3 downloaded them already compiled. To check them as well, start from a fresh clone, skip step 3 and run `LAKE_NO_CACHE=1 LAKE_ARTIFACT_CACHE=false lake build`, which compiles them from source and takes much longer. Step 7 also replays them.
 
@@ -162,22 +178,22 @@ python3 verification/check_challenge.py
 
 This needs only Python 3.8 or later. It checks that `Challenge.lean` copies the twelve open statements of formal-conjectures verbatim and that `comparator.json` names each of them once (see [Trust base](#trust-base)). It prints a line that begins with `21 declarations of Challenge.lean`.
 
-**Step 7 (optional, Linux only). Replay the proofs in other checkers.** Steps 4 and 5 rely on Lean's own kernel. Lean `v4.35.0-rc2` also ships tools that replay proofs through further checkers, among them `lean4lean` and `nanoda`, which are independent implementations of Lean's type checker. They run in a sandbox made with `bubblewrap`, which is available on Linux. Install it first, for example with `sudo apt-get install bubblewrap` on Debian or Ubuntu, and make sure that `bwrap` is on your PATH. The system must allow unprivileged user namespaces, or `bwrap` must be installed setuid root, as some distributions do. `VERIFICATION.md` describes the adjustment we needed in our container.
+**Step 7 (optional, Linux only). Replay the proofs in other checkers.** Steps 4 and 5 rely on Lean's own kernel. Lean `v4.36.0` also ships tools that replay proofs through further checkers, among them `lean4lean` and `nanoda`, which are independent implementations of Lean's type checker. They run in a sandbox made with `bubblewrap`, which is available on Linux. Install it first, for example with `sudo apt-get install bubblewrap` on Debian or Ubuntu, and make sure that `bwrap` is on your PATH. The system must allow unprivileged user namespaces, or `bwrap` must be installed setuid root, as some distributions do. `VERIFICATION.md` describes the adjustment we needed in our container.
 
 ```bash
 lake comparator --paranoid     # judges SICLean.Solution against Challenge, see comparator.json
 lake check --paranoid          # exports the default target and replays it through all bundled checkers
 ```
 
-- `lake comparator` checks that the twelve theorems of `SICLean/Solution.lean` have exactly the statements in `Challenge.lean` and use only the three standard axioms, and it replays their proofs through six kernels. A successful run ends with `Your solution is okay!`. In our run it took 1 h 23 min and at most 8.6 GB of memory, and it kept about two cores busy on average.
+- `lake comparator` checks that the twelve theorems of `SICLean/Solution.lean` have exactly the statements in `Challenge.lean` and use only the three standard axioms, and it replays their proofs through six kernels. A successful run ends with `Your solution is okay!`. In our v1.1 run it took 1 h 43 min and at most 6.6 GB of memory, and it kept about 1.7 cores busy on average. The v1.0 run took 1 h 23 min and at most 8.6 GB.
 - `Challenge.lean` contains the twelve statements with `sorry` in place of the proofs, copied from formal-conjectures. It is the only compiled file with `sorry`, it is not a default build target, and it exists only for `lake comparator`.
-- `lake check` exports the environment of the build, 741,811 declarations including Mathlib, and replays the export through the same six kernels. In our run it took 5 h 10 min and at most 56 GB of memory, again with about two cores busy on average. nanoda stops on an environment this large (see [Results](#results)), and `VERIFICATION.md` gives the commands we used to run nanoda on an export of this project instead.
+- `lake check` exports the environment of the build, 741,811 declarations including Mathlib, and replays the export through the same six kernels. In our v1.0 run it took 5 h 10 min and at most 56 GB of memory, again with about two cores busy on average. nanoda stops on an environment this large (see [Results](#results)), and `VERIFICATION.md` gives the commands we used to run nanoda on an export of this project instead.
 
 ## Proof outline
 
 <img alt="Diagram of the five parts of the proof and their sizes in lines of Lean code. Part (d) feeds parts (b), (c) and (e). Part (c) and the libraries also feed part (e). Parts (b) and (e) feed part (a)." src="docs/proof-structure.svg" width="100%">
 
-In the figure, the label at the top right of a part names the files or directories of `SICLean/` that contain it, and an arrow points from a part to the parts that use its results. Bars show lines of Lean code, not counting blank lines and comments, as counted by tokei 14.0.0. `SICLean/` has 443 files and 110,564 lines of code.
+In the figure, the label at the top right of a part names the files or directories of `SICLean/` that contain it, and an arrow points from a part to the parts that use its results. Bars show lines of Lean code, not counting blank lines and comments, as counted by tokei 14.0.0. At v1.0, `SICLean/` had 443 files and 110,564 lines of code. The figure was not redrawn for v1.1.
 
 The proof has five parts.
 
@@ -201,6 +217,7 @@ The proof has five parts.
 | `SICLean/L3` | algebraicity of the special values [RW26, Thm. 11] |
 | `SICLean/L4` | analytic properties of the modular quantum dilogarithm [RW26, §§2–3] |
 | `SICLean/L5` | [RW-rec, Prop. 7] via ray class fields, Artin reciprocity and the Chebotarev density theorem |
+| `SICLean/NyllBridge/RayClassSubgroup.lean` | two short theorems of the class field theory library, restated unchanged as a Lean module (see its header) |
 | `SICLean/Final`, `SICLean/L5/ActualProp7.lean` | final assembly: `zaunerExistence` and `hasRSIC` |
 | `SICLean/Solution.lean` | the formal-conjectures statements, proved |
 | `Challenge.lean`, `comparator.json` | the formal-conjectures statements with `sorry`, for `lake comparator` |
@@ -222,13 +239,14 @@ Notes:
 
 | Dependency | Version | Used for | How it is included |
 |---|---|---|---|
-| Lean | `v4.35.0-rc2` | proof assistant and kernel | `lean-toolchain` |
-| [Mathlib](https://github.com/leanprover-community/mathlib4) | `0653561` | mathematical library | pinned in `lake-manifest.json` |
-| [n-yamaguchi-0729/ClassFieldTheory](https://github.com/n-yamaguchi-0729/ClassFieldTheory) (Apache-2.0) | `fbd320c` | ray class fields and Artin reciprocity | pinned in `lake-manifest.json` |
-| [CBirkbeck/chebotarev-density](https://github.com/CBirkbeck/chebotarev-density) (Apache-2.0) | `8575c9d` | Chebotarev density theorem | ported and vendored in `CebotarevDensity/`, see `PROVENANCE.md` |
+| Lean | `v4.36.0` | proof assistant and kernel | `lean-toolchain` |
+| [Mathlib](https://github.com/leanprover-community/mathlib4) | `fc4f59e` | mathematical library | pinned in `lake-manifest.json` |
+| [n-yamaguchi-0729/ClassFieldTheory](https://github.com/n-yamaguchi-0729/ClassFieldTheory) (Apache-2.0) | `fc644f4` | ray class fields and Artin reciprocity | pinned in `lake-manifest.json` |
+| [CBirkbeck/chebotarev-density](https://github.com/CBirkbeck/chebotarev-density) (Apache-2.0) | `8575c9d` | Chebotarev density theorem | ported and vendored in `CebotarevDensity/`, see `PROVENANCE.md` (ported to Lean `v4.36.0` and Mathlib `fc4f59e` in v1.1) |
 
-- Lean `v4.35.0-rc2` and Mathlib `0653561` are the versions pinned by the class field theory library.
-- A fork of the class field theory library at the same commit, tagged `sic-povm-pin`, is kept at [Hertaspace/ClassFieldTheory](https://github.com/Hertaspace/ClassFieldTheory) in case the original repository becomes unavailable.
+- Lean `v4.36.0` and Mathlib `fc4f59e` are the versions pinned by the class field theory library at `fc644f4`. Release v1.0 used Lean `v4.35.0-rc2`, Mathlib `0653561` and class field theory library commit `fbd320c`.
+- Every Lean file of this repository is a Lean module. The class field theory library moved to the module system on 2026-11-11 and to Lean 4.36.0 on 2026-11-21. Two of its theorems come from files that are not yet modules at `fc644f4`, and a module cannot import such a file. `SICLean/NyllBridge/RayClassSubgroup.lean` therefore restates them unchanged, with the upstream author's copyright header.
+- A fork of the class field theory library at the v1.0 commit `fbd320c`, tagged `sic-povm-pin`, is kept at [Hertaspace/ClassFieldTheory](https://github.com/Hertaspace/ClassFieldTheory) in case the original repository becomes unavailable.
 
 ## Mathematical sources
 
@@ -260,6 +278,6 @@ Apache License 2.0 (see `LICENSE`). Third-party material keeps its own notices:
   year         = {2026},
   howpublished = {GitHub repository},
   url          = {https://github.com/Hertaspace/sic-povm-lean},
-  note         = {Release v1.0}
+  note         = {Release v1.1}
 }
 ```

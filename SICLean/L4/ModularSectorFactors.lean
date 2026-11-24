@@ -1,4 +1,8 @@
-import SICLean.L4.ModularSectorFactorsAux
+module
+
+public import SICLean.L4.ModularSectorFactorsAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

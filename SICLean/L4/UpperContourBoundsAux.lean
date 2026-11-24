@@ -1,4 +1,8 @@
-import SICLean.L4.UpperContourShifts
+module
+
+public import SICLean.L4.UpperContourShifts
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -142,7 +146,6 @@ lemma norm_singleShift (M : SL(2, ℤ)) (m n h ℓ : ℤ)
   simp only [norm_div, norm_mul, norm_pow, norm_inv, norm_neg, div_pow]
   rw [pow_mul]
   ring
-
 
 lemma shift_norm_bounds (M : SL(2, ℤ)) (m n h ℓ p : ℤ)
     (x : UpperWindow.Parameters) (z : ℂ) (j k : ℕ) (L U D : ℝ)

@@ -1,4 +1,8 @@
-import SICLean.L4.G2RepellingGeometry
+module
+
+public import SICLean.L4.G2RepellingGeometry
+
+@[expose] public section
 
 set_option autoImplicit false
 

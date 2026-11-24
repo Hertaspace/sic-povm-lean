@@ -1,7 +1,11 @@
-import SICLean.L4.G1ContinuationCircles
-import SICLean.L4.G1BilateralGeometry
-import SICLean.L4.G1BilateralRatioTailsAux
-import SICLean.L4.G1BilateralSingleTailsAux
+module
+
+public import SICLean.L4.G1ContinuationCircles
+public import SICLean.L4.G1BilateralGeometry
+public import SICLean.L4.G1BilateralRatioTailsAux
+public import SICLean.L4.G1BilateralSingleTailsAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

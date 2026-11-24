@@ -1,7 +1,11 @@
-import Mathlib.Analysis.Analytic.IsolatedZeros
-import Mathlib.Analysis.Complex.Convex
-import Mathlib.Analysis.Convex.PathConnected
-import Mathlib.Tactic
+module
+
+public import Mathlib.Analysis.Analytic.IsolatedZeros
+public import Mathlib.Analysis.Complex.Convex
+public import Mathlib.Analysis.Convex.PathConnected
+public import Mathlib.Tactic
+
+@[expose] public section
 
 set_option autoImplicit false
 

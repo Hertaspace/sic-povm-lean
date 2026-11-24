@@ -1,9 +1,13 @@
-import SICLean.L5.FiniteMomentConsequences
-import Mathlib.Data.Real.Basic
-import Mathlib.Algebra.Order.WithTop.Untop0
-import Mathlib.RingTheory.Valuation.ValuationSubring
-import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
-import Mathlib.LinearAlgebra.AffineSpace.AffineEquiv
+module
+
+public import SICLean.L5.FiniteMomentConsequences
+public import Mathlib.Data.Real.Basic
+public import Mathlib.Algebra.Order.WithTop.Untop0
+public import Mathlib.RingTheory.Valuation.ValuationSubring
+public import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
+public import Mathlib.LinearAlgebra.AffineSpace.AffineEquiv
+
+@[expose] public section
 
 set_option autoImplicit false
 

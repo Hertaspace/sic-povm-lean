@@ -1,5 +1,9 @@
-import SICLean.L4.G1FixedSeparation
-import SICLean.L4.G1FiniteChainLedger
+module
+
+public import SICLean.L4.G1FixedSeparation
+public import SICLean.L4.G1FiniteChainLedger
+
+@[expose] public section
 
 set_option autoImplicit false
 

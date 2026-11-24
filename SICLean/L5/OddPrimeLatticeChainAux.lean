@@ -1,10 +1,14 @@
-import SICLean.L5.OddPrimeTraceDual
-import SICLean.L3.PseudolatticeIdeal
-import Mathlib.Data.ZMod.Basic
-import Mathlib.GroupTheory.Perm.Cycle.Type
-import Mathlib.Data.Nat.Factorization.Basic
-import Mathlib.Data.ZMod.QuotientGroup
-import Mathlib.RingTheory.IntegralDomain
+module
+
+public import SICLean.L5.OddPrimeTraceDual
+public import SICLean.L3.PseudolatticeIdeal
+public import Mathlib.Data.ZMod.Basic
+public import Mathlib.GroupTheory.Perm.Cycle.Type
+public import Mathlib.Data.Nat.Factorization.Basic
+public import Mathlib.Data.ZMod.QuotientGroup
+public import Mathlib.RingTheory.IntegralDomain
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -59,7 +63,7 @@ theorem mem_principal (P : PeriodData K) (a : K) :
 
 theorem module_properties (P : PeriodData K) (I : StablePseudolattice P)
     (a : traceDual I.val) (ha : a.val ≠ 0) (i : ℕ) :
-    Submodule.IsLattice ℚ
+    Submodule.IsFullLattice ℚ
         (pseudolatticeScale a.val (epsilonOrder P).toSubmodule ⊔
           pseudolatticeScale ((P.epsilon - 1) ^ i) (traceDual I.val)) ∧
       PeriodStable P
@@ -71,7 +75,7 @@ theorem module_properties (P : PeriodData K) (I : StablePseudolattice P)
     (epsilonOrder_isStablePseudolattice P).1 a.val ha
   have hM := traceDual_isLattice I.val I.property.1
   haveI := hA
-  refine ⟨Submodule.IsLattice.of_le_of_isLattice_of_fg ℚ le_sup_left
+  refine ⟨Submodule.IsFullLattice.of_le_of_fg ℚ le_sup_left
     (hA.fg.sup (hM.fg.map _)), ?_,
       (show pseudolatticeScale a.val (epsilonOrder P).toSubmodule ≤ _ from le_sup_left)
         (mem_principal P a.val)⟩

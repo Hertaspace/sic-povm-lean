@@ -1,5 +1,9 @@
-import SICLean.L4.M75Gaussian
-import SICLean.L4.G2SpecialValueBridge
+module
+
+public import SICLean.L4.M75Gaussian
+public import SICLean.L4.G2SpecialValueBridge
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,6 +1,10 @@
-import SICLean.L4.UpperIntegralIdentities
-import SICLean.L4.G1ChainTransfer
-import SICLean.L4.G1ContinuationGeometryAux
+module
+
+public import SICLean.L4.UpperIntegralIdentities
+public import SICLean.L4.G1ChainTransfer
+public import SICLean.L4.G1ContinuationGeometryAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,7 +1,11 @@
-import SICLean.L5.OddPrimeTraceDual
-import SICLean.L5.OddPrimeLatticeChainAux
-import SICLean.L3.PseudolatticeIdeal
-import Mathlib.Data.ZMod.Basic
+module
+
+public import SICLean.L5.OddPrimeTraceDual
+public import SICLean.L5.OddPrimeLatticeChainAux
+public import SICLean.L3.PseudolatticeIdeal
+public import Mathlib.Data.ZMod.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -106,7 +110,7 @@ theorem chainModule_step (P : PeriodData K) (I : StablePseudolattice P)
 stability or invertibility is assumed. -/
 theorem chainModule_isLattice_stable (P : PeriodData K) (I : StablePseudolattice P)
     (a : traceDual I.val) (ha : a.val ≠ 0) (i : ℕ) :
-    Submodule.IsLattice ℚ (chainModule P I a.val i) ∧
+    Submodule.IsFullLattice ℚ (chainModule P I a.val i) ∧
       PeriodStable P (chainModule P I a.val i) ∧ a.val ∈ chainModule P I a.val i := by
   exact OddPrimeLatticeChainAux.module_properties P I a ha i
 

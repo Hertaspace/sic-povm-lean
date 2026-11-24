@@ -1,4 +1,8 @@
-import SICLean.L4.G1ContinuationBoundary
+module
+
+public import SICLean.L4.G1ContinuationBoundary
+
+@[expose] public section
 
 set_option autoImplicit false
 

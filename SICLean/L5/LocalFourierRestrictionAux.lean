@@ -1,5 +1,9 @@
-import SICLean.L5.LocalFourierSetup
-import Mathlib.Algebra.BigOperators.Pi
+module
+
+public import SICLean.L5.LocalFourierSetup
+public import Mathlib.Algebra.BigOperators.Pi
+
+@[expose] public section
 
 set_option autoImplicit false
 

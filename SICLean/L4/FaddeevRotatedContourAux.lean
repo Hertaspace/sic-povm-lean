@@ -1,5 +1,9 @@
-import SICLean.L4.FaddeevRotatedIntegral
-import SICLean.L4.FaddeevContinuation
+module
+
+public import SICLean.L4.FaddeevRotatedIntegral
+public import SICLean.L4.FaddeevContinuation
+
+@[expose] public section
 
 set_option autoImplicit false
 

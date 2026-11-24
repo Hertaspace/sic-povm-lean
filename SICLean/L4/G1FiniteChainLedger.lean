@@ -1,6 +1,10 @@
-import SICLean.L4.G1RatioTailBounds
-import SICLean.L4.ModularClusterLedger
-import SICLean.L4.G1FiniteChainLedgerAux
+module
+
+public import SICLean.L4.G1RatioTailBounds
+public import SICLean.L4.ModularClusterLedger
+public import SICLean.L4.G1FiniteChainLedgerAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

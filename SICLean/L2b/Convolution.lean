@@ -1,4 +1,8 @@
-import SICLean.L2b.Gaussian
+module
+
+public import SICLean.L2b.Gaussian
+
+@[expose] public section
 
 set_option autoImplicit false
 

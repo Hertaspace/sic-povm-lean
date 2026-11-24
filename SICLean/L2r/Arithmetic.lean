@@ -1,4 +1,8 @@
-import SICLean.L2b.Main
+module
+
+public import SICLean.L2b.Main
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -48,13 +52,10 @@ def rootLevel (d r : ℕ) : ℂ := (Real.sqrt (level d r) : ℂ)
 
 /-- An integer recurrence suffices; fundamental units and maximal orders are unnecessary. -/
 
-
 def rankSequence (l : ℤ) : ℕ → ℤ
   | 0 => 0
   | 1 => 1
   | k + 2 => l * rankSequence l (k + 1) - rankSequence l k
-
-
 
 /-! ### Recurrence helpers for `grid_position` -/
 
@@ -181,7 +182,6 @@ private lemma rankSequence_grid_exists (L : ℕ) (hL : 3 ≤ L) :
       rw [hrec, hmr1, hmr, htcast]
       ring
 
-
 def shift (d r : ℕ) : ℤ := 1 - (level d r : ℤ)
 def twistScalar (d r : ℕ) : ℤ := (r : ℤ) * ((d : ℤ) - level d r)
 def phaseModulus (d : ℕ) : ℕ := if Even d then 2 * d else d
@@ -306,7 +306,6 @@ theorem grid_position {d r : ℕ} (h : Admissible d r) :
     omega
   · have := rankSequence_strict_mono (ell d r) hell m m' hm1 hlt'
     omega
-
 
 private lemma alpha_pow_formula (d r : ℕ) (m : ℕ) (hm : 1 ≤ m) :
     alpha d r ^ m = !![rankSequence (ell d r) (m + 1), -rankSequence (ell d r) m;
@@ -498,7 +497,6 @@ theorem eta_from_gamma {d r : ℕ} (h : Admissible d r) :
   have hu0 : unit d r ≠ 0 := ne_of_gt (by linarith : (0:ℝ) < unit d r)
   field_simp
   nlinarith [hu]
-
 
 private lemma eta_minus_sq {d r : ℕ} (h : Admissible d r) :
     (eta d r - 1) ^ 2 = (d : ℝ) ^ 2 * (cofactor d r : ℝ) * eta d r := by

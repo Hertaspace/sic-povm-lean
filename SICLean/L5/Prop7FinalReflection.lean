@@ -1,5 +1,9 @@
-import SICLean.L5.Descent
-import SICLean.L5.OddPrimeSpecialization
+module
+
+public import SICLean.L5.Descent
+public import SICLean.L5.OddPrimeSpecialization
+
+@[expose] public section
 
 set_option autoImplicit false
 

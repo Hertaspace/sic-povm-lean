@@ -1,6 +1,10 @@
-import SICLean.L4.G1BilateralGeometry
-import SICLean.L4.ModularClusterLedger
-import SICLean.L4.G1BilateralSeparationAux
+module
+
+public import SICLean.L4.G1BilateralGeometry
+public import SICLean.L4.ModularClusterLedger
+public import SICLean.L4.G1BilateralSeparationAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

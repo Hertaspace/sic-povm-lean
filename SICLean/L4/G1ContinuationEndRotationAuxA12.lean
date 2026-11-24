@@ -1,4 +1,8 @@
-import SICLean.L4.G1ContinuationEndRotationAux
+module
+
+public import SICLean.L4.G1ContinuationEndRotationAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -17,10 +21,10 @@ lemma integrableOn_of_eventual_exp_bound (g : ℝ → ℂ) (C k R₀ : ℝ)
     (hbound : ∀ R ≥ R₀, ‖g R‖ ≤ C * Real.exp (-k * R)) :
     IntegrableOn g (Ioi 0) := by
   have hnear : IntegrableOn g (Icc 0 R₀) :=
-    (hg.mono (fun t ht => ht.1)).integrableOn_Icc
+    (hg.mono (fun t (ht : t ∈ Icc (0 : ℝ) R₀) => ht.1)).integrableOn_Icc
   have htail : IntegrableOn g (Ioi R₀) := by
     refine ((integrableOn_exp_mul_Ioi (neg_neg_of_pos hk) R₀).const_mul C).mono'
-      ((hg.mono (fun t ht => hR₀.trans ht.le)).aestronglyMeasurable measurableSet_Ioi) ?_
+      ((hg.mono (fun t (ht : t ∈ Ioi R₀) => hR₀.trans ht.le)).aestronglyMeasurable measurableSet_Ioi) ?_
     filter_upwards [ae_restrict_mem measurableSet_Ioi] with t ht
     exact hbound t ht.le
   refine (integrableOn_union.mpr ⟨hnear, htail⟩).mono_set ?_

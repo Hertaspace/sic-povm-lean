@@ -1,4 +1,8 @@
-import SICLean.L4.PseudolatticeHomothety
+module
+
+public import SICLean.L4.PseudolatticeHomothety
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -143,8 +147,9 @@ theorem tauK_linearIndependent (P : PeriodData K) (M : SL(2, ℤ))
 
 theorem lattice_isLattice (P : PeriodData K) (M : SL(2, ℤ))
     (hM : SpecialValueAdmissible M) (hN : specialValueOrder M = (P.N : ℤ)) :
-    Submodule.IsLattice ℚ (lattice P M) := by
-  refine ⟨Submodule.fg_span (Set.toFinite _), ?_⟩
+    Submodule.IsFullLattice ℚ (lattice P M) := by
+  have hL := Submodule.IsLattice.of_fg ℚ (Submodule.fg_span (Set.toFinite _) : (lattice P M).FG)
+  refine { toIsLattice := hL, span_eq_top := ?_ }
   have hs := (tauK_linearIndependent P M hM hN).span_eq_top_of_card_eq_finrank'
     (by simpa using P.finrank_eq_two.symm)
   apply eq_top_iff.mpr

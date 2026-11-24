@@ -1,8 +1,12 @@
-import Mathlib.Analysis.Analytic.IsolatedZeros
-import Mathlib.Analysis.Complex.Basic
-import Mathlib.Tactic.FieldSimp
-import Mathlib.Tactic.Ring
-import SICLean.L4.ModularPhiAux
+module
+
+public import Mathlib.Analysis.Analytic.IsolatedZeros
+public import Mathlib.Analysis.Complex.Basic
+public import Mathlib.Tactic.FieldSimp
+public import Mathlib.Tactic.Ring
+public import SICLean.L4.ModularPhiAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

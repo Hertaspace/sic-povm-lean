@@ -1,7 +1,11 @@
-import SICLean.L3.Pseudolattice
-import SICLean.L4.DistributionLattice
-import Mathlib.LinearAlgebra.Matrix.ToLinearEquiv
-import Mathlib.Data.Int.GCD
+module
+
+public import SICLean.L3.Pseudolattice
+public import SICLean.L4.DistributionLattice
+public import Mathlib.LinearAlgebra.Matrix.ToLinearEquiv
+public import Mathlib.Data.Int.GCD
+
+@[expose] public section
 
 set_option autoImplicit false
 

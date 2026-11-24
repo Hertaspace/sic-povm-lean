@@ -1,4 +1,8 @@
-import SICLean.L2b.Metric
+module
+
+public import SICLean.L2b.Metric
+
+@[expose] public section
 
 set_option autoImplicit false
 

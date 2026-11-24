@@ -1,4 +1,8 @@
-import SICLean.L5.DistributionOrbitGeometry
+module
+
+public import SICLean.L5.DistributionOrbitGeometry
+
+@[expose] public section
 
 set_option autoImplicit false
 

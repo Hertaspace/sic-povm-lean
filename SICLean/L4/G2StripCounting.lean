@@ -1,5 +1,9 @@
-import SICLean.L4.G2IntegralEvaluation
-import SICLean.L4.G2StripCountingAux
+module
+
+public import SICLean.L4.G2IntegralEvaluation
+public import SICLean.L4.G2StripCountingAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

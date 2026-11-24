@@ -1,4 +1,8 @@
-import SICLean.L4.G2DegenerateParameters
+module
+
+public import SICLean.L4.G2DegenerateParameters
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,10 +1,14 @@
-import SICLean.L2a.Algebra
+module
+
+public import SICLean.L2a.Algebra
 
 /-! # Periodic phased displacements and finite sums
 
 The phase and displacement separately depend on an integer lift. Their product
 descends to `Index M`; all changes of lift below use that product.
 -/
+
+@[expose] public section
 
 noncomputable section
 

@@ -1,6 +1,10 @@
-import SICLean.L4.G2IntegralEvaluation
-import SICLean.L4.G2SpecialValueBridge
-import SICLean.L4.G2CombResiduesAux
+module
+
+public import SICLean.L4.G2IntegralEvaluation
+public import SICLean.L4.G2SpecialValueBridge
+public import SICLean.L4.G2CombResiduesAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

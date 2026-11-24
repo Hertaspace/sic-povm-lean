@@ -1,5 +1,7 @@
-import SICLean.L5.FiniteCosetMoments
-import SICLean.L5.FiniteInterpolation
+module
+
+public import SICLean.L5.FiniteCosetMoments
+public import SICLean.L5.FiniteInterpolation
 
 /-!
 # From small-coset moments to finite polynomial consequences
@@ -9,6 +11,8 @@ This bridge identifies the `Fin p` digits in the coset formulas of
 The conclusions concern the selected coset. They contain no valuation
 hypothesis and do not state the local Fourier lemma.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

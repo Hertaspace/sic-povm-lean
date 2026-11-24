@@ -1,10 +1,14 @@
-import SICLean.L5.RayArithmeticOrder
-import SICLean.L5.RayArithmeticPlaces
-import SICLean.L5.RayArithmeticModulusAux
-import Nyll.ClassFieldTheory.Definitions.ConductorsAndRayClassFields.RayClassOfFinitePrime
-import Nyll.ClassFieldTheory.Theorems.ConductorsAndRayClassFields.RayPrincipalIdealMembership
-import Nyll.ClassFieldTheory.GlobalClassFieldTheory.GlobalClassFields.PublicRayClassComparison
-import Mathlib.RingTheory.UniqueFactorizationDomain.Finsupp
+module
+
+public import SICLean.L5.RayArithmeticOrder
+public import SICLean.L5.RayArithmeticPlaces
+public import SICLean.L5.RayArithmeticModulusAux
+public import Nyll.ClassFieldTheory.Definitions.ConductorsAndRayClassFields.RayClassOfFinitePrime
+public import Nyll.ClassFieldTheory.Theorems.ConductorsAndRayClassFields.RayPrincipalIdealMembership
+public import Nyll.ClassFieldTheory.GlobalClassFieldTheory.GlobalClassFields.PublicRayClassComparison
+public import Mathlib.RingTheory.UniqueFactorizationDomain.Finsupp
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -171,13 +175,14 @@ theorem principal_mem_primeTo (m : ℕ) (a : Kˣ)
   intro v hv
   rw [← IdeleGroup.fractionalIdeal_principalIdele]
   change FractionalIdeal.count K v
-    (((FractionalIdealGroup.factorization («K» := K))
-      (FiniteIdeleGroup.valuationVector (IdeleGroup.principalIdele K a).2) :
-      FractionalIdealGroup K) : FractionalIdeal (nonZeroDivisors (𝓞 K)) K) = 0
-  rw [FractionalIdealGroup.count_factorization, FiniteIdeleGroup.valuationVector_apply]
+    (((NumberFieldFractionalIdealGroup.factorization («K» := K))
+      (FiniteIdeleGroup.valuationVector
+        (IdeleGroup.finiteCoordinates (IdeleGroup.principalIdele K a))) :
+      NumberFieldFractionalIdealGroup K) : FractionalIdeal (nonZeroDivisors (𝓞 K)) K) = 0
+  rw [NumberFieldFractionalIdealGroup.count_factorization, FiniteIdeleGroup.valuationVector_apply]
   apply (FiniteIdeleGroup.localOrder_eq_zero_iff v
-    ((IdeleGroup.principalIdele K a).2 v)).2
-  apply RayClass.localHigherUnitGroup_le_integralUnits v ((modulus M hM m).finitePart v)
+    (IdeleGroup.finiteCoordinates (IdeleGroup.principalIdele K a) v)).2
+  apply ClassFieldTheory.rayLocalHigherUnitGroup_le_integralUnits v ((modulus M hM m).finitePart v)
   exact ha.1 v hv
 
 def principalClass (m : ℕ) (a : Kˣ) (ha : FiniteCongruent M hM m a) : Group M hM m :=

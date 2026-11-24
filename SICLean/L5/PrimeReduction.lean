@@ -1,4 +1,8 @@
-import SICLean.L5.PrimeValuation
+module
+
+public import SICLean.L5.PrimeValuation
+
+@[expose] public section
 
 set_option autoImplicit false
 

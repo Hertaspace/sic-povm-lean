@@ -1,5 +1,9 @@
-import SICLean.L5.FiniteProductPentagon
-import SICLean.L5.FiniteTranslationRatioAux
+module
+
+public import SICLean.L5.FiniteProductPentagon
+public import SICLean.L5.FiniteTranslationRatioAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

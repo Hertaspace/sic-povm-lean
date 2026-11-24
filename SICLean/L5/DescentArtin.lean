@@ -1,5 +1,9 @@
-import SICLean.L5.DescentSplitPrimes
-import SICLean.L5.DescentRayClass
+module
+
+public import SICLean.L5.DescentSplitPrimes
+public import SICLean.L5.DescentRayClass
+
+@[expose] public section
 
 set_option autoImplicit false
 

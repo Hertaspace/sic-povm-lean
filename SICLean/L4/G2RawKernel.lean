@@ -1,7 +1,11 @@
-import SICLean.L4.G2ContourChain
-import SICLean.L4.ModularCocycle
-import SICLean.L4.FaddeevSectorDecay
-import SICLean.L4.G2RawKernelAux
+module
+
+public import SICLean.L4.G2ContourChain
+public import SICLean.L4.ModularCocycle
+public import SICLean.L4.FaddeevSectorDecay
+public import SICLean.L4.G2RawKernelAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

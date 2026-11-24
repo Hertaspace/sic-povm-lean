@@ -1,6 +1,10 @@
-import SICLean.L5.SplitPrimeValues
-import SICLean.L5.DistributionGeneralValues
-import SICLean.L5.OddPrimeUnits
+module
+
+public import SICLean.L5.SplitPrimeValues
+public import SICLean.L5.DistributionGeneralValues
+public import SICLean.L5.OddPrimeUnits
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -131,7 +135,7 @@ theorem powerPeriod_oneMod_of_common (P : PeriodData K) {p : ℕ} (hp : p.Prime)
       (residueOrder_pos P r)) = epsilonInteger P ^ residueOrder P r := by
     apply NumberField.RingOfIntegers.coe_injective
     rfl
-  rw [heps, ← h.2, ← Ideal.inf_eq_mul_of_isCoprime hcop]
+  rw [heps, ← h.2, Ideal.mul_eq_inf_of_isCoprime hcop]
   exact ⟨hr, hq⟩
 
 theorem powerPeriod_oneMod (P : PeriodData K) {p : ℕ} (hp : p.Prime)
@@ -338,7 +342,6 @@ theorem sf_orbitTranslate_length (P : PeriodData K) (I J : StablePseudolattice P
       (fibrePerm P I J hIJ 0) (fibrePerm P I J hIJ (periodProject P I J hIJ x))
       (sf_fibreTranslate_comm P I J hIJ x) (orbitRepresentative P I J hIJ 0 o)).symm
 
-
 theorem sf_toAmbient_inclusion (P : PeriodData K) (I : StablePseudolattice P)
     (d : ℕ) (hd : 0 < d) (x : PseudolatticeGroup P I) :
     toAmbient (powPeriod P d hd) (powLattice P I d hd)
@@ -392,7 +395,6 @@ theorem sf_orbitTranslate_value (P : PeriodData K) (I J : StablePseudolattice P)
   rw [map_add, sf_toAmbient_inclusion, hz]
   exact sf_orbitTranslate_ambient P I J hIJ x o
 
-
 theorem sf_orbitTranslate_zeroValue (P : PeriodData K) (I J : StablePseudolattice P)
     (hIJ : I.val ≤ J.val) (x : PseudolatticeGroup P I)
     (o : Orbit P I J hIJ 0) (ho : (orbitRepresentative P I J hIJ 0 o).val = 0) :
@@ -435,7 +437,6 @@ theorem sf_distribution_ratio (P : PeriodData K) (I J : StablePseudolattice P)
       rw [Finset.prod_div_distrib]
       unfold orbitProduct
       rw [(sf_orbitTranslate P I J hIJ x).prod_comp]
-
 
 theorem sf_normalized_distribution_complex (P : PeriodData K) (I J : StablePseudolattice P)
     (hIJ : I.val ≤ J.val) (d : ℕ) (hd : 0 < d)

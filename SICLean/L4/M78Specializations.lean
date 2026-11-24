@@ -1,5 +1,9 @@
-import SICLean.L4.M78Transport
-import SICLean.L4.M78SpecializationsAux
+module
+
+public import SICLean.L4.M78Transport
+public import SICLean.L4.M78SpecializationsAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,6 +1,10 @@
-import SICLean.L5.RayArithmeticSigns
-import SICLean.L5.ClassFieldInfinite
-import SICLean.L5.DescentRayClassAux
+module
+
+public import SICLean.L5.RayArithmeticSigns
+public import SICLean.L5.ClassFieldInfinite
+public import SICLean.L5.DescentRayClassAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

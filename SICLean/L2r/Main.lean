@@ -1,4 +1,8 @@
-import SICLean.L2r.Ghost
+module
+
+public import SICLean.L2r.Ghost
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,4 +1,8 @@
-import SICLean.L4.FaddeevRotatedContour
+module
+
+public import SICLean.L4.FaddeevRotatedContour
+
+@[expose] public section
 
 set_option autoImplicit false
 

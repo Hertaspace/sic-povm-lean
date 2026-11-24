@@ -1,4 +1,8 @@
-import SICLean.L4.UpperWindowCompact
+module
+
+public import SICLean.L4.UpperWindowCompact
+
+@[expose] public section
 
 set_option autoImplicit false
 

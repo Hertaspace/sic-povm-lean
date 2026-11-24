@@ -1,4 +1,8 @@
-import SICLean.Galois.AlgebraicClosure
+module
+
+public import SICLean.Galois.AlgebraicClosure
+
+@[expose] public section
 
 set_option autoImplicit false
 

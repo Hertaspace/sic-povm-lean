@@ -1,6 +1,10 @@
-import SICLean.L5.ConjugationStrip
-import SICLean.L5.ConjugationContinuationAux
-import SICLean.L4.ModularPhi
+module
+
+public import SICLean.L5.ConjugationStrip
+public import SICLean.L5.ConjugationContinuationAux
+public import SICLean.L4.ModularPhi
+
+@[expose] public section
 
 set_option autoImplicit false
 

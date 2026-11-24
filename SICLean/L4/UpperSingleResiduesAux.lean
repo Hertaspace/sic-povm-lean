@@ -1,7 +1,11 @@
-import SICLean.L4.UpperResidueParameters
-import SICLean.L4.UpperResidueIndex
-import SICLean.L4.UpperWindowCompactAux
-import SICLean.L4.UpperContourClosure
+module
+
+public import SICLean.L4.UpperResidueParameters
+public import SICLean.L4.UpperResidueIndex
+public import SICLean.L4.UpperWindowCompactAux
+public import SICLean.L4.UpperContourClosure
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -416,6 +420,5 @@ lemma single_qKernel_residue (M : SL(2, ℤ)) (hM : 0 < M 1 0)
     rw [pole_qProduct_expression M hM m n x.1 hτ k hk]
     dsimp only [Function.comp_apply, z₀, q, Q, T]
     ring)
-
 
 end SICLean.L4.UpperSingleResiduesAux

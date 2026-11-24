@@ -1,4 +1,8 @@
-import SICLean.L5.FiniteFourier
+module
+
+public import SICLean.L5.FiniteFourier
+
+@[expose] public section
 
 set_option autoImplicit false
 

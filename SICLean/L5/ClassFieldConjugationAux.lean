@@ -1,9 +1,13 @@
-import Nyll.ClassFieldTheory.Definitions.FrobeniusAndHilbertClassFields.ArithmeticFrobeniusAt
-import Nyll.ClassFieldTheory.Theorems.ConductorsAndRayClassFields.RayClassGroupHomExtFinitePrime
-import Mathlib.RingTheory.Frobenius
-import Mathlib.NumberTheory.RamificationInertia.Unramified
-import SICLean.L5.ClassFieldIdealAction
-import SICLean.L5.ClassFieldTransport
+module
+
+public import Nyll.ClassFieldTheory.Definitions.FrobeniusAndHilbertClassFields.ArithmeticFrobeniusAt
+public import Nyll.ClassFieldTheory.Theorems.ConductorsAndRayClassFields.RayClassGroupHomExtFinitePrime
+public import Mathlib.RingTheory.Frobenius
+public import Mathlib.NumberTheory.RamificationInertia.Unramified
+public import SICLean.L5.ClassFieldIdealAction
+public import SICLean.L5.ClassFieldTransport
+
+@[expose] public section
 
 set_option autoImplicit false
 

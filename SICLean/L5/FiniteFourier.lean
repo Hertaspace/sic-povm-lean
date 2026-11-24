@@ -1,6 +1,10 @@
-import SICLean.Final.Unconditional
-import SICLean.L4.M75Gaussian
-import SICLean.L5.FiniteFourierAux
+module
+
+public import SICLean.Final.Unconditional
+public import SICLean.L4.M75Gaussian
+public import SICLean.L5.FiniteFourierAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

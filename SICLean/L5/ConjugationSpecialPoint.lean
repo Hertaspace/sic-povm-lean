@@ -1,5 +1,9 @@
-import SICLean.L5.ConjugationModular
-import SICLean.L4.SpecialValueReflection
+module
+
+public import SICLean.L5.ConjugationModular
+public import SICLean.L4.SpecialValueReflection
+
+@[expose] public section
 
 set_option autoImplicit false
 

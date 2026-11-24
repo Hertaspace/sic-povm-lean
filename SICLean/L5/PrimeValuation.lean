@@ -1,5 +1,9 @@
-import SICLean.L5.PrimePlace
-import SICLean.L3.ValuationSupport
+module
+
+public import SICLean.L5.PrimePlace
+public import SICLean.L3.ValuationSupport
+
+@[expose] public section
 
 set_option autoImplicit false
 

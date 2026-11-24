@@ -1,4 +1,8 @@
-import SICLean.L4.G2PoleSeparation
+module
+
+public import SICLean.L4.G2PoleSeparation
+
+@[expose] public section
 
 set_option autoImplicit false
 

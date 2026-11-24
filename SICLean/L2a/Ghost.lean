@@ -1,6 +1,10 @@
-import SICLean.L2a.Quadratic
+module
+
+public import SICLean.L2a.Quadratic
 
 /-! # From Input A to the ghost and its exact overlap formula -/
+
+@[expose] public section
 
 noncomputable section
 

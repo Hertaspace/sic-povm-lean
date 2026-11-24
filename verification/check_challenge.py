@@ -112,7 +112,8 @@ def main():
     # The line that opens the namespace is checked as well, so that it cannot sit in a comment.
     code = strip_comments(head + NAMESPACE)
     lines = [line.strip() for line in code.splitlines() if line.strip()]
-    if lines != ['import Mathlib', 'noncomputable section', NAMESPACE.strip()]:
+    if lines != ['module', 'public import Mathlib', '@[expose] public section',
+                 'noncomputable section', NAMESPACE.strip()]:
         fail(f'unexpected text before the declarations of {CHALLENGE}: {lines}')
     if CONTEXT not in original:
         fail(f'{ORIGINAL} does not open the namespace in a noncomputable section')

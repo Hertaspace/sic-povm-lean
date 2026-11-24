@@ -1,17 +1,20 @@
-import SICLean.L5.SplitPrimeLattice
-import SICLean.L5.SplitGroupRing
-import SICLean.L5.SplitPrimeGeometryAux
-import Mathlib.GroupTheory.Torsion
-import Mathlib.RingTheory.Noetherian.UniqueFactorizationDomain
-import Mathlib.RingTheory.UniqueFactorizationDomain.Multiplicity
+module
 
-import Mathlib.Data.ZMod.Basic
-import Mathlib.Algebra.Field.ZMod
-import Mathlib.Algebra.Group.Subgroup.Finite
-import Mathlib.Algebra.Module.Prod
-import Mathlib.Data.Matrix.Mul
-import Mathlib.Tactic.FinCases
-import Mathlib.Tactic.Ring
+public import SICLean.L5.SplitPrimeLattice
+public import SICLean.L5.SplitGroupRing
+public import SICLean.L5.SplitPrimeGeometryAux
+public import Mathlib.GroupTheory.Torsion
+public import Mathlib.RingTheory.Noetherian.UniqueFactorizationDomain
+public import Mathlib.RingTheory.UniqueFactorizationDomain.Multiplicity
+public import Mathlib.Data.ZMod.Basic
+public import Mathlib.Algebra.Field.ZMod
+public import Mathlib.Algebra.Group.Subgroup.Finite
+public import Mathlib.Algebra.Module.Prod
+public import Mathlib.Data.Matrix.Mul
+public import Mathlib.Tactic.FinCases
+public import Mathlib.Tactic.Ring
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option backward.isDefEq.respectTransparency.types false
@@ -298,6 +301,5 @@ theorem projected_pTorsion (P : PeriodData K) (I : StablePseudolattice P)
   apply AddCommGroup.mem_primaryComponent.mpr
   refine ⟨1, ?_⟩
   simpa only [pow_one, ← map_nsmul, hu, map_zero]
-
 
 end SICLean.L5.SplitPrimeGeometry

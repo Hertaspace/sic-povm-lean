@@ -1,4 +1,8 @@
-import SICLean.Final.Unconditional
+module
+
+public import SICLean.Final.Unconditional
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -64,7 +68,7 @@ theorem real_adjoin (x : Galois.Qbar) (hx : (Galois.embed x).im = 0) :
       (Galois.embed (a : Galois.Qbar)).im = 0 := by
   intro a
   refine IntermediateField.adjoin_induction ℚ
-    (p := fun y _ => (Galois.embed y).im = 0) ?_ ?_ ?_ ?_ ?_ a.property
+    (motive := fun y _ => (Galois.embed y).im = 0) ?_ ?_ ?_ ?_ ?_ a.property
   · intro y hy
     have hyx : y = x := Set.mem_singleton_iff.mp hy
     simpa [hyx] using hx
@@ -199,6 +203,5 @@ theorem inducesNontrivial_iff_trace_sub
     apply Galois.embed.injective
     change Galois.embed (σ (x : Galois.Qbar)) = Galois.embed (κ x : Galois.Qbar)
     rw [hσ x, hf (κ x), trace_sub_eq_conjugate hK f κ hκ x]
-
 
 end SICLean.L5.ActualQuadraticFieldAux

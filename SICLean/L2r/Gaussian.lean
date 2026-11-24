@@ -1,4 +1,8 @@
-import SICLean.L2r.Group
+module
+
+public import SICLean.L2r.Group
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -41,7 +45,6 @@ def quadraticForm (d r : ℕ) (p : ℤ × ℤ) : ℤ :=
 
 def torsionGaussian (d r : ℕ) (p : Index d) : ℂ :=
   L2a.e d ((r : ℤ) * quadraticForm d r (lift p))
-
 
 private theorem conicZ {d r : ℕ} (h : Admissible d r) :
     (gap d r) ^ 2 - ((cofactor d r : ℕ) : ℤ) * (r : ℤ) * ((d : ℤ) - r) = 1 := by
@@ -91,7 +94,6 @@ private theorem gamma01x {d r : ℕ} :
 private theorem gamma11x {d r : ℕ} :
     gamma d r (1:Fin 2) (1:Fin 2) = (ell d r : ℤ) * (r:ℤ)^2 - 2*((d:ℤ)-r)*(r:ℤ) := by
   simp [gamma, beta, alpha, pow_two, Matrix.mul_apply, Fin.sum_univ_two]; ring
-
 
 private theorem d_ne_zero {d r : ℕ} (h : Admissible d r) : d ≠ 0 := by
   have := h.main_range; omega
@@ -162,7 +164,6 @@ private theorem neg_one_eq2n {d r : ℕ} (h : Admissible d r) (t : ℤ) :
   rw [← e_two_eq_neg_one]
   exact e_mod_cast (longModulus d r) 2 (2 * longModulus d r)
     (longModulus_ne_zero h) two_ne_zero (by ring) t
-
 
 private theorem periodDifference_eq_aux {d r : ℕ} (h : Admissible d r) (x y : ℤ) :
     actOnCoordinates (gamma d r) (pointLift d r x y) - pointLift d r x y =
@@ -303,7 +304,6 @@ private theorem periodMatrix_det {d r : ℕ} (h : Admissible d r) :
   simp [periodMatrix]
   simp only [gap]
   linear_combination principal_conic h
-
 
 private theorem alternating_eq {d r : ℕ} (h : Admissible d r) (x y : ℤ) :
     alternating (pointLift d r x y) (actOnCoordinates (gamma d r) (pointLift d r x y)) =
@@ -518,7 +518,6 @@ private theorem pairing_rw_formula_aux (d r : ℕ) [Fact (Admissible d r)] (x y 
   rw [longModulus_castZ h, cofactor_castZ h]
   ring
 
-
 private theorem G_eq_coordinate {d r : ℕ} [Fact (Admissible d r)] (g : G d r) :
     g = coordinate d r (g.1.val : ℤ) (g.2.val : ℤ) := by
   have h : Admissible d r := Fact.out
@@ -621,7 +620,6 @@ private theorem level_eq_ell_add_two {d r : ℕ} (h : Admissible d r) : level d 
 private theorem level_eq_cofactor_add_four {d r : ℕ} (h : Admissible d r) :
     (level d r : ℤ) = (cofactor d r : ℤ) + 4 := by
   rw [cofactor_castZ h, level_eq_ell_add_two h]; push_cast; ring
-
 
 private theorem pairing_witnessY_aux (d r : ℕ) [Fact (Admissible d r)] (p q : Index d) :
     L2b.metricPairing (gaussian d r) (witnessY d r p) (iota d r q) =
@@ -906,7 +904,6 @@ private theorem pairing_iota_formula (d r : ℕ) [Fact (Admissible d r)] (g : G 
   refine ⟨0, ?_⟩
   ring
 
-
 private theorem forall_e_d_iff (d : ℕ) [NeZero d] [Fact (1 < d)] (a b : ℤ) :
     (∀ p : Index d, L2a.e d (a * (p.1.val : ℤ) + b * (p.2.val : ℤ)) = 1) ↔
       ((d : ℤ) ∣ a ∧ (d : ℤ) ∣ b) := by
@@ -1184,7 +1181,6 @@ private theorem gaussian_rw_row_formula_aux {d r : ℕ} (h : Admissible d r) (x 
   rw [longModulus_castZ h, ← hcdef]
   linear_combination (-((d : ℤ) ^ 2 * c)) * hu
 
-
 private theorem torsion_character_sum_aux (d r : ℕ) [Fact (Admissible d r)] (g : G d r) :
     letI : NeZero d := admissibleDimensionNeZero d r
     (∑ p : Index d, L2b.metricPairing (gaussian d r) g (iota d r p)) =
@@ -1216,8 +1212,6 @@ private theorem torsion_character_sum_aux (d r : ℕ) [Fact (Admissible d r)] (g
       fun hc => hg ((small_subgroup_condition (d := d) (r := r) g).2 hc)
     rw [if_neg hcond]
     rw [if_neg hg]
-
-
 
 theorem periodDifference_eq {d r : ℕ} (h : Admissible d r) (x y : ℤ) :
     actOnCoordinates (gamma d r) (pointLift d r x y) - pointLift d r x y =

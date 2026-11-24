@@ -1,5 +1,9 @@
-import SICLean.L2rc.FiniteAux
-import SICLean.L2rc.Inputs
+module
+
+public import SICLean.L2rc.FiniteAux
+public import SICLean.L2rc.Inputs
+
+@[expose] public section
 
 set_option autoImplicit false
 

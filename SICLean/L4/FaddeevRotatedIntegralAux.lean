@@ -1,4 +1,8 @@
-import SICLean.L4.FaddeevRotatedBounds
+module
+
+public import SICLean.L4.FaddeevRotatedBounds
+
+@[expose] public section
 
 set_option autoImplicit false
 

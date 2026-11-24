@@ -1,4 +1,8 @@
-import SICLean.L5.FiniteGaloisEnvelope
+module
+
+public import SICLean.L5.FiniteGaloisEnvelope
+
+@[expose] public section
 
 set_option autoImplicit false
 

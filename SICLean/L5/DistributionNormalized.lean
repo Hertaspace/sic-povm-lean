@@ -1,7 +1,11 @@
-import SICLean.L5.DistributionGeneralValues
-import SICLean.L5.DistributionSubgroupLattice
-import SICLean.L4.DistributionValues
-import SICLean.L5.DistributionNormalizedAux
+module
+
+public import SICLean.L5.DistributionGeneralValues
+public import SICLean.L5.DistributionSubgroupLattice
+public import SICLean.L4.DistributionValues
+public import SICLean.L5.DistributionNormalizedAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

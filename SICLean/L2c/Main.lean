@@ -1,4 +1,8 @@
-import SICLean.L2c.Finite
+module
+
+public import SICLean.L2c.Finite
+
+@[expose] public section
 
 set_option autoImplicit false
 

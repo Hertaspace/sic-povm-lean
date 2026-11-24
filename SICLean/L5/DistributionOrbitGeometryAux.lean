@@ -1,7 +1,11 @@
-import SICLean.L5.PeriodPowerData
-import Mathlib.GroupTheory.Index
-import Mathlib.LinearAlgebra.FreeModule.Finite.Quotient
-import Mathlib.GroupTheory.Perm.Basic
+module
+
+public import SICLean.L5.PeriodPowerData
+public import Mathlib.GroupTheory.Index
+public import Mathlib.LinearAlgebra.FreeModule.Finite.Quotient
+public import Mathlib.GroupTheory.Perm.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -58,10 +62,14 @@ variable {K : Type u} [Field K] [NumberField K]
 
 /-- The quotient of two contained full integer lattices is finite. -/
 theorem lattice_quotient_finite (I J : Submodule ℤ K)
-    (hI : Submodule.IsLattice ℚ I) (hJ : Submodule.IsLattice ℚ J) (hIJ : I ≤ J) :
+    (hI : Submodule.IsFullLattice ℚ I) (hJ : Submodule.IsFullLattice ℚ J) (hIJ : I ≤ J) :
     Finite (J ⧸ I.submoduleOf J) := by
-  have : Submodule.IsLattice ℚ I := hI
-  have : Submodule.IsLattice ℚ J := hJ
+  have : Submodule.IsFullLattice ℚ I := hI
+  have : Submodule.IsFullLattice ℚ J := hJ
+  haveI : Module.Free ℤ J := Submodule.IsLattice.free ℚ J
+  haveI : Module.Finite ℤ J := Submodule.IsLattice.finite ℚ J
+  haveI : Module.Free ℤ I := Submodule.IsLattice.free ℚ I
+  haveI : Module.Finite ℤ I := Submodule.IsLattice.finite ℚ I
   apply Submodule.finiteQuotientOfFreeOfRankEq
   calc
     Module.finrank ℤ (I.submoduleOf J) = Module.finrank ℤ I :=
@@ -72,7 +80,7 @@ theorem lattice_quotient_finite (I J : Submodule ℤ K)
 
 /-- A contained full integer lattice has positive relative index. -/
 theorem lattice_relIndex_pos (I J : Submodule ℤ K)
-    (hI : Submodule.IsLattice ℚ I) (hJ : Submodule.IsLattice ℚ J) (hIJ : I ≤ J) :
+    (hI : Submodule.IsFullLattice ℚ I) (hJ : Submodule.IsFullLattice ℚ J) (hIJ : I ≤ J) :
     0 < I.toAddSubgroup.relIndex J.toAddSubgroup := by
   have : Finite (J.toAddSubgroup ⧸ I.toAddSubgroup.addSubgroupOf J.toAddSubgroup) :=
     lattice_quotient_finite I J hI hJ hIJ
@@ -80,7 +88,7 @@ theorem lattice_relIndex_pos (I J : Submodule ℤ K)
 
 /-- Each ambient quotient fibre is finite, and its cardinality is the lattice index. -/
 theorem lattice_fibre_finite_card (I J : Submodule ℤ K)
-    (hI : Submodule.IsLattice ℚ I) (hJ : Submodule.IsLattice ℚ J) (hIJ : I ≤ J)
+    (hI : Submodule.IsFullLattice ℚ I) (hJ : Submodule.IsFullLattice ℚ J) (hIJ : I ≤ J)
     (y : K ⧸ J.toAddSubgroup) :
     Finite {x : K ⧸ I.toAddSubgroup //
         quotientProject I.toAddSubgroup J.toAddSubgroup hIJ x = y} ∧

@@ -1,5 +1,9 @@
-import SICLean.L4.QProduct
-import Mathlib.Analysis.SpecialFunctions.Complex.Arg
+module
+
+public import SICLean.L4.QProduct
+public import Mathlib.Analysis.SpecialFunctions.Complex.Arg
+
+@[expose] public section
 
 set_option autoImplicit false
 

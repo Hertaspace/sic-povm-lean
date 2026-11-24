@@ -1,4 +1,8 @@
-import SICLean.L5.ConjugationStripAux
+module
+
+public import SICLean.L5.ConjugationStripAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

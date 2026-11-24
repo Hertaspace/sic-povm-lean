@@ -1,6 +1,10 @@
-import SICLean.L4.UpperWindowParameters
-import SICLean.L4.ModularDivisor
-import SICLean.L4.UpperWindowDivisorAux
+module
+
+public import SICLean.L4.UpperWindowParameters
+public import SICLean.L4.ModularDivisor
+public import SICLean.L4.UpperWindowDivisorAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

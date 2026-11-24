@@ -1,6 +1,10 @@
-import SICLean.L4.ModularDivisor
-import SICLean.L4.DistributionLatticeAux
-import SICLean.L4.DistributionLatticeAux2
+module
+
+public import SICLean.L4.ModularDivisor
+public import SICLean.L4.DistributionLatticeAux
+public import SICLean.L4.DistributionLatticeAux2
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -599,7 +603,6 @@ theorem distributionPeriodPoints_first_injective (B : DistributionBasis) (hB : B
     change (distributionPeriod B - 1) * x.2 = (distributionPeriod B - 1) * y.2 at h
     exact mul_left_cancel₀ hε h
   ext <;> assumption
-
 
 /-- The period action preserves the actual lattice. -/
 theorem distributionLattice_map_action (B : DistributionBasis) (hB : B.Valid) :

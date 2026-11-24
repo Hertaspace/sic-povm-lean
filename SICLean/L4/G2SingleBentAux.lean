@@ -1,4 +1,8 @@
-import SICLean.L4.G2ResidueLedger
+module
+
+public import SICLean.L4.G2ResidueLedger
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,6 +1,10 @@
-import SICLean.L4.G1PinchGeometry
-import SICLean.L4.ModularSectorBilateral
-import SICLean.L4.G1RatioTailBoundsAux
+module
+
+public import SICLean.L4.G1PinchGeometry
+public import SICLean.L4.ModularSectorBilateral
+public import SICLean.L4.G1RatioTailBoundsAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

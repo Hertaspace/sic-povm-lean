@@ -1,5 +1,9 @@
-import SICLean.L5.PeriodPowerData
-import Mathlib.Algebra.Ring.GeomSum
+module
+
+public import SICLean.L5.PeriodPowerData
+public import Mathlib.Algebra.Ring.GeomSum
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,4 +1,8 @@
-import SICLean.L4.M74Equations
+module
+
+public import SICLean.L4.M74Equations
+
+@[expose] public section
 
 set_option autoImplicit false
 

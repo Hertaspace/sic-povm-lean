@@ -1,5 +1,9 @@
-import SICLean.L4.UpperContourBounds
-import SICLean.L4.UpperContourUpperArcAux
+module
+
+public import SICLean.L4.UpperContourBounds
+public import SICLean.L4.UpperContourUpperArcAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

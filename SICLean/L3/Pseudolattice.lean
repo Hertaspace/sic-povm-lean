@@ -1,7 +1,11 @@
-import Mathlib.Algebra.Module.Lattice
-import Mathlib.Algebra.Algebra.Operations
-import Mathlib.NumberTheory.NumberField.Basic
-import Mathlib.Data.Real.Basic
+module
+
+public import Mathlib.Algebra.Module.Lattice
+public import Mathlib.Algebra.Algebra.Operations
+public import Mathlib.NumberTheory.NumberField.Basic
+public import Mathlib.Data.Real.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -9,7 +13,7 @@ set_option autoImplicit false
 # Arithmetic pseudolattices and positive homothety
 
 A pseudolattice is a full finitely generated integer submodule of the number
-field, using `Submodule.IsLattice ℚ`, rather than an arbitrary pair of
+field, using `Submodule.IsFullLattice ℚ`, rather than an arbitrary pair of
 real-scaled coordinates. No class-group finiteness or analytic conclusion is
 an input.
 -/
@@ -47,7 +51,7 @@ def PeriodStable (P : PeriodData K) (I : Submodule ℤ K) : Prop :=
 /-- Full integer lattices stable under the fixed period. In particular,
 neither invertibility over `ℤ[ε]` nor maximal-order stability is assumed. -/
 abbrev StablePseudolattice (P : PeriodData K) :=
-  { I : Submodule ℤ K // Submodule.IsLattice ℚ I ∧ PeriodStable P I }
+  { I : Submodule ℤ K // Submodule.IsFullLattice ℚ I ∧ PeriodStable P I }
 
 def TotallyPositive (P : PeriodData K) (lam : K) : Prop :=
   0 < P.sigma₁ lam ∧ 0 < P.sigma₂ lam
@@ -166,17 +170,32 @@ theorem pseudolatticeScale_inv (lam : K) (hlam : lam ≠ 0) (I : Submodule ℤ K
   · rw [← pseudolatticeScale_mul, mul_inv_cancel₀ hlam, pseudolatticeScale_one]
 
 /- Nonzero field scaling preserves a full integer lattice. -/
+open scoped Pointwise in
 theorem pseudolatticeScale_isLattice (I : Submodule ℤ K)
-    (hI : Submodule.IsLattice ℚ I) (lam : K) (hlam : lam ≠ 0) :
-    Submodule.IsLattice ℚ (pseudolatticeScale lam I) := by
-  letI : Submodule.IsLattice ℚ I := hI
-  constructor
-  · exact hI.fg.map (LinearMap.mulLeft ℤ lam)
-  · have hsurj : Function.Surjective (LinearMap.mulLeft ℚ lam) := fun x =>
-      ⟨lam⁻¹ * x, by
-        change lam * (lam⁻¹ * x) = x
-        rw [← mul_assoc, mul_inv_cancel₀ hlam, one_mul]⟩
-    calc Submodule.span ℚ ((pseudolatticeScale lam I : Submodule ℤ K) : Set K)
+    (hI : Submodule.IsFullLattice ℚ I) (lam : K) (hlam : lam ≠ 0) :
+    Submodule.IsFullLattice ℚ (pseudolatticeScale lam I) := by
+  have hlat : Submodule.IsLattice ℚ I := hI.toIsLattice
+  have hsurj : Function.Surjective (LinearMap.mulLeft ℚ lam) := fun x =>
+    ⟨lam⁻¹ * x, by
+      change lam * (lam⁻¹ * x) = x
+      rw [← mul_assoc, mul_inv_cancel₀ hlam, one_mul]⟩
+  let a : Kˣ := Units.mk0 lam hlam
+  refine { fg := ?_, linearIndepOn := ?_, span_eq_top := ?_ }
+  · exact (Submodule.IsLattice.fg ℚ I).map (LinearMap.mulLeft ℤ lam)
+  · intro s hs hli
+    have h1 : a⁻¹ • s ⊆ (I : Set K) := by
+      rintro _ ⟨x, hx, rfl⟩
+      obtain ⟨y, hy, rfl⟩ := (pseudolatticeScale_mem_iff lam x I).1 (hs hx)
+      have h : lam⁻¹ * (lam * y) = y := by
+        rw [← mul_assoc, inv_mul_cancel₀ hlam, one_mul]
+      change lam⁻¹ * (lam * y) ∈ (I : Set K)
+      rw [h]
+      exact hy
+    have h2 : LinearIndepOn ℤ id (a⁻¹ • s) :=
+      (linearIndepOn_id_smul_set_iff (R := ℤ) a⁻¹ s).2 hli
+    exact (linearIndepOn_id_smul_set_iff (R := ℚ) a⁻¹ s).1
+      (hlat.linearIndepOn _ h1 h2)
+  · calc Submodule.span ℚ ((pseudolatticeScale lam I : Submodule ℤ K) : Set K)
         = Submodule.span ℚ ((LinearMap.mulLeft ℚ lam) '' (I : Set K)) := rfl
       _ = (Submodule.span ℚ (I : Set K)).map (LinearMap.mulLeft ℚ lam) :=
         (Submodule.map_span _ _).symm
@@ -192,17 +211,19 @@ theorem pseudolatticeScale_periodStable (P : PeriodData K) (I : Submodule ℤ K)
 
 /- A pseudolattice has integer rank two; `Submodule.IsLattice.rank'` transfers the rational rank. -/
 theorem pseudolattice_finrank (P : PeriodData K) (I : Submodule ℤ K)
-    (hI : Submodule.IsLattice ℚ I) : Module.finrank ℤ I = 2 := by
-  letI : Submodule.IsLattice ℚ I := hI
+    (hI : Submodule.IsFullLattice ℚ I) : Module.finrank ℤ I = 2 := by
+  letI : Submodule.IsFullLattice ℚ I := hI
   have hrank : Module.rank ℤ I = (2 : Cardinal) := by
-    rw [Submodule.IsLattice.rank' ℚ I, ← Module.finrank_eq_rank, P.finrank_eq_two]
+    rw [Submodule.IsFullLattice.rank_eq ℚ I, ← Module.finrank_eq_rank, P.finrank_eq_two]
     norm_num
   exact Module.finrank_eq_of_rank_eq hrank
 
 /- The rank-two integer lattice has a two-element basis before admissibility is imposed. -/
 theorem pseudolattice_exists_basis (P : PeriodData K) (I : Submodule ℤ K)
-    (hI : Submodule.IsLattice ℚ I) : Nonempty (Module.Basis (Fin 2) ℤ I) := by
-  letI : Submodule.IsLattice ℚ I := hI
+    (hI : Submodule.IsFullLattice ℚ I) : Nonempty (Module.Basis (Fin 2) ℤ I) := by
+  letI : Submodule.IsFullLattice ℚ I := hI
+  haveI : Module.Free ℤ I := Submodule.IsLattice.free ℚ I
+  haveI : Module.Finite ℤ I := Submodule.IsLattice.finite ℚ I
   have hfr : Module.finrank ℤ I = 2 := pseudolattice_finrank P I hI
   have hcard : Fintype.card (Module.Free.ChooseBasisIndex ℤ I) = 2 := by
     rw [← Module.finrank_eq_card_chooseBasisIndex, hfr]

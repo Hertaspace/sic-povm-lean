@@ -1,6 +1,11 @@
 -- Usage, after `lake build`: lake env lean verification/list_consts.lean
 -- then: lake env leanexport SICLean -- $(cat project-consts.txt) > project-export.ndjson
-import SICLean
+module
+
+public import SICLean
+
+@[expose] public section
+
 open Lean Elab Command in
 /-- Write the names of the constants of the SICLean and CebotarevDensity modules, one per line,
 leaving out unsafe and partial definitions. No theorem can use these, and leanexport leaves out

@@ -1,5 +1,9 @@
-import SICLean.L4.G1ContinuationStrict
-import Mathlib.Analysis.Analytic.Uniqueness
+module
+
+public import SICLean.L4.G1ContinuationStrict
+public import Mathlib.Analysis.Analytic.Uniqueness
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -987,7 +991,6 @@ lemma pullback_integral_joint_analytic {μ : Measure ℝ}
       (analyticAt_const.prod analyticAt_id)).mul analyticAt_const
   · exact hB
   · exact hBi
-
 
 lemma integrable_pullback_of_domination
     {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]

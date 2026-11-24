@@ -1,6 +1,10 @@
-import SICLean.L4.ModularPhi
-import SICLean.L4.ModularCocycleMatrixAux
-import SICLean.L4.ModularCocycleAux
+module
+
+public import SICLean.L4.ModularPhi
+public import SICLean.L4.ModularCocycleMatrixAux
+public import SICLean.L4.ModularCocycleAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

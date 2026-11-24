@@ -1,5 +1,9 @@
-import SICLean.L4.M74Coefficients
-import SICLean.L4.M74EquationsAux
+module
+
+public import SICLean.L4.M74Coefficients
+public import SICLean.L4.M74EquationsAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

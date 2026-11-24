@@ -1,8 +1,10 @@
-import SICLean.L4.FaddeevHolomorphic
-import SICLean.L4.ModularClusterIntegralsAux
-import SICLean.L4.G1ContinuationCircles
-import SICLean.L4.G1BilateralSingleTails
-import SICLean.L4.G1BilateralRatioTails
+module
+
+public import SICLean.L4.FaddeevHolomorphic
+public import SICLean.L4.ModularClusterIntegralsAux
+public import SICLean.L4.G1ContinuationCircles
+public import SICLean.L4.G1BilateralSingleTails
+public import SICLean.L4.G1BilateralRatioTails
 
 /-!
 # Auxiliary proofs for moving G1 integral charts
@@ -12,6 +14,8 @@ explicit angular buffer for bounded affine offsets. The parameter-integral lemma
 derivative bounds and a common integrable majorant. The finite-label bent-graph criterion supplies
 open charts and actual contour regularity, including reciprocal zeros.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -150,8 +154,6 @@ lemma connectors_tendsto_of_tail (f : ℂ → ℂ) (a b C κ R₀ : ℝ) (hκ : 
   change Tendsto (fun R : ℝ => G1RatioTail.horizontalIntegral f a b (-R) -
     G1RatioTail.horizontalIntegral f a b R) atTop (𝓝 0)
   convert hn.sub hp using 1 <;> simp only [sub_self]
-
-
 
 lemma integral_differentiableOn_of_domination
     {E : Type*} [NormedAddCommGroup E] [NormedSpace ℂ E]
@@ -312,9 +314,6 @@ lemma pullback_setIntegral_analyticOn_three
     AnalyticOnNhd ℂ (fun u => ∫ t in S, K (z t, u) * j t ∂μ) U :=
   differentiableOn_analyticOnNhd_three
     (pullback_setIntegral_differentiableOn hS hU hz hj hK hB hBi) hU
-
-
-
 
 /-- An arbitrary leading direction with a positive angular buffer. -/
 theorem affine_sector (β κ ε A : ℝ) (hβ : 0 ≤ β) (hκ : 0 < κ)
@@ -606,8 +605,6 @@ theorem compact_modular_reflected_ray_bound (M : SL(2, ℤ)) (hM : 0 < M 1 0)
   rw [h₁, h₂, add_comm]
   simpa only [z, neg_neg, ModularSector.reflectedIndex] using hub.2
 
-
-
 open G1Continuation
 
 lemma bent_ineq_iff (z : ℂ) (x t : ℝ) (ht : 0 ≤ t) :
@@ -694,7 +691,6 @@ lemma bent_slope_pos (T : ℂ) (ψ : ℝ) (hT : 0 < T.re)
   have hmul := mul_lt_mul_of_pos_right him htpos
   nlinarith
 
-
 lemma single_admissible_isOpen (M : SL(2, ℤ)) (hM : 0 < M 1 0)
     (n h ell m : ℤ) (x ψ : ℝ) :
     IsOpen {u : ℂ × ℂ | u.1 ∈ modularPhiDomain M ∧
@@ -758,7 +754,6 @@ lemma single_admissible_isOpen (M : SL(2, ℤ)) (hM : 0 < M 1 0)
   exact (bentClear_iff_finite M hM v.1 n m x ψ ht hvRe.le
     (bent_slope_pos (etaDenom M v.1) ψ hvRe hψ hψ' hvArg).le).mpr hvfin
 
-
 lemma holomorphic_of_bent_graph (M : SL(2, ℤ)) (τ z : ℂ) (n m : ℤ) (x ψ : ℝ)
     (hτ : τ ∈ modularPhiDomain M) (hc : BentClear M τ n m x ψ)
     (hz : z.re ≤ x + max 0 (-z.im - 1) * Real.tan ψ) :
@@ -804,8 +799,6 @@ lemma bentClear_path_regular (M : SL(2, ℤ)) (τ : ℂ) (n m : ℤ) (x ψ : ℝ
       <;> ring
     rw [heq]
 
-
-
 lemma extensionIntegral_eq_of_finite_ledger (D₀ D₁ : CircleExtension) (f : ℂ → ℂ)
     (hi₀ : ExtensionIntegrable D₀ f) (hi₁ : ExtensionIntegrable D₁ f)
     (hc : Tendsto (G1FiniteLedger.connectors f D₀.base.crossing D₁.base.crossing)
@@ -821,8 +814,6 @@ lemma extensionIntegral_eq_of_finite_ledger (D₀ D₁ : CircleExtension) (f : �
     tendsto_const_nhds.congr' (hl.mono fun _ h => h.symm)
   have heq := tendsto_nhds_unique hlim hzero
   exact (sub_eq_zero.mp (by simpa only [add_zero] using heq)).symm
-
-
 
 open G1Continuation G1BilateralRatioTailsAux
 
@@ -911,7 +902,6 @@ lemma moving_single_phase_margin (M : SL(2, ℤ)) (h ell : ℤ)
   exact ⟨ρ, s v / 2, hρ, half_pos hs, fun u hu => hb hu⟩
 
 end SICLean.L4.G1ContinuationHolomorphyAux
-
 
 namespace SICLean.L4.G1ContinuationHolomorphyAux
 
@@ -1316,9 +1306,6 @@ lemma compact_ratio_two_tail_bound (M : SL(2, ℤ)) (hM : 0 < M 1 0)
       (le_of_not_ge ht0)
     exact ⟨hn, hd, hb.trans (mul_le_mul_of_nonneg_right (le_max_right _ _) (Real.exp_pos _).le)⟩
 
-
-
-
 open G1BilateralGeometry G1BilateralSingleTails G1BilateralSingleTailsAux
 
 lemma compact_single_two_tail_bound (M : SL(2, ℤ)) (hM : 0 < M 1 0)
@@ -1434,6 +1421,5 @@ lemma compact_single_two_tail_bound (M : SL(2, ℤ)) (hM : 0 < M 1 0)
       _ = Cl * Real.exp (-a * r ^ 2 + B * r) := by ring
       _ ≤ C * Real.exp (-a * r ^ 2 + B * r) :=
         mul_le_mul_of_nonneg_right (le_max_right _ _) (Real.exp_pos _).le
-
 
 end SICLean.L4.G1ContinuationHolomorphyAux

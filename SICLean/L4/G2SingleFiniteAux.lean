@@ -1,6 +1,10 @@
-import SICLean.L4.G2SingleBent
-import SICLean.L4.G1FiniteChainLedgerAux
-import SICLean.L4.UpperContourClosure
+module
+
+public import SICLean.L4.G2SingleBent
+public import SICLean.L4.G1FiniteChainLedgerAux
+public import SICLean.L4.UpperContourClosure
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -116,7 +120,6 @@ lemma simple_pole_expansion (N D : ℂ → ℂ) (p d : ℂ)
         field_simp [sub_ne_zero.mpr hzp]
         <;> ring
 
-
 /-- Finite simple poles strictly inside a rectangle, with local analytic remainders. -/
 theorem rectangle_simple_poles {ι : Type*} (P : Finset ι) (p : ι → ℂ)
     (hp : Function.Injective p) (f : ℂ → ℂ) (lo hi : ℂ) (a : ι → ℂ)
@@ -146,7 +149,7 @@ theorem rectangle_simple_poles {ι : Type*} (P : Finset ι) (p : ι → ℂ)
       (fun he => hoff z hz ⟨i, hiP, he.symm⟩)).continuousAt.continuousWithinAt
   have hPP : ContinuousOn (finitePrincipalPart P p (fun _ => 1) (fun i _ => a i))
       (rectangleBoundary lo hi) := by
-    exact continuousOn_finset_sum P hterm
+    exact continuousOn_finsetSum P hterm
   have hHC : ContinuousOn H (rectangleBoundary lo hi) :=
     hH.continuousOn.mono (fun _ h => h.1)
   calc
@@ -199,7 +202,6 @@ theorem rawG_analytic_nonreal (M : SL(2, ℤ)) (hM : SpecialValueAdmissible M)
     apply hz
     rw [hk]
     simp [root]
-
 
 /-- The labelled roots of one fixed component in the full strip. -/
 def componentKs (M : SL(2, ℤ)) (m : ℤ) : Finset ℤ :=
@@ -552,7 +554,6 @@ lemma common_finite_bent_boundary (M : SL(2, ℤ)) (hM : SpecialValueAdmissible 
       finite_bent_boundary f (crossing M δ m (M 1 0)) (crossing M δ m 0) T T
         (lowerJacobian M β) hab hT (lowerJacobian_im_neg M hM β) hf
 
-
 theorem interval_integral_Ici_tendsto (f : ℝ → ℂ) (a : ℝ)
     (hf : IntegrableOn f (Ici a)) (b : ℝ → ℝ) (hb : Tendsto b atTop atTop) :
     Tendsto (fun T : ℝ => ∫ r : ℝ in a..b T, f r) atTop
@@ -647,8 +648,6 @@ theorem sum_reverse_adjacent_interval_integrals (f : ℝ → ℂ) (a : ℕ → �
       rw [Finset.sum_neg_distrib, sum_adjacent_interval_integrals f a n hInt]
     _ = _ := (intervalIntegral.integral_symm (a := a 0) (b := a n) (f := f)).symm
 
-
-
 /-- The upper rectangle contains precisely the finite roots of this component. -/
 theorem rawG_upper_rectangle (M : SL(2, ℤ)) (hM : SpecialValueAdmissible M)
     (u : ℤ × ℤ) (δ : ℝ) (hδ : 0 < δ ∧ δ < scale M)
@@ -680,7 +679,6 @@ theorem rawG_upper_rectangle (M : SL(2, ℤ)) (hM : SpecialValueAdmissible M)
       And.intro hin.1 (And.intro hin.2 (And.intro (by norm_num : (-1 : ℝ) < 0) hT))
   · exact rawG_upper_rectangle_analytic M hM u δ hδ m T
   · exact hlocal
-
 
 /-- Summing the separate component root sets preserves all pair labels. -/
 theorem component_sum (M : SL(2, ℤ)) (hM : SpecialValueAdmissible M)
@@ -836,6 +834,5 @@ lemma full_closing_segments_tendsto_zero (M : SL(2, ℤ)) (hM : SpecialValueAdmi
       lowerConnector M u δ β (m : ℤ) (j : ℤ) T) atTop (𝓝 0) by simpa using hlower).congr'
     filter_upwards [eventually_ge_atTop (0 : ℝ)] with T hT
     exact lowerConnector_full_sum M hM u δ β (m : ℤ) T hT
-
 
 end SICLean.L4.G2SingleFiniteAux

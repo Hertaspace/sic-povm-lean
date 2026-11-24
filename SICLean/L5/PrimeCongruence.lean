@@ -1,5 +1,9 @@
-import SICLean.L5.PrimeReductionArithmetic
-import SICLean.L5.PrimeCongruenceAux
+module
+
+public import SICLean.L5.PrimeReductionArithmetic
+public import SICLean.L5.PrimeCongruenceAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

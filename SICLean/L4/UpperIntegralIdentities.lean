@@ -1,6 +1,10 @@
-import SICLean.L4.UpperSingleResidues
-import SICLean.L4.UpperRatioResidues
-import SICLean.L4.UpperIntegralIdentitiesAux
+module
+
+public import SICLean.L4.UpperSingleResidues
+public import SICLean.L4.UpperRatioResidues
+public import SICLean.L4.UpperIntegralIdentitiesAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,4 +1,8 @@
-import SICLean.L2r.Arithmetic
+module
+
+public import SICLean.L2r.Arithmetic
+
+@[expose] public section
 
 set_option autoImplicit false
 

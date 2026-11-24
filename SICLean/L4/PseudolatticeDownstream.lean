@@ -1,8 +1,12 @@
-import SICLean.L4.PseudolatticeFiniteTransport
-import SICLean.L4.PseudolatticeSignedTransport
-import SICLean.L4.SpecialValueL2c
-import SICLean.L4.SpecialValueL2rc
-import SICLean.L4.PseudolatticeDownstreamAux
+module
+
+public import SICLean.L4.PseudolatticeFiniteTransport
+public import SICLean.L4.PseudolatticeSignedTransport
+public import SICLean.L4.SpecialValueL2c
+public import SICLean.L4.SpecialValueL2rc
+public import SICLean.L4.PseudolatticeDownstreamAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

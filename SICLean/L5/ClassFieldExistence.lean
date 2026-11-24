@@ -1,6 +1,9 @@
-import SICLean.L5.ClassFieldModulus
-import Nyll.ClassFieldTheory.Theorems.ConductorsAndRayClassFields.RayClassSubgroupExistence
-import Nyll.ClassFieldTheory.Theorems.ConductorsAndRayClassFields.RayClassSubgroupRealizationEq
+module
+
+public import SICLean.L5.ClassFieldModulus
+public import SICLean.NyllBridge.RayClassSubgroup
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,10 +1,14 @@
-import SICLean.L5.PeriodPowerValues
-import SICLean.L5.DistributionHermite
-import SICLean.L5.DistributionOrbitGeometry
-import SICLean.L5.DistributionOrbitCocycle
-import Mathlib.Algebra.BigOperators.Fin
-import Mathlib.Algebra.BigOperators.Group.Finset.Sigma
-import Mathlib.Data.Fintype.EquivFin
+module
+
+public import SICLean.L5.PeriodPowerValues
+public import SICLean.L5.DistributionHermite
+public import SICLean.L5.DistributionOrbitGeometry
+public import SICLean.L5.DistributionOrbitCocycle
+public import Mathlib.Algebra.BigOperators.Fin
+public import Mathlib.Algebra.BigOperators.Group.Finset.Sigma
+public import Mathlib.Data.Fintype.EquivFin
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -63,7 +67,6 @@ theorem hermitePhi_value_of_continuous
     (show ContinuousAt (fun w => DistributionHermite.hermiteProduct MI MJ n m k u w τ) z from
       tendsto_finsetProd _ fun i hi => tendsto_finsetProd _ fun j hj => hcontI i hi j hj)
   exact DistributionHermite.hermitePhi_germ MI MJ n m k u z τ hn hm hI hJ hH hτ
-
 
 structure FieldBasis (P : PeriodData K) (I : StablePseudolattice P)
     (B : DistributionBasis) where
@@ -144,7 +147,6 @@ lemma normalized_mem_iff (b : FieldBasis P I B) (hB : PseudolatticePresentation 
       <;> ring
     exact_mod_cast hr
 
-
 lemma difference_expansion (b : FieldBasis P I B)
     (hB : PseudolatticePresentation P I B) (z : K)
     (hz : z ∈ pseudolatticePeriodPoints P I) :
@@ -180,7 +182,6 @@ lemma inverse_combination (b : FieldBasis P I B)
   rw [hB.2.1] at h
   push_cast at h ⊢
   linear_combination h
-
 
 def coordinates (b : FieldBasis P I B) (hB : PseudolatticePresentation P I B)
     (z : K) (hz : z ∈ I.val) : ℤ × ℤ :=
@@ -232,7 +233,6 @@ lemma fieldBasis_hermite (P : PeriodData K) (I J : StablePseudolattice P)
   · apply P.sigma₁.injective
     simp only [map_mul, map_natCast, bI.two_sigma, bJ.two_sigma, hs]
 
-
 theorem perm_minimalPeriod_inv {α : Type*} (f : Equiv.Perm α) (a : α) :
     Function.minimalPeriod (f⁻¹ : Equiv.Perm α) a = Function.minimalPeriod f a := by
   apply Function.minimalPeriod_eq_minimalPeriod_iff.mpr
@@ -246,7 +246,6 @@ theorem perm_minimalPeriod_inv {α : Type*} (f : Equiv.Perm α) (a : α) :
   · intro h
     have h' := congrArg ((f ^ n)⁻¹ : Equiv.Perm α) h
     simpa using h'.symm
-
 
 def inverseOrbitPoint (P : PeriodData K) (I J : StablePseudolattice P)
     (hIJ : I.val ≤ J.val) (x : PseudolatticeGroup P J)
@@ -329,7 +328,6 @@ theorem prod_fibre_eq_prod_inverse_range {M : Type*} [CommMonoid M]
   exact Fin.prod_univ_eq_prod_range
     (fun j => F (((fibrePerm P I J hIJ x)⁻¹ ^ j) (orbitRepresentative P I J hIJ x o))) _
 
-
 theorem weighted_product_eq_value_off_lattice
     (P : PeriodData K) (I : StablePseudolattice P)
     (BI : DistributionBasis) (hBI : PseudolatticePresentation P I BI)
@@ -393,8 +391,6 @@ theorem weighted_product_eq_value_off_lattice
   exact DistributionOrbitCocycle.orbit_weighted_product_off_lattice BI.matrix BI.tau r
     y A B p q h hr hBI.1.1 hBI.1.2.1 hBI.1.2.2.1 hT
     hp0 hAr hrep hindex hcoord hy hbalance
-
-
 
 lemma ambientMk_eq_iff (I : Submodule ℤ K) (a b : K) :
     ambientMk I a = ambientMk I b ↔ a - b ∈ I :=
@@ -552,7 +548,6 @@ def gridEquivFibre (D : HermiteData P I J) (hIJ : I.val ≤ J.val)
       rw [Fintype.card_prod, Fintype.card_fin, Fintype.card_fin, ← Nat.card_eq_fintype_card,
         (fibre_finite_card P I J hIJ x).2, D.index]⟩)
 
-
 structure Chart (D : HermiteData P I J) (hIJ : I.val ≤ J.val)
     (x : PseudolatticeGroup P J) where
   z : K
@@ -569,7 +564,6 @@ def chart (D : HermiteData P I J) (hIJ : I.val ≤ J.val)
       (pseudolatticePeriodPoints P J).zero_mem = 0 from rfl).trans hx.symm
   · refine ⟨(Quotient.out x).val, (Quotient.out x).property, Quotient.out_eq x, ?_⟩
     exact fun h => False.elim (hx h)
-
 
 namespace Chart
 
@@ -624,7 +618,6 @@ lemma grid_closed (C : D.Chart hIJ x) (o : Orbit P I J hIJ x) :
   apply congrArg C.equiv.symm
   apply (fibrePerm P I J hIJ x ^ orbitLength P I J hIJ x o).injective
   simpa [inv_pow] using (orbitLength_returns P I J hIJ x o).symm
-
 
 lemma point_closed (C : D.Chart hIJ x) (o : Orbit P I J hIJ x) :
     C.point o (orbitLength P I J hIJ x o) = C.point o 0 := by
@@ -733,7 +726,6 @@ lemma source_value (C : D.Chart hIJ x) :
     rw [← C.represents]
     exact (M72.mk_eq_iff P J C.z 0 C.mem (pseudolatticePeriodPoints P J).zero_mem).mpr
       (by simpa using hz)
-
 
 lemma index_step (C : D.Chart hIJ x) (o : Orbit P I J hIJ x) (j : ℕ) :
     C.A o (j + 1) = C.B o j + (C.step o j).1 := by

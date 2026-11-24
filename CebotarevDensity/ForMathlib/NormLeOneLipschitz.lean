@@ -158,18 +158,18 @@ theorem contDiff_faceMapZero : ContDiff ℝ 1 (faceMapZero K) := by
   refine (contDiff_expMapBasis K).comp (contDiff_pi.mpr fun w ↦ ?_)
   by_cases hw : w = w₀
   · simpa only [dif_pos hw] using contDiff_const
-  · simpa only [dif_neg hw] using contDiff_apply ℝ ℝ _
+  · simpa only [dif_neg hw] using contDiff_apply ℝ (fun _ => ℝ) _
 
 open scoped Classical in
 theorem contDiff_faceMapSide (i : {w : InfinitePlace K // w ≠ w₀}) (a : ℝ) :
     ContDiff ℝ 1 (faceMapSide K i a) := by
-  refine (contDiff_apply ℝ ℝ i).smul ((contDiff_expMapBasis K).comp (contDiff_pi.mpr fun w ↦ ?_))
+  refine (contDiff_apply ℝ (fun _ => ℝ) i).smul ((contDiff_expMapBasis K).comp (contDiff_pi.mpr fun w ↦ ?_))
   by_cases hw : w = w₀
   · simpa only [dif_pos hw] using contDiff_const
   · simp only [dif_neg hw]
     by_cases hi : (⟨w, hw⟩ : {w // w ≠ w₀}) = i
     · simpa only [if_pos hi] using contDiff_const
-    · simpa only [if_neg hi] using contDiff_apply ℝ ℝ _
+    · simpa only [if_neg hi] using contDiff_apply ℝ (fun _ => ℝ) _
 
 /-- **Topological reduction.** Since `expMapBasis` is open and injective with source `univ`,
 the frontier of `expMapBasis '' paramSet K` is contained in the image of the box boundary

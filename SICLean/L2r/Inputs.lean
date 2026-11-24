@@ -1,5 +1,9 @@
-import SICLean.L2r.Gaussian
-import SICLean.L2r.FiniteQD
+module
+
+public import SICLean.L2r.Gaussian
+public import SICLean.L2r.FiniteQD
+
+@[expose] public section
 
 set_option autoImplicit false
 

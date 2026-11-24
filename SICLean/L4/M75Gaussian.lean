@@ -1,5 +1,9 @@
-import SICLean.L4.M74Equations
-import SICLean.L4.M75GaussianAux
+module
+
+public import SICLean.L4.M74Equations
+public import SICLean.L4.M75GaussianAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

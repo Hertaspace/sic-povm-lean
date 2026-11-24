@@ -1,5 +1,9 @@
-import SICLean.L4.G1BilateralSeparation
-import SICLean.L4.G1BilateralRatioTailsAux
+module
+
+public import SICLean.L4.G1BilateralSeparation
+public import SICLean.L4.G1BilateralRatioTailsAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

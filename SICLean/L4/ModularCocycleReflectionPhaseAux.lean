@@ -1,6 +1,10 @@
-import SICLean.L4.ModularCocycleReflectionAux
-import SICLean.L4.ModularCocycleReflectionLimitAux
-import SICLean.L4.ModularCocycleAux
+module
+
+public import SICLean.L4.ModularCocycleReflectionAux
+public import SICLean.L4.ModularCocycleReflectionLimitAux
+public import SICLean.L4.ModularCocycleAux
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

@@ -1,4 +1,8 @@
-import SICLean.L2a.Main
+module
+
+public import SICLean.L2a.Main
+
+@[expose] public section
 
 set_option autoImplicit false
 

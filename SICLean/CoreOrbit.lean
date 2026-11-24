@@ -1,4 +1,6 @@
-import SICLean.WHBasic
+module
+
+public import SICLean.WHBasic
 
 /-!
 # The Weyl–Heisenberg orbit of an r-SIC fiducial
@@ -6,6 +8,8 @@ import SICLean.WHBasic
 The proof uses displacement-basis Fourier expansion. All labels remain integer pairs
 until the final finite orbit is indexed by `Fin (d ^ 2)`.
 -/
+
+@[expose] public section
 
 noncomputable section
 

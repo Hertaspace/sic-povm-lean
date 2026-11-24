@@ -1,5 +1,9 @@
-import SICLean.L5.ActualQuadraticField
-import Mathlib.NumberTheory.NumberField.InfinitePlace.Basic
+module
+
+public import SICLean.L5.ActualQuadraticField
+public import Mathlib.NumberTheory.NumberField.InfinitePlace.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 

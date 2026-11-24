@@ -1,6 +1,10 @@
-import Mathlib
-import SICLean.L4.QProductLimitAux
-import SICLean.L4.QProductAnalyticAux
+module
+
+public import Mathlib
+public import SICLean.L4.QProductLimitAux
+public import SICLean.L4.QProductAnalyticAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -1422,8 +1426,6 @@ private lemma differentiableOn_tsum_qBinomial (a q : ℂ) (hq0 : 0 < ‖q‖) (h
     simp only [qBinomialTerm]
     fun_prop) Metric.isOpen_ball
 
-
-
 private lemma qBinomial_tsum_mul (a x q : ℂ) (hx : ‖x‖ < 1)
     (hq0 : 0 < ‖q‖) (hq1 : ‖q‖ < 1) :
     (∑' n, qBinomialTerm a x q n) * qPochhammer x q = qPochhammer (a*x) q := by
@@ -1511,7 +1513,6 @@ private lemma qBinomial_tsum_mul (a x q : ℂ) (hx : ‖x‖ < 1)
     have := sub_eq_zero.mp hEx
     simpa [E, D] using this
   exact hBP
-
 
 /-- [RW26, (58)] multiplicative form first. -/
 theorem hasSum_qBinomial_mul (a x q : ℂ)

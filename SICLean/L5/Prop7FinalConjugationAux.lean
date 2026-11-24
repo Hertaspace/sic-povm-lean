@@ -1,5 +1,9 @@
-import Mathlib.Analysis.Complex.Norm
-import Mathlib.Tactic.Linarith
+module
+
+public import Mathlib.Analysis.Complex.Norm
+public import Mathlib.Tactic.Linarith
+
+@[expose] public section
 
 set_option autoImplicit false
 

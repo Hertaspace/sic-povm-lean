@@ -1,4 +1,6 @@
-import SICLean.Statement
+module
+
+public import SICLean.Statement
 
 /-!
 # Dimensions 1, 2, 3
@@ -9,6 +11,8 @@ definitions follow google-deepmind/formal-conjectures,
 90d18f666eb98adec4eee4d12f1d37e30b4eb204 (Copyright 2026 The Formal Conjectures Authors,
 licensed under the Apache License, Version 2.0).
 -/
+
+@[expose] public section
 
 noncomputable section
 

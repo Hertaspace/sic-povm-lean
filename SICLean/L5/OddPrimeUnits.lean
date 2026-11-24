@@ -1,7 +1,11 @@
-import SICLean.L5.OddPrimeCyclic
-import SICLean.L5.OddPrimeLatticeChain
-import SICLean.L5.OddPrimeMaximum
-import SICLean.L5.OddPrimeUnitsAux
+module
+
+public import SICLean.L5.OddPrimeCyclic
+public import SICLean.L5.OddPrimeLatticeChain
+public import SICLean.L5.OddPrimeMaximum
+public import SICLean.L5.OddPrimeUnitsAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

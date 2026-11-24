@@ -1,4 +1,8 @@
-import SICLean.L4.G1RealRatioBoundary
+module
+
+public import SICLean.L4.G1RealRatioBoundary
+
+@[expose] public section
 
 set_option autoImplicit false
 

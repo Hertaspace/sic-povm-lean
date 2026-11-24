@@ -1,5 +1,9 @@
-import SICLean.L4.ModularClusterIntegrals
-import SICLean.L4.ModularClusterLedgerAux
+module
+
+public import SICLean.L4.ModularClusterIntegrals
+public import SICLean.L4.ModularClusterLedgerAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,9 +1,13 @@
-import SICLean.L5.DistributionSubgroupLattice
-import Mathlib.RingTheory.DedekindDomain.Different
-import Mathlib.Algebra.Group.AddChar
-import Mathlib.GroupTheory.Torsion
-import Mathlib.GroupTheory.SpecificGroups.Cyclic.Basic
-import SICLean.L5.OddPrimeTraceDualAux
+module
+
+public import SICLean.L5.DistributionSubgroupLattice
+public import Mathlib.RingTheory.DedekindDomain.Different
+public import Mathlib.Algebra.Group.AddChar
+public import Mathlib.GroupTheory.Torsion
+public import Mathlib.GroupTheory.SpecificGroups.Cyclic.Basic
+public import SICLean.L5.OddPrimeTraceDualAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -41,12 +45,12 @@ theorem mem_traceDual (I : Submodule ℤ K) (a : K) :
   exact Submodule.mem_traceDual
 
 /-- [RW-rec, p. 8]: the trace dual is again a full integer lattice. -/
-theorem traceDual_isLattice (I : Submodule ℤ K) (hI : Submodule.IsLattice ℚ I) :
-    Submodule.IsLattice ℚ (traceDual I) := by
+theorem traceDual_isLattice (I : Submodule ℤ K) (hI : Submodule.IsFullLattice ℚ I) :
+    Submodule.IsFullLattice ℚ (traceDual I) := by
   exact OddPrimeTraceDualAux.traceDual_isLattice I hI
 
 /-- [RW-rec, p. 8]: full integer lattices equal their trace bidual. -/
-theorem traceDual_traceDual (I : Submodule ℤ K) (hI : Submodule.IsLattice ℚ I) :
+theorem traceDual_traceDual (I : Submodule ℤ K) (hI : Submodule.IsFullLattice ℚ I) :
     traceDual (traceDual I) = I := by
   exact OddPrimeTraceDualAux.traceDual_traceDual I hI
 
@@ -78,7 +82,7 @@ def dualLattice (P : PeriodData K) (I : StablePseudolattice P) :
 
 /-- [RW-rec, p. 8]: the reversed dual inclusion has the same index. -/
 theorem traceDual_index (I J : Submodule ℤ K)
-    (hI : Submodule.IsLattice ℚ I) (hJ : Submodule.IsLattice ℚ J) (hIJ : I ≤ J) :
+    (hI : Submodule.IsFullLattice ℚ I) (hJ : Submodule.IsFullLattice ℚ J) (hIJ : I ≤ J) :
     DistributionOrbitGeometry.inclusionIndex (traceDual J) (traceDual I) =
       DistributionOrbitGeometry.inclusionIndex I J := by
   exact OddPrimeTraceDualAux.traceDual_index I J hI hJ hIJ

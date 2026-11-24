@@ -1,5 +1,9 @@
-import SICLean.L4.UpperContourGeometry
-import SICLean.L4.UpperResidueParametersAux
+module
+
+public import SICLean.L4.UpperContourGeometry
+public import SICLean.L4.UpperResidueParametersAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -255,7 +259,6 @@ theorem ratioProduct_eq_modularPhi (M : SL(2, ℤ)) (h ℓ p : ℤ) (ψ σ ρ δ
     infinite_products_ne_zero M h ℓ p ψ σ ρ δ hc x hx
   unfold ratioProduct
   field_simp
-
 
 /--
 [RW26, p. 29]. Integer phase error disappears under e.

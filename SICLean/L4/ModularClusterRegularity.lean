@@ -1,5 +1,9 @@
-import SICLean.L4.ModularClusterGeometry
-import SICLean.L4.ModularClusterRegularityAux
+module
+
+public import SICLean.L4.ModularClusterGeometry
+public import SICLean.L4.ModularClusterRegularityAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,5 +1,9 @@
-import SICLean.L4.G2ExactTelescoping
-import SICLean.L4.G2G1SpecializationAux
+module
+
+public import SICLean.L4.G2ExactTelescoping
+public import SICLean.L4.G2G1SpecializationAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

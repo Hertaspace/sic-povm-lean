@@ -1,6 +1,10 @@
-import SICLean.L4.ModularDistribution
-import SICLean.L4.DistributionCoordinates
-import SICLean.L4.DistributionOrderTwoAux
+module
+
+public import SICLean.L4.ModularDistribution
+public import SICLean.L4.DistributionCoordinates
+public import SICLean.L4.DistributionOrderTwoAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

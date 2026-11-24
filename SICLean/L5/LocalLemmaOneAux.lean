@@ -1,4 +1,8 @@
-import SICLean.L5.LocalCosetDegree
+module
+
+public import SICLean.L5.LocalCosetDegree
+
+@[expose] public section
 
 set_option autoImplicit false
 

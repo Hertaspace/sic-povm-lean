@@ -1,7 +1,11 @@
-import SICLean.L5.ActualValueBridge
-import SICLean.L5.FiniteAlgebraicTransport
-import SICLean.L5.PrimeValuation
-import Mathlib.RingTheory.Valuation.Integral
+module
+
+public import SICLean.L5.ActualValueBridge
+public import SICLean.L5.FiniteAlgebraicTransport
+public import SICLean.L5.PrimeValuation
+public import Mathlib.RingTheory.Valuation.Integral
+
+@[expose] public section
 
 set_option autoImplicit false
 

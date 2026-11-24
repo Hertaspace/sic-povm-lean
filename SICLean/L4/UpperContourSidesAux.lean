@@ -1,5 +1,9 @@
-import SICLean.L4.UpperContourBounds
-import Mathlib.MeasureTheory.Integral.IntegralEqImproper
+module
+
+public import SICLean.L4.UpperContourBounds
+public import Mathlib.MeasureTheory.Integral.IntegralEqImproper
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -144,7 +148,7 @@ lemma integral_norm_unit_bound (g : ℝ → ℂ) (hg : ContinuousOn g (Ici 0))
       t ∈ Icc (k : ℝ) ((k : ℝ) + 1) → ‖g t‖ ≤ b k) (k : ℕ) :
     (∫ t in (k : ℝ)..((k : ℝ) + 1), ‖g t‖) ≤ b k := by
   have hi : IntervalIntegrable g volume (k : ℝ) ((k : ℝ) + 1) :=
-    (hg.mono (fun t ht => (Nat.cast_nonneg k).trans ht.1)).intervalIntegrable_of_Icc
+    (hg.mono (fun t (ht : t ∈ Icc (k : ℝ) ((k : ℝ) + 1)) => (Nat.cast_nonneg k).trans ht.1)).intervalIntegrable_of_Icc
       (by linarith)
   calc
     _ ≤ ∫ t in (k : ℝ)..((k : ℝ) + 1), b k :=
@@ -164,9 +168,11 @@ lemma integral_norm_finite_bound (g : ℝ → ℂ) (hg : ContinuousOn g (Ici 0))
       simpa only [Nat.cast_add, Nat.cast_one, add_zero, add_assoc] using
         intervalIntegral.sum_integral_adjacent_intervals
           (a := fun k : ℕ => ((R + k : ℕ) : ℝ)) (n := n)
-          (fun k hk => ((hg.mono (fun t ht =>
-            (Nat.cast_nonneg (R + k)).trans ht.1)).intervalIntegrable_of_Icc
-              (μ := volume) (by exact_mod_cast Nat.le_add_right (R + k) 1)).norm)
+          (fun k hk => by
+            have h := ((hg.mono (fun t (ht : t ∈ Icc ((R + k : ℕ) : ℝ) (((R + k : ℕ) : ℝ) + 1)) =>
+              (Nat.cast_nonneg (R + k)).trans ht.1)).intervalIntegrable_of_Icc
+                (μ := volume) (by exact_mod_cast Nat.le_add_right (R + k) 1)).norm
+            simpa only [Nat.cast_add, Nat.cast_one, add_assoc] using h)
     _ ≤ _ := Finset.sum_le_sum (fun k hk =>
       integral_norm_unit_bound g hg b hbound (R + k))
 
@@ -176,7 +182,7 @@ lemma integrable_ray_of_unit_bounds (g : ℝ → ℂ) (hg : ContinuousOn g (Ici 
       t ∈ Icc (k : ℝ) ((k : ℝ) + 1) → ‖g t‖ ≤ b k) :
     IntegrableOn g (Ioi 0) := by
   refine integrableOn_Ioi_of_intervalIntegral_norm_bounded (∑' k, b k) 0
-    (fun n : ℕ => ((hg.mono (fun t ht => ht.1)).intervalIntegrable_of_Icc
+    (fun n : ℕ => ((hg.mono (fun t (ht : t ∈ Icc (0:ℝ) (n:ℝ)) => ht.1)).intervalIntegrable_of_Icc
       (Nat.cast_nonneg n)).1) tendsto_natCast_atTop_atTop
     (Eventually.of_forall (fun n => ?_))
   calc

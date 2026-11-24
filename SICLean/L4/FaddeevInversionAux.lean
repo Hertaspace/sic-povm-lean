@@ -1,8 +1,10 @@
-import Mathlib.Analysis.Complex.CauchyIntegral
-import Mathlib.Analysis.Complex.RemovableSingularity
-import Mathlib.Analysis.Analytic.IsolatedZeros
-import Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas
-import Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp
+module
+
+public import Mathlib.Analysis.Complex.CauchyIntegral
+public import Mathlib.Analysis.Complex.RemovableSingularity
+public import Mathlib.Analysis.Analytic.IsolatedZeros
+public import Mathlib.Analysis.Calculus.IteratedDeriv.Lemmas
+public import Mathlib.Analysis.SpecialFunctions.Trigonometric.DerivHyp
 
 /-!
 # The regular numerator at the inversion pole
@@ -11,6 +13,8 @@ Divided differences remove the sinh zeros before taking derivatives. Three furth
 differences give an exact Taylor identity with a remainder analytic at zero. Its quadratic
 coefficient determines the `/12` normalization.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 noncomputable section

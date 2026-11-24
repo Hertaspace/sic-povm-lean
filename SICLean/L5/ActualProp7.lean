@@ -1,6 +1,10 @@
-import SICLean.L5.ActualOriginal
-import SICLean.L5.ActualRank
-import SICLean.L5.Prop7Final
+module
+
+public import SICLean.L5.ActualOriginal
+public import SICLean.L5.ActualRank
+public import SICLean.L5.Prop7Final
+
+@[expose] public section
 
 set_option autoImplicit false
 

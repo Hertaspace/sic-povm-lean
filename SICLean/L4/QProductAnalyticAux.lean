@@ -1,4 +1,8 @@
-import SICLean.L4.QProductCircleAux
+module
+
+public import SICLean.L4.QProductCircleAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

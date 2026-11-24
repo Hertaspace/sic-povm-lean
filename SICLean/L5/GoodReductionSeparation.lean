@@ -1,6 +1,10 @@
-import SICLean.L5.GoodReductionSupport
-import SICLean.L5.FrobeniusSplitting
-import SICLean.L5.FiniteGaloisFixed
+module
+
+public import SICLean.L5.GoodReductionSupport
+public import SICLean.L5.FrobeniusSplitting
+public import SICLean.L5.FiniteGaloisFixed
+
+@[expose] public section
 
 set_option autoImplicit false
 

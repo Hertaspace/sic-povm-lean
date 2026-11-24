@@ -1,7 +1,11 @@
-import SICLean.L4.G1ContinuationHolomorphy
-import SICLean.L4.G1ContinuationEndRotation
-import Mathlib.Topology.Algebra.Module.Cardinality
-import Mathlib.MeasureTheory.Integral.DivergenceTheorem
+module
+
+public import SICLean.L4.G1ContinuationHolomorphy
+public import SICLean.L4.G1ContinuationEndRotation
+public import Mathlib.Topology.Algebra.Module.Cardinality
+public import Mathlib.MeasureTheory.Integral.DivergenceTheorem
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 400000
@@ -107,7 +111,6 @@ theorem unitFiber_dense (M : SL(2, ℤ)) (m n : ℤ) (τ : ℂ)
       exact hz (Or.inr ⟨(K, J), hpoint.symm⟩)
     simp [modularPhiZeroMultiplicity, he]
 
-
 end SICLean.L4.G1ContinuationStrictAux
 
 namespace SICLean.L4.G1ContinuationStrictAux
@@ -155,8 +158,6 @@ theorem single_raw_slice_analytic (M : SL(2, ℤ)) (hM : 0 < M 1 0)
       (f := fun z : ℂ => (z, τ)) (x := w) (analyticAt_id.prod analyticAt_const)
 
 end SICLean.L4.G1ContinuationStrictAux
-
-
 
 namespace SICLean.L4.G1ContinuationStrictAux
 
@@ -218,7 +219,6 @@ theorem single_continuation_unique_of_crossing (M : SL(2, ℤ)) (n h ell : ℤ) 
     (single_window_open_convex M τ h ell).2.isPreconnected
     ((initial_fibers_inside_target M n h ell 0 ψ σ ρ δ hc τ hτ).2.1 z₀ (hUseed z₀ hz₀))
     (Filter.mem_of_superset (hU.mem_nhds hz₀) fun z hz => hEqSeed z hz) hw
-
 
 end SICLean.L4.G1ContinuationStrictAux
 
@@ -473,8 +473,6 @@ lemma e_upper_bound (A B : ℂ) (x₀ x₁ : ℝ) :
   rw [norm_mul] at hc
   exact mul_le_mul_of_nonneg_right (hc.trans (le_max_left _ _)) (Real.exp_pos _).le
 
-
-
 lemma upper_phi_bound (M : SL(2, ℤ)) (hM : 0 < M 1 0)
     (τ : ℂ) (ψ : ℝ) (hψ' : ψ < Real.pi / 4)
     (hτ : τ ∈ UpperWindow.tauRegion M ψ) (m n : ℤ) (x₀ x₁ : ℝ) :
@@ -535,8 +533,6 @@ lemma upper_single_bound (M : SL(2, ℤ)) (hM : 0 < M 1 0)
   have hb := mul_le_mul (hphi R hR x hx) (he x hx R) (norm_nonneg _)
     (by norm_num : (0 : ℝ) ≤ 4)
   simpa only [mul_assoc] using hb
-
-
 
 lemma poleMultiplicity_zero_of_avoids (M : SL(2, ℤ)) (m n : ℤ) (z τ : ℂ)
     (havoid : ∀ k ∈ modularPhiPoleLabels M m n,
@@ -644,8 +640,6 @@ lemma lower_single_bound (M : SL(2, ℤ)) (hM : 0 < M 1 0)
     simpa only [mul_comm] using (div_le_iff₀ ha).mp ((le_max_right _ _).trans hR)
   have hexp : -a * R^2 + B * R ≤ -R := by nlinarith [mul_le_mul_of_nonneg_right hlin hR0]
   exact hbound.trans (mul_le_mul_of_nonneg_left (Real.exp_le_exp.mpr (by simpa using hexp)) hC.le)
-
-
 
 lemma horizontal_tendsto (G : ℝ → ℝ → ℂ) (x₀ x₁ C κ R₀ : ℝ)
     (hx : x₀ ≤ x₁) (hκ : 0 < κ)
@@ -757,8 +751,6 @@ lemma single_component_crossing_eq (M : SL(2, ℤ)) (hM : 0 < M 1 0)
   · exact bent_component_eq_of_le M hM τ w ψ hψ hψ' hτ n h ell m hs x₀ x₁ hx hc₀ hc₁
   · exact (bent_component_eq_of_le M hM τ w ψ hψ hψ' hτ n h ell m hs x₁ x₀ hx hc₁ hc₀).symm
 
-
-
 theorem single_bent_crossing_invariance (M : SL(2, ℤ)) (hM : 0 < M 1 0)
     (n h ell : ℤ) (ψ : ℝ) (hψ : 0 < ψ) (hψ' : ψ < Real.pi / 4)
     (u : ℂ × ℂ) (hu : u ∈ singleTube M h ell ψ)
@@ -771,6 +763,5 @@ theorem single_bent_crossing_invariance (M : SL(2, ℤ)) (hM : 0 < M 1 0)
   intro m hm
   exact single_component_crossing_eq M hM u.1 u.2 ψ hψ hψ' hu.1 n h ell m hu.2
     (x₀ m) (x₁ m) (h₀ m) (h₁ m)
-
 
 end SICLean.L4.G1ContinuationStrictAux

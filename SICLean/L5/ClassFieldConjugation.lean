@@ -1,6 +1,10 @@
-import SICLean.L5.ClassFieldTransport
-import SICLean.L5.ClassFieldIdealAction
-import SICLean.L5.ClassFieldConjugationAux
+module
+
+public import SICLean.L5.ClassFieldTransport
+public import SICLean.L5.ClassFieldIdealAction
+public import SICLean.L5.ClassFieldConjugationAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

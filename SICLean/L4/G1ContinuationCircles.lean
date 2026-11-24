@@ -1,5 +1,9 @@
-import SICLean.L4.G1ContinuationGeometry
-import SICLean.L4.G1ContinuationCirclesAux
+module
+
+public import SICLean.L4.G1ContinuationGeometry
+public import SICLean.L4.G1ContinuationCirclesAux
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 1600000

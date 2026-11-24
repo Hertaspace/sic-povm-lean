@@ -1,5 +1,9 @@
-import SICLean.L4.ModularDistribution
-import SICLean.L5.DistributionHermiteAux
+module
+
+public import SICLean.L4.ModularDistribution
+public import SICLean.L5.DistributionHermiteAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,6 +1,10 @@
-import SICLean.L4.PseudolatticeMatrixValues
-import SICLean.L4.SpecialValueReflection
-import SICLean.L4.PseudolatticeSignedTransportAux
+module
+
+public import SICLean.L4.PseudolatticeMatrixValues
+public import SICLean.L4.SpecialValueReflection
+public import SICLean.L4.PseudolatticeSignedTransportAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

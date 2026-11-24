@@ -1,4 +1,8 @@
-import SICLean.L2b.FiniteQD
+module
+
+public import SICLean.L2b.FiniteQD
+
+@[expose] public section
 
 set_option autoImplicit false
 

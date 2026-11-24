@@ -1,6 +1,10 @@
-import SICLean.L5.SplitPrimeValues
-import SICLean.L5.SplitFrobeniusAux
-import SICLean.L5.OddPrimeUnits
+module
+
+public import SICLean.L5.SplitPrimeValues
+public import SICLean.L5.SplitFrobeniusAux
+public import SICLean.L5.OddPrimeUnits
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -383,6 +387,5 @@ theorem theorem8 (P : PeriodData K) (I : StablePseudolattice P)
       Eq.mp (congrArg direction hsame) hrdir
     exact theorem8_same_direction P I hodd hm (SplitPrimeGeometry.splitPair_symm h)
       v hp hdir'
-
 
 end SICLean.L5.SplitFrobenius

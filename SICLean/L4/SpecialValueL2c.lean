@@ -1,6 +1,10 @@
-import SICLean.L4.SpecialValueUnitAction
-import SICLean.L4.SpecialValueL2cAux
-import SICLean.L2c.Inputs
+module
+
+public import SICLean.L4.SpecialValueUnitAction
+public import SICLean.L4.SpecialValueL2cAux
+public import SICLean.L2c.Inputs
+
+@[expose] public section
 
 set_option autoImplicit false
 

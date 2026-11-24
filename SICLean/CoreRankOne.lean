@@ -1,4 +1,6 @@
-import SICLean.WHBasic
+module
+
+public import SICLean.WHBasic
 
 /-!
 # From a rank-one WH fiducial to the SIC statement
@@ -6,6 +8,8 @@ import SICLean.WHBasic
 The orbit is constructed as vectors, with the normalization and squared overlap
 conditions stated exactly as in `OpenQuantumProblem23.HasSICPOVM`.
 -/
+
+@[expose] public section
 
 noncomputable section
 
@@ -42,7 +46,7 @@ private theorem rankOne_trace_mul {d : ℕ} {P : Matrix (Fin d) (Fin d) ℂ}
     {ψ : Fin d → ℂ} (hψ : ∀ i j, P i j = ψ i * star (ψ j))
     (A : Matrix (Fin d) (Fin d) ℂ) :
     (P * A).trace = star ψ ⬝ᵥ (A *ᵥ ψ) := by
-  simp only [trace, diag, mul_apply, hψ, mulVec, dotProduct, Pi.star_apply]
+  simp only [trace, diag, Matrix.mul_apply, hψ, mulVec, dotProduct, Pi.star_apply]
   simp_rw [Finset.mul_sum]
   rw [Finset.sum_comm]
   apply Finset.sum_congr rfl

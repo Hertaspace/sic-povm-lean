@@ -1,7 +1,11 @@
-import SICLean.L5.DescentArtin
-import SICLean.L5.DescentGoodPrimes
-import SICLean.L5.DescentCandidates
-import SICLean.L5.OddPrimeSpecialization
+module
+
+public import SICLean.L5.DescentArtin
+public import SICLean.L5.DescentGoodPrimes
+public import SICLean.L5.DescentCandidates
+public import SICLean.L5.OddPrimeSpecialization
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,6 +1,10 @@
-import SICLean.L5.FrobeniusRestriction
-import SICLean.L5.DescentChebotarevAux
-import CebotarevDensity.Main
+module
+
+public import SICLean.L5.FrobeniusRestriction
+public import SICLean.L5.DescentChebotarevAux
+public import CebotarevDensity.Main
+
+@[expose] public section
 
 set_option autoImplicit false
 

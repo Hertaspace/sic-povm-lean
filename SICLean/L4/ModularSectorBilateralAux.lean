@@ -1,4 +1,8 @@
-import SICLean.L4.ModularSectorUpper
+module
+
+public import SICLean.L4.ModularSectorUpper
+
+@[expose] public section
 
 set_option autoImplicit false
 

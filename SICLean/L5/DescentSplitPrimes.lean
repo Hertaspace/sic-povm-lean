@@ -1,5 +1,9 @@
-import SICLean.L5.DescentField
-import SICLean.L5.DescentChebotarev
+module
+
+public import SICLean.L5.DescentField
+public import SICLean.L5.DescentChebotarev
+
+@[expose] public section
 
 set_option autoImplicit false
 

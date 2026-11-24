@@ -1,6 +1,10 @@
-import SICLean.L4.FaddeevContour
-import Mathlib.Analysis.Complex.CauchyIntegral
-import SICLean.L4.FinitePrincipalPartsRectangleKernel
+module
+
+public import SICLean.L4.FaddeevContour
+public import Mathlib.Analysis.Complex.CauchyIntegral
+public import SICLean.L4.FinitePrincipalPartsRectangleKernel
+
+@[expose] public section
 
 set_option autoImplicit false
 

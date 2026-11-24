@@ -1,4 +1,8 @@
-import SICLean.L4.FaddeevSectorGeometry
+module
+
+public import SICLean.L4.FaddeevSectorGeometry
+
+@[expose] public section
 
 set_option autoImplicit false
 

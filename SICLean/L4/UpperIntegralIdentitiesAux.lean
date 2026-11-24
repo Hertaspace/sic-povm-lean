@@ -1,4 +1,8 @@
-import SICLean.L4.UpperResidueParameters
+module
+
+public import SICLean.L4.UpperResidueParameters
+
+@[expose] public section
 
 set_option autoImplicit false
 

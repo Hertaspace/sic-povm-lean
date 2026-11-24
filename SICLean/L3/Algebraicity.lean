@@ -1,5 +1,9 @@
-import SICLean.L3.Valuation
-import SICLean.L3.CoordinateImageGeometry
+module
+
+public import SICLean.L3.Valuation
+public import SICLean.L3.CoordinateImageGeometry
+
+@[expose] public section
 
 set_option autoImplicit false
 

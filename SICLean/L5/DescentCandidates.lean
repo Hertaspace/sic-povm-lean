@@ -1,5 +1,9 @@
-import SICLean.L5.SplitFrobeniusFinite
-import SICLean.L4.PseudolatticeHomothety
+module
+
+public import SICLean.L5.SplitFrobeniusFinite
+public import SICLean.L4.PseudolatticeHomothety
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,5 +1,9 @@
-import SICLean.L4.G1BilateralGeometry
-import SICLean.L4.ModularClusterLedger
+module
+
+public import SICLean.L4.G1BilateralGeometry
+public import SICLean.L4.ModularClusterLedger
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,6 +1,10 @@
-import SICLean.L4.G1ContinuationHolomorphyAux
-import SICLean.L4.G1BilateralSingleTails
-import SICLean.L4.G1BilateralRatioTails
+module
+
+public import SICLean.L4.G1ContinuationHolomorphyAux
+public import SICLean.L4.G1BilateralSingleTails
+public import SICLean.L4.G1BilateralRatioTails
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option maxHeartbeats 1200000

@@ -1,6 +1,10 @@
-import SICLean.L5.DescentField
-import SICLean.L5.DescentChebotarev
-import SICLean.L5.GoodReductionSeparation
+module
+
+public import SICLean.L5.DescentField
+public import SICLean.L5.DescentChebotarev
+public import SICLean.L5.GoodReductionSeparation
+
+@[expose] public section
 
 set_option autoImplicit false
 

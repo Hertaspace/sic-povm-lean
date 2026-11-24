@@ -1,4 +1,6 @@
-import SICLean.Statement
+module
+
+public import SICLean.Statement
 
 /-!
 # Weyl–Heisenberg displacement operators and r-SICs
@@ -11,6 +13,8 @@ Conventions follow [AFK25, Def. 1.5]:
 Nothing in this file is a hypothesis. The definitions enter the final theorem through
 the input hypotheses in `SICLean.Inputs`.
 -/
+
+@[expose] public section
 
 noncomputable section
 

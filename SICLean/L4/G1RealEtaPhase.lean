@@ -1,5 +1,9 @@
-import SICLean.L4.G1ContinuationBoundary
-import SICLean.L4.EtaMultiplier
+module
+
+public import SICLean.L4.G1ContinuationBoundary
+public import SICLean.L4.EtaMultiplier
+
+@[expose] public section
 
 set_option autoImplicit false
 

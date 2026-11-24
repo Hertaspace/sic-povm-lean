@@ -1,5 +1,9 @@
-import SICLean.L4.EtaMultiplier
-import SICLean.L4.SpecialValueGeometry
+module
+
+public import SICLean.L4.EtaMultiplier
+public import SICLean.L4.SpecialValueGeometry
+
+@[expose] public section
 
 set_option autoImplicit false
 

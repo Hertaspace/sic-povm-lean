@@ -1,5 +1,9 @@
-import SICLean.L5.PrimeTower
-import SICLean.Galois.AlgebraicClosure
+module
+
+public import SICLean.L5.PrimeTower
+public import SICLean.Galois.AlgebraicClosure
+
+@[expose] public section
 
 set_option autoImplicit false
 

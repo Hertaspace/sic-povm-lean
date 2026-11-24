@@ -1,6 +1,10 @@
-import SICLean.L4.ModularClusterRegularity
-import SICLean.L4.FinitePrincipalParts
-import SICLean.L4.ModularClusterIntegralsAux
+module
+
+public import SICLean.L4.ModularClusterRegularity
+public import SICLean.L4.FinitePrincipalParts
+public import SICLean.L4.ModularClusterIntegralsAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

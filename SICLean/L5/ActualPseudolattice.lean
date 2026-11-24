@@ -1,4 +1,8 @@
-import SICLean.L5.ActualQuadraticField
+module
+
+public import SICLean.L5.ActualQuadraticField
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -43,7 +47,7 @@ theorem lattice_eq_span (M : SL(2, ℤ)) (hM : L4.SpecialValueAdmissible M) :
 
 /-- The lattice has full rank two. [RW26, p. 20]; [RW-rec]. -/
 theorem lattice_isLattice (M : SL(2, ℤ)) (hM : L4.SpecialValueAdmissible M) :
-    Submodule.IsLattice ℚ (lattice M hM) := by
+    Submodule.IsFullLattice ℚ (lattice M hM) := by
   exact L3.M72.matrixLattice_isLattice (periodData M hM) M hM (order_nat M hM).2
 
 /-- Multiplication by the specified epsilon preserves I.

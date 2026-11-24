@@ -1,4 +1,8 @@
-import SICLean.L5.FrobeniusPrimes
+module
+
+public import SICLean.L5.FrobeniusPrimes
+
+@[expose] public section
 
 set_option autoImplicit false
 

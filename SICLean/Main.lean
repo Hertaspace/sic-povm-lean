@@ -1,9 +1,11 @@
-import SICLean.Inputs
-import SICLean.LowDim
-import SICLean.CoreGalois
-import SICLean.CoreOrbit
-import SICLean.CoreRankOne
-import SICLean.CoreComplement
+module
+
+public import SICLean.Inputs
+public import SICLean.LowDim
+public import SICLean.CoreGalois
+public import SICLean.CoreOrbit
+public import SICLean.CoreRankOne
+public import SICLean.CoreComplement
 
 /-!
 # Main theorems
@@ -13,6 +15,8 @@ hypotheses, are `SICLean.FinalAssembly.zaunerExistence` and `SICLean.FinalAssemb
 `#print axioms zaunerExistence_of_inputs` shows only `propext`, `Classical.choice`, and
 `Quot.sound`.
 -/
+
+@[expose] public section
 
 noncomputable section
 

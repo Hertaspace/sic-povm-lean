@@ -1,10 +1,14 @@
-import Mathlib.Algebra.MonoidAlgebra.Basic
-import Mathlib.Analysis.Fourier.FiniteAbelian.PontryaginDuality
-import Mathlib.GroupTheory.Complement
-import Mathlib.GroupTheory.SpecificGroups.Cyclic
-import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
-import Mathlib.Algebra.Group.Subgroup.Finite
-import Mathlib.LinearAlgebra.Pi
+module
+
+public import Mathlib.Algebra.MonoidAlgebra.Basic
+public import Mathlib.Analysis.Fourier.FiniteAbelian.PontryaginDuality
+public import Mathlib.GroupTheory.Complement
+public import Mathlib.GroupTheory.SpecificGroups.Cyclic
+public import Mathlib.RingTheory.RootsOfUnity.PrimitiveRoots
+public import Mathlib.Algebra.Group.Subgroup.Finite
+public import Mathlib.LinearAlgebra.Pi
+
+@[expose] public section
 
 set_option autoImplicit false
 

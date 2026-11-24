@@ -1,7 +1,11 @@
-import SICLean.L3.Pseudolattice
-import Mathlib.NumberTheory.NumberField.ClassNumber
-import Mathlib.NumberTheory.NumberField.FractionalIdeal
-import Mathlib.NumberTheory.NumberField.Ideal.KummerDedekind
+module
+
+public import SICLean.L3.Pseudolattice
+public import Mathlib.NumberTheory.NumberField.ClassNumber
+public import Mathlib.NumberTheory.NumberField.FractionalIdeal
+public import Mathlib.NumberTheory.NumberField.Ideal.KummerDedekind
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -17,7 +21,7 @@ variable {K : Type*} [Field K] [NumberField K]
 
 /-- A full integer lattice has nonzero span over the maximal order. -/
 theorem pseudolattice_maximalSpan_ne_bot (I : Submodule ℤ K)
-    (hI : Submodule.IsLattice ℚ I) :
+    (hI : Submodule.IsFullLattice ℚ I) :
     Submodule.span (𝓞 K) (I : Set K) ≠ ⊥ := by
   intro h
   have hi : I = ⊥ := by

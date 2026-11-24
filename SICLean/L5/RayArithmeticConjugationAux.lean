@@ -1,6 +1,10 @@
-import SICLean.L5.RayArithmeticModulus
-import Mathlib.RingTheory.FractionalIdeal.Operations
-import Nyll.ClassFieldTheory.AlgebraicNumberTheory.RayClass.Topology
+module
+
+public import SICLean.L5.RayArithmeticModulus
+public import Mathlib.RingTheory.FractionalIdeal.Operations
+public import Nyll.ClassFieldTheory.AlgebraicNumberTheory.RayClass.Topology
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option backward.isDefEq.respectTransparency.types false
@@ -261,20 +265,19 @@ theorem finiteUnit_mem_iff {F : Type*} [Field F] [NumberField F]
       ClassFieldTheory.rayLocalHigherUnitGroup v n ↔
       v.valuation F (x : F) = 1 ∧
         v.valuation F ((x : F) - 1) ≤ WithZero.exp (-(n : ℤ)) := by
-  change ClassFieldTheory.finitePlaceUnitEmbedding v x ∈ RayClass.localHigherUnitGroup v n ↔ _
-  rw [RayClass.mem_localHigherUnitGroup_iff]
+  rw [ClassFieldTheory.mem_rayLocalHigherUnitGroup_iff_reduction_eq_one]
   constructor
   · rintro ⟨y, hy, hcong⟩
-    have hyval : ((RayClass.localIntegralValue v y) : v.adicCompletion F) =
+    have hyval : ((ClassFieldTheory.rayLocalIntegralValue v y) : v.adicCompletion F) =
         algebraMap F (v.adicCompletion F) (x : F) := by
       exact congrArg Units.val hy
-    rw [RayClass.localHigherUnitMap_eq_one_iff, local_pow_mem_iff] at hcong
+    rw [ClassFieldTheory.rayLocalHigherUnitMap_eq_one_iff, local_pow_mem_iff] at hcong
     constructor
     · have hunit := (HeightOneSpectrum.adicCompletionIntegers.mem_units_iff_valued_eq_one).mp
         y.property
-      change Valued.v ((RayClass.localIntegralValue v y) : v.adicCompletion F) = 1 at hunit
+      change Valued.v ((ClassFieldTheory.rayLocalIntegralValue v y) : v.adicCompletion F) = 1 at hunit
       rwa [hyval, valuation_algebraMap] at hunit
-    · change Valued.v (((RayClass.localIntegralValue v y) : v.adicCompletion F) - 1) ≤ _ at hcong
+    · change Valued.v (((ClassFieldTheory.rayLocalIntegralValue v y) : v.adicCompletion F) - 1) ≤ _ at hcong
       rwa [hyval, ← map_one (algebraMap F (v.adicCompletion F)), ← map_sub,
         valuation_algebraMap] at hcong
   · rintro ⟨hx, hsub⟩
@@ -285,7 +288,7 @@ theorem finiteUnit_mem_iff {F : Type*} [Field F] [NumberField F]
           rw [valuation_algebraMap]
           exact hx)⟩
     refine ⟨y, rfl, ?_⟩
-    rw [RayClass.localHigherUnitMap_eq_one_iff, local_pow_mem_iff]
+    rw [ClassFieldTheory.rayLocalHigherUnitMap_eq_one_iff, local_pow_mem_iff]
     change Valued.v (algebraMap F (v.adicCompletion F) (x : F) - 1) ≤ _
     rw [← map_one (algebraMap F (v.adicCompletion F)), ← map_sub,
       valuation_algebraMap]

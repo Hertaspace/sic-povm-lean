@@ -1,5 +1,9 @@
-import SICLean.L4.G2ReflectionGeometry
-import SICLean.L4.G2RepresentativeWindow
+module
+
+public import SICLean.L4.G2ReflectionGeometry
+public import SICLean.L4.G2RepresentativeWindow
+
+@[expose] public section
 
 set_option autoImplicit false
 

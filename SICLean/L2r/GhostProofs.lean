@@ -1,10 +1,14 @@
-import SICLean.L2r.GhostDefs
-import SICLean.L2r.PhaseAux
+module
+
+public import SICLean.L2r.GhostDefs
+public import SICLean.L2r.PhaseAux
 
 /-! # Auxiliary proofs for the rank-r ghost interface
 
 Helper lemmas live here so the interface file does not import them in a cycle.
 -/
+
+@[expose] public section
 
 set_option autoImplicit false
 

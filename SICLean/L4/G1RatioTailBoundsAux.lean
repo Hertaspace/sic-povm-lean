@@ -1,5 +1,9 @@
-import SICLean.L4.G1PinchGeometry
-import SICLean.L4.ModularSectorBilateral
+module
+
+public import SICLean.L4.G1PinchGeometry
+public import SICLean.L4.ModularSectorBilateral
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -140,9 +144,9 @@ theorem affine_exp_compact_bound (K : Set ℂ) (hK : IsCompact K)
       (fun q : ℂ × ℝ => e (A q.1 * (q.2 : ℂ) + B m q.1)) (K ×ˢ Icc a b) := by
     intro m hm
     apply continuous_e.comp_continuousOn
-    exact ((hA.comp continuous_fst.continuousOn (fun _ hq => hq.1)).mul
+    exact ((hA.comp continuous_fst.continuousOn (fun _ (hq : _ ∈ K ×ˢ Icc a b) => hq.1)).mul
       (Complex.continuous_ofReal.comp continuous_snd).continuousOn).add
-        ((hB m hm).comp continuous_fst.continuousOn (fun _ hq => hq.1))
+        ((hB m hm).comp continuous_fst.continuousOn (fun _ (hq : _ ∈ K ×ˢ Icc a b) => hq.1))
   obtain ⟨C, hC, hbound⟩ := finite_compact_bound (K ×ˢ Icc a b)
     (hK.prod isCompact_Icc) F _ hf
   exact ⟨C, hC, fun τ hτ m hm x hx => hbound m hm (τ, x) ⟨hτ, hx⟩⟩

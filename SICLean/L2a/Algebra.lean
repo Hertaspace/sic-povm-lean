@@ -1,6 +1,10 @@
-import SICLean.L2a.Inputs
+module
+
+public import SICLean.L2a.Inputs
 
 /-! # Scalar, phase, and operator statements. -/
+
+@[expose] public section
 
 noncomputable section
 

@@ -1,5 +1,9 @@
-import SICLean.Final.Assembly
-import SICLean.L4.G1RealConclusion
+module
+
+public import SICLean.Final.Assembly
+public import SICLean.L4.G1RealConclusion
+
+@[expose] public section
 
 set_option autoImplicit false
 

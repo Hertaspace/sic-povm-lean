@@ -1,4 +1,8 @@
-import SICLean.L4.G2ContourChainAux
+module
+
+public import SICLean.L4.G2ContourChainAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

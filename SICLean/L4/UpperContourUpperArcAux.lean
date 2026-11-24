@@ -1,7 +1,11 @@
-import SICLean.L4.UpperContourBounds
-import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
-import Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics
-import Mathlib.MeasureTheory.Integral.DivergenceTheorem
+module
+
+public import SICLean.L4.UpperContourBounds
+public import Mathlib.Analysis.SpecialFunctions.ImproperIntegrals
+public import Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics
+public import Mathlib.MeasureTheory.Integral.DivergenceTheorem
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,8 +1,12 @@
-import Mathlib.Algebra.Polynomial.SpecificDegree
-import Mathlib.RingTheory.Polynomial.RationalRoot
-import Mathlib.RingTheory.AdjoinRoot
-import Mathlib.Analysis.SpecialFunctions.Sqrt
-import Mathlib.Tactic
+module
+
+public import Mathlib.Algebra.Polynomial.SpecificDegree
+public import Mathlib.RingTheory.Polynomial.RationalRoot
+public import Mathlib.RingTheory.AdjoinRoot
+public import Mathlib.Analysis.SpecialFunctions.Sqrt
+public import Mathlib.Tactic
+
+@[expose] public section
 
 set_option autoImplicit false
 

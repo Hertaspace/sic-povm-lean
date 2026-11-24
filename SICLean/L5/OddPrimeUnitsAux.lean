@@ -1,7 +1,11 @@
-import SICLean.L3.PseudolatticeIdeal
-import SICLean.L5.PeriodPowerData
-import Mathlib.GroupTheory.Torsion
-import Mathlib.RingTheory.Ideal.Norm.AbsNorm
+module
+
+public import SICLean.L3.PseudolatticeIdeal
+public import SICLean.L5.PeriodPowerData
+public import Mathlib.GroupTheory.Torsion
+public import Mathlib.RingTheory.Ideal.Norm.AbsNorm
+
+@[expose] public section
 
 set_option autoImplicit false
 

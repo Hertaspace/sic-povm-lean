@@ -1,6 +1,10 @@
-import SICLean.L3.PseudolatticeFamily
-import SICLean.L4.SpecialValueReflection
-import SICLean.L4.M74NormalizationAux
+module
+
+public import SICLean.L3.PseudolatticeFamily
+public import SICLean.L4.SpecialValueReflection
+public import SICLean.L4.M74NormalizationAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

@@ -1,6 +1,10 @@
-import SICLean.L4.G2ReflectionGeometry
-import SICLean.L4.G2RepresentativeWindow
-import SICLean.L4.G2RepellingPointValuesAux
+module
+
+public import SICLean.L4.G2ReflectionGeometry
+public import SICLean.L4.G2RepresentativeWindow
+public import SICLean.L4.G2RepellingPointValuesAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

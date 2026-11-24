@@ -1,10 +1,14 @@
-import SICLean.L5.SplitPrimeLattice
-import Mathlib.RingTheory.Trace.Basic
-import Mathlib.GroupTheory.SpecificGroups.Cyclic
-import Mathlib.GroupTheory.Torsion
-import Mathlib.GroupTheory.PGroup
-import Mathlib.Data.ZMod.QuotientGroup
-import Mathlib.GroupTheory.FiniteAbelian.Basic
+module
+
+public import SICLean.L5.SplitPrimeLattice
+public import Mathlib.RingTheory.Trace.Basic
+public import Mathlib.GroupTheory.SpecificGroups.Cyclic
+public import Mathlib.GroupTheory.Torsion
+public import Mathlib.GroupTheory.PGroup
+public import Mathlib.Data.ZMod.QuotientGroup
+public import Mathlib.GroupTheory.FiniteAbelian.Basic
+
+@[expose] public section
 
 set_option autoImplicit false
 set_option backward.isDefEq.respectTransparency.types false
@@ -214,10 +218,8 @@ theorem period_div_opposite (P : PeriodData K) {p s : ℕ} [Fact p.Prime]
     rw [htrace]
     push_cast
     simp [Nat.ne_zero_of_lt hs]
-    ring
   rw [hcast] at hsum
   exact eq_neg_of_add_eq_zero_right hsum.symm
-
 
 open SplitPrimeLattice DistributionOrbitGeometry DistributionSubgroups
 
@@ -285,7 +287,6 @@ theorem saturation_mem_of_coprime_mul_mem (P : PeriodData K)
   change (u : K) * ((B : K) * x) + (v : K) * ((a : K) * x) ∈
     fractionalIdealCarrier (pseudolatticeSaturation P I) at hh
   simpa only [← mul_assoc, ← add_mul, huvK, one_mul] using hh
-
 
 /-- A prescribed p-power part in a product decomposition is exactly the primary subgroup, since the
 complementary factor has prime-to-p order. -/
@@ -519,7 +520,6 @@ theorem primary_ambient_image_of_division (P : PeriodData K) (I : StablePseudola
       rw [map_nsmul, map_zero, toAmbient_mk, ← map_nsmul]
       exact (QuotientAddGroup.eq_zero_iff _).mpr hps
 
-
 section FinitePrimarySplitting
 
 variable {G : Type*} [AddCommGroup G] [Finite G]
@@ -605,7 +605,6 @@ theorem finite_primary_splitting (p : ℕ) (hp : p.Prime) :
 
 end FinitePrimarySplitting
 
-
 theorem cyclic_torsion_generator {H : Type*} [AddCommGroup H] [Finite H]
     {p s : ℕ} [Fact p.Prime] (hs : 1 ≤ s) (hcyc : IsAddCyclic H)
     (hcard : Nat.card H = p ^ s) :
@@ -635,7 +634,6 @@ theorem cyclic_torsion_generator {H : Type*} [AddCommGroup H] [Finite H]
   have heq := AddSubgroup.eq_of_le_of_card_ge hle (by
     simpa only [Nat.card_zmultiples, horder] using hbound)
   exact ⟨g, horder, heq.symm⟩
-
 
 theorem cyclic_line_torsion_card {G : Type*} [AddCommGroup G] [Finite G]
     {p s : ℕ} [Fact p.Prime] (hs : 1 ≤ s) (L : AddSubgroup G)
@@ -671,8 +669,6 @@ theorem cyclic_line_torsion_lift {G : Type*} [AddCommGroup G] [Finite G]
     rw [smul_comm]
     exact hn
   exact congrArg Subtype.val hsmul
-
-
 
 /-- A finite additive group with at most p elements killed by p has at most p^n elements whenever
 p^n annihilates the group. -/
@@ -839,9 +835,6 @@ theorem primary_cyclic_of_not_mul_sub_one_le_pScale (P : PeriodData K)
   obtain ⟨d⟩ := ambient_division_equiv P J p (Fact.out : p.Prime).ne_zero
   exact primary_cyclic_of_not_mul_sub_one_le_pScale_of_equiv P J d h
 
-
-
-
 set_option backward.isDefEq.respectTransparency false in
 theorem only_two_invariant_lines_of_stable {p : ℕ} [Fact p.Prime] (hodd : p ≠ 2)
     (b : ZMod p) (hb : b ≠ 0) (L : AddSubgroup (ZMod p × ZMod p))
@@ -906,7 +899,6 @@ theorem only_two_invariant_lines_of_stable {p : ℕ} [Fact p.Prime] (hodd : p �
     apply (AddSubgroup.eq_of_le_of_card_ge haxis ?_).symm
     rw [hL, Nat.card_congr (AddSubgroup.prodEquiv _ _).toEquiv]
     simp [Nat.card_eq_fintype_card]
-
 
 /-- The actual saturation index clears multiplication by every integral element. -/
 def saturationIndex (P : PeriodData K) (I : StablePseudolattice P) : ℕ :=

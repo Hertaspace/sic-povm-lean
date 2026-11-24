@@ -7,6 +7,7 @@ module
 
 public import Mathlib.Analysis.SpecialFunctions.Pow.Asymptotics
 public import Mathlib.Analysis.Normed.Ring.InfiniteSum
+public import Mathlib.Algebra.BigOperators.Ring.Nat
 public import Mathlib.Data.Finite.Vector
 public import Mathlib.Data.Finsupp.Multiset
 public import Mathlib.Data.Sym.Card
@@ -253,7 +254,7 @@ lemma sum_idealNormMultiplicity_isBigO :
   classical
   have h_finite : ∀ (b : ℕ), {I : NonzeroIdeal L | Ideal.absNorm I.1 = b}.Finite := fun b ↦
     Set.Finite.preimage (f := fun I : NonzeroIdeal L ↦ I.1) (fun _ _ _ _ ↦ Subtype.ext)
-      (Ideal.finite_setOf_absNorm_eq (S := 𝓞 L) b)
+      (Ring.HasFiniteQuotients.finite_absNorm_eq (S := 𝓞 L) b)
   have h_sum_card : ∀ n : ℕ, ∑ k ∈ Finset.Icc 1 n, idealNormMultiplicity L k =
       Nat.card {I : NonzeroIdeal L // Ideal.absNorm I.1 ≤ n} := fun n ↦ by
     have key := Finset.card_preimage_eq_sum_card_image_eq (f := fun I : NonzeroIdeal L ↦
@@ -505,7 +506,9 @@ eventually captured, so the partial sums tend to `∑_𝔞 N𝔞^{-s} = ζ_K(s)`
 private instance instFiniteAbsNormFiber (n : ℕ) :
     Finite {I : NonzeroIdeal L // Ideal.absNorm I.1 = n} :=
   Set.Finite.to_subtype <| Set.Finite.of_finite_image (f := fun I : NonzeroIdeal L ↦ I.1)
-    ((Ideal.finite_setOf_absNorm_eq (S := 𝓞 L) n).subset (by rintro _ ⟨⟨I, _⟩, rfl, rfl⟩; rfl))
+    ((Ring.HasFiniteQuotients.finite_absNorm_eq (S := 𝓞 L) n).subset
+      (t := (fun I : NonzeroIdeal L ↦ I.1) '' {I : NonzeroIdeal L | Ideal.absNorm I.1 = n})
+      (by rintro _ ⟨⟨I, _⟩, hI, rfl⟩; exact hI))
     (fun _ _ _ _ ↦ Subtype.ext)
 
 private lemma tsum_absNormFiber {M : Type*} [AddCommGroup M] [TopologicalSpace M] [T2Space M]

@@ -1,5 +1,9 @@
-import SICLean.L5.ClassFieldModulus
-import SICLean.L5.ClassFieldIdealActionAux
+module
+
+public import SICLean.L5.ClassFieldModulus
+public import SICLean.L5.ClassFieldIdealActionAux
+
+@[expose] public section
 
 set_option autoImplicit false
 

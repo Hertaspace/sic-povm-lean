@@ -1,4 +1,8 @@
-import SICLean.L4.M78Point
+module
+
+public import SICLean.L4.M78Point
+
+@[expose] public section
 
 set_option autoImplicit false
 

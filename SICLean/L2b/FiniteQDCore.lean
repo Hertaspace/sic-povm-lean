@@ -1,4 +1,8 @@
-import SICLean.L2b.FiniteQDDefs
+module
+
+public import SICLean.L2b.FiniteQDDefs
+
+@[expose] public section
 
 set_option autoImplicit false
 
@@ -321,7 +325,6 @@ theorem reflection_with_constant_core {q E : A → ℂ} (hq : IsMetricGaussian q
   rw [hs] at hi
   simpa only [pentagonKernel, zero_sub, hq.even u, neg_eq_zero, mul_comm] using hi.symm
 
-
 theorem fqd_everywhere_ne_zero_core {q E : A → ℂ} (hq : IsMetricGaussian q)
     (hE : IsFiniteQuantumDilogarithm q E) (u : A) : E u ≠ 0 := by
   obtain ⟨C, hC, hP⟩ := hE
@@ -370,7 +373,6 @@ theorem kernel_fourier_symmetry_core {q E : A → ℂ} (hq : IsMetricGaussian q)
       dsimp only [pentagonKernel]
       rw [sub_sub_cancel]
       linear_combination E (x - z) * E z * core_kernel_phase hq x w z
-
 
 theorem core_fourier_product_relation {q E : A → ℂ} (hq : IsMetricGaussian q)
     (hE : IsFiniteQuantumDilogarithm q E) (u v : A) (hu : u ≠ 0) (hv : v ≠ 0) :

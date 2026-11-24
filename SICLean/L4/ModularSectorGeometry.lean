@@ -1,5 +1,9 @@
-import SICLean.L4.ModularPhi
-import SICLean.L4.FaddeevSectorDecay
+module
+
+public import SICLean.L4.ModularPhi
+public import SICLean.L4.FaddeevSectorDecay
+
+@[expose] public section
 
 set_option autoImplicit false
 

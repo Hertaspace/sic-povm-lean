@@ -1,5 +1,9 @@
-import SICLean.L5.RayArithmeticConjugation
-import SICLean.L5.RayArithmeticSignsAux
+module
+
+public import SICLean.L5.RayArithmeticConjugation
+public import SICLean.L5.RayArithmeticSignsAux
+
+@[expose] public section
 
 set_option autoImplicit false
 
